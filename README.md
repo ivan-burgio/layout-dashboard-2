@@ -64,3 +64,26 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+
+## COMO DEJAQR FUNCIONANDO LARAVEL
+
+Hay que tirar estos comandos en la terminal
+
+php artisan key:generate
+
+php artisan config:cache
+
+php artisan session:table
+
+php artisan migrate
+
+
+Tambien hay que verificar que no este comentada la sigueinte linea en el php.ini
+
+;extension=pdo_mysql
+
+Y tener los datos correctos de la coneccion a la db en el .env
