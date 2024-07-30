@@ -1,6 +1,6 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="bg-white border-gray-200 dark:bg-gray-900 fixed top-0 left-0 w-full z-50">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="" class="h-8" alt="Buyar Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Buyar</span>
         </a>
