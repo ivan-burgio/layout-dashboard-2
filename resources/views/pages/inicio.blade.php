@@ -14,7 +14,7 @@
         </div>
     </header>
 
-    <div class="bg-white flex flex-col md:flex-row items-start justify-between w-full p-10">
+    <div class="bg-white flex flex-col md:flex-row items-start justify-between w-full p-20">
         <div class="bg-slate-400 p-8 m-4">
             <h3 class="text-xl font-bold mb-12 w-full text-center">Sitios Web Personalizados</h3>
             <p class="text-lg">
