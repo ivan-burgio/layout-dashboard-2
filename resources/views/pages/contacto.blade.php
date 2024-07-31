@@ -1,7 +1,5 @@
 @extends('pages-layout')
 
 @section('content')
-
-    <div>Contacto</div>
-
+    @include('templates.contacto')
 @endsection
