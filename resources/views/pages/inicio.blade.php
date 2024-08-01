@@ -20,7 +20,7 @@
         <div class="bg-slate-600 h-80 relative">
             <img src="tu-imagen.jpg" alt="Imagen de fondo" class="w-full">
             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <div class="text-left text-white p-20 md:p-40 w-full">
+                <div class="text-left text-white p-5 md:p-20 lg:p-40 w-full">
                     <h1 class="text-3xl font-bold mb-8">¿Porque Buyar?</h1>
                     <p class="text-xl mt-2">
                         En un mundo digital en constante evolución, Buyar se destaca por ofrecer soluciones web innovadoras
