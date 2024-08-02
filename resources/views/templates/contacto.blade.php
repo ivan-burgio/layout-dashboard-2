@@ -47,7 +47,7 @@
 
             <div class="mt-8 lg:w-1/2 lg:mx-6">
                 <div
-                    class="w-full px-6 py-8 mx-auto overflow-hidden bg-white rounded-lg shadow-2xl dark:bg-gray-900 lg:max-w-xl shadow-gray-300/50 dark:shadow-black/50">
+                    class="w-full px-6 py-8 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-900 lg:max-w-xl shadow-black">
                     <h1 class="text-lg font-medium text-white">¿Qué quieres preguntarnos?</h1>
 
                     <form class="mt-6">
