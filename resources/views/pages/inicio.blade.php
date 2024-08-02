@@ -54,15 +54,16 @@
             </div>
         </section>
 
-        <div class="bg-slate-600 h-80 relative">
-            <img src="https://picsum.photos/400/300" alt="Imagen de fondo" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <div class="text-left text-white p-5 md:p-20 lg:p-40 w-full">
-                    <h1 class="text-3xl font-bold mb-8">¿Porque Buyar?</h1>
-                    <p class="text-xl mt-2">
-                        En un mundo digital en constante evolución, Buyar se destaca por ofrecer soluciones web innovadoras
-                        y personalizadas que impulsan el crecimiento de tu negocio.
-                    </p>
+        <div class="relative h-80 bg-slate-600">
+            <div class="absolute inset-0 bg-[url('https://picsum.photos/400/300')] bg-cover bg-fixed bg-center">
+                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div class="text-left text-white p-5 md:p-20 lg:p-40 w-full">
+                        <h1 class="text-3xl font-bold mb-8">¿Por qué Buyar?</h1>
+                        <p class="text-xl mt-2">
+                            En un mundo digital en constante evolución, Buyar se destaca por ofrecer soluciones web innovadoras
+                            y personalizadas que impulsan el crecimiento de tu negocio.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
