@@ -4,93 +4,50 @@
     <section class="p-8 mt-10 bg-gray-100">
         <h2 class="text-4xl font-bold mb-8 text-center text-indigo-600">Nuestros Servicios</h2>
 
-        <!-- Sitios Web Personalizados -->
-        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-            <h3 class="text-3xl font-semibold mb-4 text-gray-800">Sitios Web Personalizados</h3>
-            <p class="text-base text-gray-700 leading-relaxed">
-                En Buyar, nos especializamos en la creación de sitios web de presentación completamente
-                personalizados que capturan y reflejan la esencia única de tu negocio.<br>
-                Entendemos que cada empresa tiene su propia identidad, y es por eso que diseñamos páginas web que no
-                solo se adaptan a tus gustos y necesidades específicas, sino que también realzan tu presencia online
-                de una manera poderosa y efectiva.<br><br>
+        @foreach ($data as $title => $service)
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h3 class="text-3xl font-semibold mb-4 text-gray-800">{{ $title }}</h3>
+                <p class="text-base text-gray-700 leading-relaxed">
+                    {!! nl2br(e($service['description'])) !!}
+                </p>
 
-                Nuestro equipo de diseñadores y desarrolladores trabaja en estrecha colaboración contigo para
-                entender tu visión y objetivos.<br>
-                Desde la elección del esquema de colores, tipografía y diseño gráfico, hasta la integración de
-                funcionalidades específicas que necesitas, nos aseguramos de que cada detalle esté alineado con la
-                imagen que deseas proyectar.<br><br>
-
-                Además, nuestras soluciones están pensadas para ser totalmente responsivas, lo que garantiza que tu
-                sitio web se vea y funcione perfectamente en cualquier dispositivo, ya sea un ordenador, una tablet
-                o un smartphone.<br>
-                Esto es crucial en un mundo donde la mayoría de las visitas web provienen de dispositivos
-                móviles.<br><br>
-
-                Si estás lanzando una nueva empresa, nuestro objetivo es ayudarte a hacer una entrada fuerte y
-                memorable en el mercado digital.<br>
-                Y si estás renovando tu imagen, trabajamos para darle a tu negocio una nueva vida y vigor,
-                asegurando que tu sitio web esté siempre a la vanguardia en términos de diseño y
-                funcionalidad.<br><br>
-
-                En Buyar, no solo construimos sitios web, sino que creamos experiencias digitales que destacan y
-                conectan con tu audiencia de una manera significativa.<br>
-                Estamos aquí para apoyarte en cada paso del camino, desde la concepción de la idea hasta el
-                lanzamiento final y más allá, proporcionando soporte continuo y actualizaciones para que tu
-                presencia online sea tan dinámica como tu negocio.
-            </p>
-        </div>
-
-        <!-- Sitios de Gestión Personalizados -->
-        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-            <h3 class="text-3xl font-semibold mb-4 text-gray-800">Sitios de Gestión Personalizados</h3>
-            <p class="text-base text-gray-700 leading-relaxed">
-                Nuestros sitios de gestión personalizados están diseñados para ofrecerte una interfaz intuitiva y
-                adaptada a tus necesidades empresariales específicas.<br>
-                Entendemos que cada negocio tiene requisitos únicos, por lo que creamos soluciones a medida que
-                abarcan todos los aspectos críticos de la administración.<br><br>
-
-                Desde la administración integral de clientes y empleados, hasta el manejo detallado del control de
-                stock y la facturación,<br>
-                nuestras plataformas están equipadas con herramientas avanzadas para facilitarte cada tarea. También
-                incluimos bandejas de correos eficientes,<br>
-                que te permiten gestionar la comunicación con clientes y proveedores de manera organizada y
-                efectiva.<br><br>
-
-                Trabajamos estrechamente contigo para entender las necesidades particulares de tu negocio y diseñar
-                una solución que se ajuste perfectamente a tus requerimientos.<br>
-                Nuestro objetivo es que puedas manejar todas las facetas de tu negocio con facilidad, optimizando
-                tus procesos y mejorando la eficiencia operativa.<br><br>
-
-                Con Buyar, tu subdominio de gestión no solo será una plataforma funcional, sino una herramienta
-                poderosa que potenciará tu éxito,<br>
-                ayudándote a mantener el control total de tus operaciones y a alcanzar tus metas empresariales de
-                manera efectiva.
-            </p>
-        </div>
-
-        <!-- Integración de Chatbox -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-3xl font-semibold mb-4 text-gray-800">Integración de Chatbox</h3>
-            <p class="text-base text-gray-700 leading-relaxed">
-                En Buyar, ofrecemos la integración de chatbox con bots inteligentes que están diseñados para brindar
-                a tus clientes respuestas rápidas a preguntas comunes.<br>
-                Esta avanzada herramienta no solo optimiza la experiencia del usuario al proporcionar asistencia
-                instantánea, sino que también te permite liberar tiempo valioso para ti y tu equipo.<br><br>
-
-                Nuestros chatbots están equipados con capacidades de aprendizaje automático y procesamiento de
-                lenguaje natural,<br>
-                lo que les permite entender y responder a una amplia variedad de consultas de manera eficiente. Esto
-                asegura que tus clientes obtengan la información que necesitan de manera rápida y precisa,<br>
-                mejorando su satisfacción y reduciendo la necesidad de intervención humana.<br><br>
-
-                Al implementar esta solución, podrás ofrecer una atención al cliente personalizada y ágil,<br>
-                manteniendo una comunicación continua con tus usuarios sin esfuerzo adicional. Esto fortalece la
-                relación con tus clientes,<br>
-                asegurando que se sientan atendidos y valorados en todo momento.<br><br>
-
-                Con Buyar, transformamos la forma en que interactúas con tus clientes, elevando el nivel de servicio
-                que ofreces y contribuyendo al crecimiento y éxito continuo de tu negocio.
-            </p>
-        </div>
+                <div class="max-w-2xl mx-auto mt-10">
+                    <div id="default-carousel" class="relative" data-carousel="static">
+                        <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+                            @foreach ($service['carousel_images'] as $index => $image)
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="{{ $image }}"
+                                        class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                                        alt="Imagen del servicio">
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+                            @foreach ($service['carousel_images'] as $index => $image)
+                                <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                                    aria-label="Slide {{ $index + 1 }}"
+                                    data-carousel-slide-to="{{ $index }}"></button>
+                            @endforeach
+                        </div>
+                        <button type="button"
+                            class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                            data-carousel-prev>
+                            <span
+                                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <span class="hidden">Previous</span>
+                            </span>
+                        </button>
+                        <button type="button"
+                            class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                            data-carousel-next>
+                            <span
+                                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <span class="hidden">Next</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </section>
 @endsection

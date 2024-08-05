@@ -2,7 +2,7 @@
 
 @section('content')
     <header class="bg-slate-600 h-screen relative mt-10">
-        <img src="https://picsum.photos/400/300" alt="Imagen de fondo" class="w-full h-full object-cover">
+        <img src="https://picsum.photos/900/900" alt="Imagen de fondo" class="w-full h-full object-cover">
         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div class="text-left text-white p-20 md:p-40 w-full">
                 <h1 class="text-6xl font-bold mb-8">Buyar</h1>
@@ -25,7 +25,7 @@
                     </p>
                 </div>
                 <div class="mt-auto">
-                    <img src="https://picsum.photos/400/300" alt="" class="w-full h-48 object-cover">
+                    <img src="https://picsum.photos/400/200" alt="" class="w-full h-48 object-cover">
                 </div>
             </div>
             <div class="bg-slate-400 w-full rounded-lg shadow-lg flex flex-col transition-all overflow-hidden hover:shadow-black">
@@ -49,13 +49,13 @@
                     </p>
                 </div>
                 <div class="mt-auto">
-                    <img src="https://picsum.photos/400/300" alt="" class="w-full h-48 object-cover">
+                    <img src="https://picsum.photos/400/400" alt="" class="w-full h-48 object-cover">
                 </div>
             </div>
         </section>
 
         <div class="relative h-80 bg-slate-600">
-            <div class="absolute inset-0 bg-[url('https://picsum.photos/400/300')] bg-cover bg-fixed bg-center">
+            <div class="absolute inset-0 bg-[url('https://picsum.photos/800/500')] bg-cover bg-fixed bg-center">
                 <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
                     <div class="text-left text-white p-5 md:p-20 lg:p-40 w-full">
                         <h1 class="text-3xl font-bold mb-8">¿Por qué Buyar?</h1>
