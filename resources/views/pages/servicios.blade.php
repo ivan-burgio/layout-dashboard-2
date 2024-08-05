@@ -1,41 +1,96 @@
 @extends('pages-layout')
 
 @section('content')
-    <section class="container mx-auto px-8 py-8 pb-16 lg:py-20 lg:pb-32">
-        <div class="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-3">
-            <div class="relative flex flex-col bg-gray-900 shadow-md min-h-[15rem] items-end overflow-hidden rounded-xl">
-                <div class="p-6 relative flex flex-col justify-between h-full">
-                    <h4 class="text-2xl font-semibold leading-snug text-white p-2">Sitios Web Personalizados</h4>
-                    <p class="text-base font-light leading-relaxed text-white my-2 p-2">
-                        En Buyar, creamos sitios web de presentación personalizados que reflejan la esencia de tu negocio.
-                        Diseñamos páginas únicas a tu gusto y necesidades, asegurando que tu presencia online sea tan
-                        impactante como tu visión. Ya sea que estés lanzando una nueva empresa o renovando tu imagen,
-                        estamos aquí para ayudarte a destacar.
-                    </p>
-                </div>
-            </div>
-            <div class="relative flex flex-col bg-gray-900 shadow-md min-h-[15rem] items-end overflow-hidden rounded-xl">
-                <div class="p-6 relative flex flex-col justify-between h-full">
-                    <h4 class="text-2xl font-semibold leading-snug text-white p-2">Sitios de Gestión Personalizados</h4>
-                    <p class="text-base font-light leading-relaxed text-white my-2 p-2">
-                        Nuestros sitios de gestión personalizados ofrecen una interfaz cómoda y adaptada a tus necesidades
-                        específicas. Desde la administración de clientes y empleados hasta el control de stock, facturación
-                        y bandejas de mails, creamos soluciones a medida que te permiten manejar tu negocio de manera
-                        eficiente y eficaz. Con Buyar, tu subdominio de gestión será una herramienta poderosa para el éxito.
-                    </p>
-                </div>
-            </div>
-            <div class="relative flex flex-col bg-gray-900 shadow-md min-h-[15rem] items-end overflow-hidden rounded-xl">
-                <div class="p-6 relative flex flex-col justify-between h-full">
-                    <h4 class="text-2xl font-semibold leading-snug text-white p-2">Integración de Chatbox</h4>
-                    <p class="text-base font-light leading-relaxed text-white my-2 p-2">
-                        Ofrecemos la integración de chatbox con bots inteligentes para que tus clientes puedan resolver
-                        dudas sencillas al instante. Esta herramienta no solo mejora la experiencia del usuario, sino que
-                        también libera tiempo para ti y tu equipo. Con Buyar, podrás ofrecer atención personalizada y
-                        rápida, fortaleciendo la relación con tus clientes sin esfuerzo adicional.
-                    </p>
-                </div>
-            </div>
+    <section class="p-8 mt-10 bg-gray-100">
+        <h2 class="text-4xl font-bold mb-8 text-center text-indigo-600">Nuestros Servicios</h2>
+
+        <!-- Sitios Web Personalizados -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h3 class="text-3xl font-semibold mb-4 text-gray-800">Sitios Web Personalizados</h3>
+            <p class="text-base text-gray-700 leading-relaxed">
+                En Buyar, nos especializamos en la creación de sitios web de presentación completamente
+                personalizados que capturan y reflejan la esencia única de tu negocio.<br>
+                Entendemos que cada empresa tiene su propia identidad, y es por eso que diseñamos páginas web que no
+                solo se adaptan a tus gustos y necesidades específicas, sino que también realzan tu presencia online
+                de una manera poderosa y efectiva.<br><br>
+
+                Nuestro equipo de diseñadores y desarrolladores trabaja en estrecha colaboración contigo para
+                entender tu visión y objetivos.<br>
+                Desde la elección del esquema de colores, tipografía y diseño gráfico, hasta la integración de
+                funcionalidades específicas que necesitas, nos aseguramos de que cada detalle esté alineado con la
+                imagen que deseas proyectar.<br><br>
+
+                Además, nuestras soluciones están pensadas para ser totalmente responsivas, lo que garantiza que tu
+                sitio web se vea y funcione perfectamente en cualquier dispositivo, ya sea un ordenador, una tablet
+                o un smartphone.<br>
+                Esto es crucial en un mundo donde la mayoría de las visitas web provienen de dispositivos
+                móviles.<br><br>
+
+                Si estás lanzando una nueva empresa, nuestro objetivo es ayudarte a hacer una entrada fuerte y
+                memorable en el mercado digital.<br>
+                Y si estás renovando tu imagen, trabajamos para darle a tu negocio una nueva vida y vigor,
+                asegurando que tu sitio web esté siempre a la vanguardia en términos de diseño y
+                funcionalidad.<br><br>
+
+                En Buyar, no solo construimos sitios web, sino que creamos experiencias digitales que destacan y
+                conectan con tu audiencia de una manera significativa.<br>
+                Estamos aquí para apoyarte en cada paso del camino, desde la concepción de la idea hasta el
+                lanzamiento final y más allá, proporcionando soporte continuo y actualizaciones para que tu
+                presencia online sea tan dinámica como tu negocio.
+            </p>
+        </div>
+
+        <!-- Sitios de Gestión Personalizados -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h3 class="text-3xl font-semibold mb-4 text-gray-800">Sitios de Gestión Personalizados</h3>
+            <p class="text-base text-gray-700 leading-relaxed">
+                Nuestros sitios de gestión personalizados están diseñados para ofrecerte una interfaz intuitiva y
+                adaptada a tus necesidades empresariales específicas.<br>
+                Entendemos que cada negocio tiene requisitos únicos, por lo que creamos soluciones a medida que
+                abarcan todos los aspectos críticos de la administración.<br><br>
+
+                Desde la administración integral de clientes y empleados, hasta el manejo detallado del control de
+                stock y la facturación,<br>
+                nuestras plataformas están equipadas con herramientas avanzadas para facilitarte cada tarea. También
+                incluimos bandejas de correos eficientes,<br>
+                que te permiten gestionar la comunicación con clientes y proveedores de manera organizada y
+                efectiva.<br><br>
+
+                Trabajamos estrechamente contigo para entender las necesidades particulares de tu negocio y diseñar
+                una solución que se ajuste perfectamente a tus requerimientos.<br>
+                Nuestro objetivo es que puedas manejar todas las facetas de tu negocio con facilidad, optimizando
+                tus procesos y mejorando la eficiencia operativa.<br><br>
+
+                Con Buyar, tu subdominio de gestión no solo será una plataforma funcional, sino una herramienta
+                poderosa que potenciará tu éxito,<br>
+                ayudándote a mantener el control total de tus operaciones y a alcanzar tus metas empresariales de
+                manera efectiva.
+            </p>
+        </div>
+
+        <!-- Integración de Chatbox -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-3xl font-semibold mb-4 text-gray-800">Integración de Chatbox</h3>
+            <p class="text-base text-gray-700 leading-relaxed">
+                En Buyar, ofrecemos la integración de chatbox con bots inteligentes que están diseñados para brindar
+                a tus clientes respuestas rápidas a preguntas comunes.<br>
+                Esta avanzada herramienta no solo optimiza la experiencia del usuario al proporcionar asistencia
+                instantánea, sino que también te permite liberar tiempo valioso para ti y tu equipo.<br><br>
+
+                Nuestros chatbots están equipados con capacidades de aprendizaje automático y procesamiento de
+                lenguaje natural,<br>
+                lo que les permite entender y responder a una amplia variedad de consultas de manera eficiente. Esto
+                asegura que tus clientes obtengan la información que necesitan de manera rápida y precisa,<br>
+                mejorando su satisfacción y reduciendo la necesidad de intervención humana.<br><br>
+
+                Al implementar esta solución, podrás ofrecer una atención al cliente personalizada y ágil,<br>
+                manteniendo una comunicación continua con tus usuarios sin esfuerzo adicional. Esto fortalece la
+                relación con tus clientes,<br>
+                asegurando que se sientan atendidos y valorados en todo momento.<br><br>
+
+                Con Buyar, transformamos la forma en que interactúas con tus clientes, elevando el nivel de servicio
+                que ofreces y contribuyendo al crecimiento y éxito continuo de tu negocio.
+            </p>
         </div>
     </section>
 @endsection

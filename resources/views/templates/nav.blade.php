@@ -1,4 +1,4 @@
-<nav class="flex items-center justify-between w-full bg-gray-400 group py-2 px-8 fixed top-0 left-0 z-50">
+<nav class="flex items-center justify-between w-full bg-gray-400 group py-1 px-8 fixed top-0 left-0 z-50 shadow-sm shadow-black">
     <div>
         <img class="h-8" src="" alt="LOGO">
     </div>

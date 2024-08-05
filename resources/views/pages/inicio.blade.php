@@ -1,7 +1,7 @@
 @extends('pages-layout')
 
 @section('content')
-    <header class="bg-slate-600 h-screen relative mt-12">
+    <header class="bg-slate-600 h-screen relative mt-10">
         <img src="https://picsum.photos/400/300" alt="Imagen de fondo" class="w-full h-full object-cover">
         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div class="text-left text-white p-20 md:p-40 w-full">
