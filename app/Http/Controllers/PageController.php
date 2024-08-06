@@ -8,7 +8,40 @@ class PageController extends Controller
 {
     public function inicio()
     {
-        return view('pages.inicio');
+        $data = [
+            'header' => [
+                'title' => 'Buyar',
+                'description' => [
+                    'line1' => 'Transformamos tu visión en una poderosa presencia online.',
+                    'line2' => 'Webs de presentación únicas y sistemas de gestión a medida.',
+                ],
+                'background_image' => 'https://picsum.photos/900/900',
+            ],
+            'services' => [
+                [
+                    'title' => 'Sitios Web Personalizados',
+                    'description' => 'En Buyar, diseñamos sitios web personalizados que reflejan tu negocio y necesidades, asegurando una presencia online impactante y ayudándote a destacar.',
+                    'image' => 'https://picsum.photos/400/200',
+                ],
+                [
+                    'title' => 'Sitios de Gestión Personalizados',
+                    'description' => 'Nuestros sitios de gestión personalizados facilitan la administración de tu negocio, desde clientes hasta facturación. Con Buyar, tendrás una herramienta poderosa para el éxito.',
+                    'image' => 'https://picsum.photos/400/300',
+                ],
+                [
+                    'title' => 'Integración de Chatbox',
+                    'description' => 'Ofrecemos chatbox con bots inteligentes para resolver dudas al instante, mejorando la experiencia del usuario y liberando tiempo para ti.',
+                    'image' => 'https://picsum.photos/400/400',
+                ],
+            ],
+            'why_buyar' => [
+                'title' => '¿Por qué Buyar?',
+                'description' => 'En un mundo digital en constante evolución, Buyar se destaca por ofrecer soluciones web innovadoras y personalizadas que impulsan el crecimiento de tu negocio.',
+                'background_image' => 'https://picsum.photos/800/500',
+            ],
+        ];
+
+        return view('pages.inicio', ['data' => $data]);
     }
 
     public function servicios()
