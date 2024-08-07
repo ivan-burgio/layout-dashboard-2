@@ -66,7 +66,19 @@ class PageController extends Controller
 
     public function nosotros()
     {
-        return view('pages.nosotros');
+        $data = [
+            '¿Quienes Somos?' => [
+                'description' => 'pimba.',
+            ],
+            '¿Que ofrecemos?' => [
+                'description' => 'pimba.',
+            ],
+            'Clientes' => [
+                'description' => 'pimba.',
+            ],
+        ];
+
+        return view('pages.nosotros', ['data' => $data]);
     }
 
     public function contacto()
