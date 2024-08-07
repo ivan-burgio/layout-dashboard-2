@@ -83,6 +83,20 @@ class PageController extends Controller
 
     public function contacto()
     {
-        return view('pages.contacto');
+        $data = [
+            'phone_numbers' => [
+                '(+598) 90 000 000',
+                '(+598) 90 000 001'
+            ],
+            'email' => 'acb@example.com',
+            'social_links' => [
+                'twitter' => '#',
+                'linkedin' => '#',
+                'facebook' => '#',
+                'instagram' => '#'
+            ]
+        ];
+
+        return view('pages.contacto', ['data' => $data]);
     }
 }

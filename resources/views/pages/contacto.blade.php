@@ -11,14 +11,16 @@
                     </h1>
 
                     <div class="mt-6 space-y-8 md:mt-8">
-                        <p class="flex items-start -mx-2">
-                            <i class="fa-solid fa-phone w-6 h-6 mx-2 text-blue-500 dark:text-blue-400 text-2xl"></i>
-                            <span class="mx-2 text-gray-700 truncate dark:text-gray-400">(+598) 90 000 000</span>
-                        </p>
+                        @foreach ($data['phone_numbers'] as $phone)
+                            <p class="flex items-start -mx-2">
+                                <i class="fa-solid fa-phone w-6 h-6 mx-2 text-blue-500 dark:text-blue-400 text-2xl"></i>
+                                <span class="mx-2 text-gray-700 truncate dark:text-gray-400">{{ $phone }}</span>
+                            </p>
+                        @endforeach
 
                         <p class="flex items-start -mx-2">
                             <i class="fa-solid fa-envelope w-6 h-6 mx-2 text-blue-500 dark:text-blue-400 text-2xl"></i>
-                            <span class="mx-2 text-gray-700 truncate dark:text-gray-400">acb@example.com</span>
+                            <span class="mx-2 text-gray-700 truncate dark:text-gray-400">{{ $data['email'] }}</span>
                         </p>
                     </div>
 
@@ -26,25 +28,12 @@
                         <h3 class="text-gray-600 dark:text-gray-300 ">Síguenos</h3>
 
                         <div class="flex mt-4 -mx-1.5">
-                            <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500 hover:cursor-pointer"
-                                href="#">
-                                <i class="fa-brands fa-twitter text-2xl"></i>
-                            </a>
-
-                            <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500 hover:cursor-pointer"
-                                href="#">
-                                <i class="fa-brands fa-linkedin-in text-2xl"></i>
-                            </a>
-
-                            <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500 hover:cursor-pointer"
-                                href="#">
-                                <i class="fa-brands fa-facebook-f text-2xl"></i>
-                            </a>
-
-                            <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500 hover:cursor-pointer"
-                                href="#">
-                                <i class="fa-brands fa-instagram text-2xl"></i>
-                            </a>
+                            @foreach ($data['social_links'] as $platform => $link)
+                                <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500 hover:cursor-pointer"
+                                    href="{{ $link }}">
+                                    <i class="fa-brands fa-{{ $platform }} text-2xl"></i>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
