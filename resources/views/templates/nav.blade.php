@@ -10,7 +10,7 @@
     </div>
     <div class="items-center hidden gap-8 md:flex">
         <a class="text-sm font-bold hover:text-white transition duration-200" href="/login">
-            Iniciar Sesion
+            <i class="fa-solid fa-user text-xl text-black cursor-pointer"></i>
         </a>
     </div>
     <button onclick="(() => { this.closest('.group').classList.toggle('open')})()" class="flex md:hidden">

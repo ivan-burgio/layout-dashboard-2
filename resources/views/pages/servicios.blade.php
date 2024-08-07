@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="p-8 mt-10 bg-gray-100 flex flex-col items-center">
-        <h2 class="text-4xl font-bold mb-8 text-center text-indigo-600">Nuestros Servicios</h2>
+        <h2 class="text-4xl font-bold mb-8 text-center">Nuestros Servicios</h2>
 
         @foreach ($data as $title => $service)
             <div class="bg-white p-16 rounded-lg shadow-md mb-8 w-3/4">
