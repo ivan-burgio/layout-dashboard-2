@@ -30,14 +30,12 @@
             @endforeach
         </section>
 
-        <div class="relative h-80 bg-slate-600">
-            <div
-                class="absolute inset-0 bg-[url('{{ $data['why_buyar']['background_image'] }}')] bg-cover bg-fixed bg-center">
-                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div class="text-left text-white p-5 md:p-20 lg:p-40 w-full">
-                        <h1 class="text-3xl font-bold mb-8">{{ $data['why_buyar']['title'] }}</h1>
-                        <p class="text-xl mt-2">{{ $data['why_buyar']['description'] }}</p>
-                    </div>
+        <div class="relative h-80 bg-cover bg-center bg-black bg-opacity-50"
+            style="background-image: url('{{ $data['why_buyar']['background_image'] }}');">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-left text-white p-5 md:p-20 lg:p-40 w-full">
+                    <h1 class="text-3xl font-bold mb-8">{{ $data['why_buyar']['title'] }}</h1>
+                    <p class="text-xl mt-2">{{ $data['why_buyar']['description'] }}</p>
                 </div>
             </div>
         </div>
@@ -72,7 +70,7 @@
                             </div>
 
                             <button
-                                class="w-full px-6 py-2 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                class="w-full px-6 py-2 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-sky-800 hover:bg-sky-950 rounded-md focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                 Enviar
                             </button>
                         </form>

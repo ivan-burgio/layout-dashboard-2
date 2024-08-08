@@ -7,11 +7,12 @@
     <meta name="description" content="Buyar">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>BUYAR</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" /> <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <!-- Font Awesome -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- Animaciones AOS -->
 </head>
 
-<body>
+<body class="bg-slate-200 text-black">
     @include('templates.nav')
     @yield('content')
     @include('templates.footer')

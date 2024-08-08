@@ -1,8 +1,8 @@
 @extends('pages-layout')
 
 @section('content')
-    <section class="bg-white dark:bg-gray-900 md:px-20 lg:px-40 mt-10 p-8 min-h-screen">
-        <h2 class="text-4xl font-bold mb-8 text-center">Contacto</h2>
+    <section class="dark:bg-gray-900 md:px-20 lg:px-40 mt-10 p-8 min-h-screen">
+        <h2 class="text-4xl font-bold mb-8 text-center dark:text-white">Contacto</h2>
         <div class="container px-6 py-8 mx-auto">
             <div class="lg:flex lg:items-center lg:-mx-6">
                 <div class="lg:w-1/2 lg:mx-6">
@@ -13,13 +13,13 @@
                     <div class="mt-6 space-y-8 md:mt-8">
                         @foreach ($data['phone_numbers'] as $phone)
                             <p class="flex items-start -mx-2">
-                                <i class="fa-solid fa-phone w-6 h-6 mx-2 text-blue-500 dark:text-blue-400 text-2xl"></i>
+                                <i class="fa-solid fa-phone w-6 h-6 mx-2 text-sky-800 text-2xl"></i>
                                 <span class="mx-2 text-gray-700 truncate dark:text-gray-400">{{ $phone }}</span>
                             </p>
                         @endforeach
 
                         <p class="flex items-start -mx-2">
-                            <i class="fa-solid fa-envelope w-6 h-6 mx-2 text-blue-500 dark:text-blue-400 text-2xl"></i>
+                            <i class="fa-solid fa-envelope w-6 h-6 mx-2 text-sky-800 text-2xl"></i>
                             <span class="mx-2 text-gray-700 truncate dark:text-gray-400">{{ $data['email'] }}</span>
                         </p>
                     </div>
@@ -64,7 +64,7 @@
                             </div>
 
                             <button
-                                class="w-full px-6 py-2 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                class="w-full px-6 py-2 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-sky-800 hover:bg-sky-950 rounded-md focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                 Enviar
                             </button>
                         </form>

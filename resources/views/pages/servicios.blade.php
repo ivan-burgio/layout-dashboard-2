@@ -1,13 +1,13 @@
 @extends('pages-layout')
 
 @section('content')
-    <section class="p-8 mt-10 bg-gray-100 flex flex-col items-center min-h-screen">
-        <h2 class="text-4xl font-bold mb-8 text-center">Nuestros Servicios</h2>
+    <section class="p-8 mt-10 flex flex-col items-center min-h-screen">
+        <h2 class="text-4xl font-bold mb-8 text-center text-gray-900">Nuestros Servicios</h2>
 
         @foreach ($data as $title => $service)
-            <div class="bg-white p-16 rounded-lg shadow-md mb-8 w-3/4">
-                <h3 class="text-3xl font-semibold mb-4 text-gray-800 pb-8">{{ $title }}</h3>
-                <p class="text-base text-gray-700 leading-relaxed pb-8">
+            <div class="bg-slate-400 p-16 rounded-lg shadow-md mb-8 w-3/4">
+                <h3 class="text-3xl font-semibold mb-4 pb-8">{{ $title }}</h3>
+                <p class="text-base leading-relaxed pb-8">
                     {!! nl2br(e($service['description'])) !!}
                 </p>
 
@@ -24,8 +24,8 @@
                         </div>
                         <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
                             @foreach ($service['carousel_images'] as $index => $image)
-                                <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
-                                    aria-label="Slide {{ $index + 1 }}"
+                                <button type="button" class="w-3 h-3 rounded-full bg-gray-500 hover:bg-gray-700"
+                                    aria-current="false" aria-label="Slide {{ $index + 1 }}"
                                     data-carousel-slide-to="{{ $index }}"></button>
                             @endforeach
                         </div>
@@ -33,8 +33,8 @@
                             class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
                             data-carousel-prev>
                             <span
-                                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                <i class="fas fa-chevron-left text-white sm:w-6 sm:h-6 dark:text-gray-800"
+                                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-300 dark:bg-gray-800 group-hover:bg-gray-400 dark:group-hover:bg-gray-700 group-focus:ring-4 group-focus:ring-gray-300 dark:group-focus:ring-gray-700 group-focus:outline-none">
+                                <i class="fas fa-chevron-left text-gray-900 dark:text-gray-100"
                                     style="font-size: 1.5rem;"></i>
                                 <span class="sr-only">Previous</span>
                             </span>
@@ -43,8 +43,8 @@
                             class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
                             data-carousel-next>
                             <span
-                                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                <i class="fas fa-chevron-right text-white sm:w-6 sm:h-6 dark:text-gray-800"
+                                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-300 dark:bg-gray-800 group-hover:bg-gray-400 dark:group-hover:bg-gray-700 group-focus:ring-4 group-focus:ring-gray-300 dark:group-focus:ring-gray-700 group-focus:outline-none">
+                                <i class="fas fa-chevron-right text-gray-900 dark:text-gray-100"
                                     style="font-size: 1.5rem;"></i>
                                 <span class="sr-only">Next</span>
                             </span>

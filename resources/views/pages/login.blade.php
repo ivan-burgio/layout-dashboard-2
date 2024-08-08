@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="bg-white dark:bg-gray-900 md:px-20 lg:px-40 mt-10 p-8 min-h-screen">
-        <h2 class="text-4xl font-bold mb-8 text-center">Inicio de Sesión</h2>
+        <h2 class="text-4xl font-bold mb-8 text-center dark:text-white">Inicio de Sesión</h2>
         <div class="container px-6 py-8 mx-auto">
             <div class="flex items-center justify-center lg:-mx-6">
                 <div class="mt-6 lg:w-1/2 lg:mx-6">
@@ -24,7 +24,7 @@
                             </div>
 
                             <button
-                                class="w-full px-6 py-2 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                class="w-full px-6 py-2 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-sky-800 hover:bg-sky-950 rounded-md focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                 Iniciar Sesión
                             </button>
                         </form>
