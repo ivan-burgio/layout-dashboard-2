@@ -34,7 +34,7 @@
             style="background-image: url('{{ $data['why_buyar']['background_image'] }}');">
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-left text-white p-5 md:p-20 lg:p-40 w-full">
-                    <h1 class="text-3xl font-bold mb-8">{{ $data['why_buyar']['title'] }}</h1>
+                    <h3 class="text-3xl font-bold mb-8">{{ $data['why_buyar']['title'] }}</h3>
                     <p class="text-xl mt-2">{{ $data['why_buyar']['description'] }}</p>
                 </div>
             </div>
