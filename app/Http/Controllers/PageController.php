@@ -99,4 +99,9 @@ class PageController extends Controller
 
         return view('pages.contacto', ['data' => $data]);
     }
+
+    public function login()
+    {
+        return view('pages.login');
+    }
 }

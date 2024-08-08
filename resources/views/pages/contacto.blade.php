@@ -1,7 +1,7 @@
 @extends('pages-layout')
 
 @section('content')
-    <section class="bg-white dark:bg-gray-900 md:px-20 lg:px-40 mt-10 p-8">
+    <section class="bg-white dark:bg-gray-900 md:px-20 lg:px-40 mt-10 p-8 min-h-screen">
         <h2 class="text-4xl font-bold mb-8 text-center">Contacto</h2>
         <div class="container px-6 py-8 mx-auto">
             <div class="lg:flex lg:items-center lg:-mx-6">
