@@ -12,3 +12,5 @@ Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::post('/login', [PageController::class, 'login']);
 
 Route::post('/logout', [PageController::class, 'logout'])->name('logout');
+
+Route::view('/dashboard', 'dashboard.pages.dashboard');

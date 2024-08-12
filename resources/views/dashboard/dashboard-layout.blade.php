@@ -12,8 +12,8 @@
 </head>
 
 <body class="bg-slate-200 text-black flex flex-row">
-    @include('templates.aside')
-    @include('templates.nav')
+    @include('dashboard.templates.aside')
+    @include('dashboard.templates.nav')
     @yield('content')
     {{-- @include('templates.footer') --}}
 </body>
