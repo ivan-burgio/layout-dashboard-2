@@ -8,10 +8,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body class="bg-slate-200 text-black">
-    {{-- @include('templates.nav') --}}
+<body class="bg-slate-200 text-black flex flex-row">
+    @include('templates.aside')
+    @include('templates.nav')
     @yield('content')
     {{-- @include('templates.footer') --}}
 </body>
