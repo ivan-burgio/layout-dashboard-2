@@ -11,45 +11,33 @@
                     {!! nl2br(e($service['description'])) !!}
                 </p>
 
-                <div class="max-w-2xl mx-auto mt-10">
-                    <div id="default-carousel" class="relative" data-carousel="static">
-                        <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-                            @foreach ($service['carousel_images'] as $index => $image)
-                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="{{ $image }}"
-                                        class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                                        alt="Imagen del servicio">
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-                            @foreach ($service['carousel_images'] as $index => $image)
-                                <button type="button" class="w-3 h-3 rounded-full bg-gray-500 hover:bg-gray-700"
-                                    aria-current="false" aria-label="Slide {{ $index + 1 }}"
-                                    data-carousel-slide-to="{{ $index }}"></button>
-                            @endforeach
-                        </div>
-                        <button type="button"
-                            class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                            data-carousel-prev>
-                            <span
-                                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-300 dark:bg-gray-800 group-hover:bg-gray-400 dark:group-hover:bg-gray-700 group-focus:ring-4 group-focus:ring-gray-300 dark:group-focus:ring-gray-700 group-focus:outline-none">
-                                <i class="fas fa-chevron-left text-gray-900 dark:text-gray-100"
-                                    style="font-size: 1.5rem;"></i>
-                                <span class="sr-only">Previous</span>
-                            </span>
-                        </button>
-                        <button type="button"
-                            class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                            data-carousel-next>
-                            <span
-                                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-300 dark:bg-gray-800 group-hover:bg-gray-400 dark:group-hover:bg-gray-700 group-focus:ring-4 group-focus:ring-gray-300 dark:group-focus:ring-gray-700 group-focus:outline-none">
-                                <i class="fas fa-chevron-right text-gray-900 dark:text-gray-100"
-                                    style="font-size: 1.5rem;"></i>
-                                <span class="sr-only">Next</span>
-                            </span>
-                        </button>
+                <div id="carouselExampleIndicators{{ $loop->index }}" class="carousel slide max-w-2xl mx-auto mt-10"
+                    data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        @foreach ($service['carousel_images'] as $index => $image)
+                            <button type="button" data-bs-target="#carouselExampleIndicators{{ $loop->parent->index }}"
+                                data-bs-slide-to="{{ $index }}" class="{{ $loop->first ? 'active' : '' }}"
+                                aria-current="{{ $loop->first ? 'true' : 'false' }}"
+                                aria-label="Slide {{ $index + 1 }}"></button>
+                        @endforeach
                     </div>
+                    <div class="carousel-inner rounded-lg shadow-md">
+                        @foreach ($service['carousel_images'] as $index => $image)
+                            <div class="carousel-item {{ $loop->first ? 'active' : '' }} h-96">
+                                <img src="{{ $image }}" class="d-block w-100" alt="Imagen del servicio">
+                            </div>
+                        @endforeach
+                    </div>
+                    <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleIndicators{{ $loop->index }}" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        data-bs-target="#carouselExampleIndicators{{ $loop->index }}" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </button>
                 </div>
             </div>
         @endforeach

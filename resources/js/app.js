@@ -1,5 +1,8 @@
-window.$ = window.jQuery = require('jquery');
+// Importar jQuery y asignarlo al objeto global
+window.$ = window.jQuery = require("jquery");
 
-import './bootstrap';
-import './carrusel';
-import './aside';
+// Importar Bootstrap JavaScript
+import "bootstrap";
+
+// Importar otros módulos
+import "./aside";
