@@ -1,14 +1,14 @@
-<aside class="bg-gray-800 text-white w-64 h-screen p-4">
+<aside class="bg-gray-800 text-white h-screen p-2">
     <nav>
         <ul class="space-y-2">
             <!-- Item Template -->
             <li class="opcion-con-desplegable">
-                <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                <div class="flex items-center justify-between p-2 hover:bg-gray-700 hover:cursor-pointer">
                     <div class="flex items-center">
                         <i class="fas fa-calendar-alt mr-2"></i>
                         <span>Agenda</span>
                     </div>
-                    <i class="fas fa-chevron-down text-xs"></i>
+                    <i class="fas fa-chevron-down text-xs ml-2"></i>
                 </div>
                 <ul class="desplegable ml-4 hidden">
                     <li>
@@ -30,12 +30,12 @@
 
             <!-- Contabilidad -->
             <li class="opcion-con-desplegable">
-                <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                <div class="flex items-center justify-between p-2 hover:bg-gray-700 hover:cursor-pointer">
                     <div class="flex items-center">
                         <i class="fas fa-money-bill-wave mr-2"></i>
                         <span>Contabilidad</span>
                     </div>
-                    <i class="fas fa-chevron-down text-xs"></i>
+                    <i class="fas fa-chevron-down text-xs ml-2"></i>
                 </div>
                 <ul class="desplegable ml-4 hidden">
                     <li>
@@ -63,12 +63,12 @@
 
             <!-- Informes -->
             <li class="opcion-con-desplegable">
-                <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                <div class="flex items-center justify-between p-2 hover:bg-gray-700 hover:cursor-pointer">
                     <div class="flex items-center">
                         <i class="fas fa-chart-bar mr-2"></i>
                         <span>Informes</span>
                     </div>
-                    <i class="fas fa-chevron-down text-xs"></i>
+                    <i class="fas fa-chevron-down text-xs ml-2"></i>
                 </div>
                 <ul class="desplegable ml-4 hidden">
                     <li>
@@ -88,12 +88,12 @@
 
             <!-- Documentación -->
             <li class="opcion-con-desplegable">
-                <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                <div class="flex items-center justify-between p-2 hover:bg-gray-700 hover:cursor-pointer">
                     <div class="flex items-center">
                         <i class="fas fa-file-alt mr-2"></i>
                         <span>Documentación</span>
                     </div>
-                    <i class="fas fa-chevron-down text-xs"></i>
+                    <i class="fas fa-chevron-down text-xs ml-2"></i>
                 </div>
                 <ul class="desplegable ml-4 hidden">
                     <li>
