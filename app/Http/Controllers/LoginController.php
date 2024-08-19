@@ -11,6 +11,8 @@ class LoginController extends Controller
     {
         // Verifica si es una solicitud POST
         if ($request->isMethod('post')) {
+            $email = $request->input('email');
+
             // Define los mensajes personalizados para la validación
             $messages = [
                 'email.required' => 'Ingresa tu correo electrónico.',
@@ -29,6 +31,9 @@ class LoginController extends Controller
                 'email' => $request->input('email'),
                 'password' => $request->input('password'),
             ])) {
+                // Guardar el inicio de sesión en la sesión
+                session(['user_logged_in' => true, 'user_email' => $email]);
+
                 // Redirige a la URL del usuario
                 return redirect()->intended('/dashboard');
             }
