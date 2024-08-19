@@ -29,3 +29,7 @@ user: u732685382_buyar
 database: u732685382_buyar_dev
 
 Password: Buyar12345678
+
+# Si no funciona la autenticacion de los usuarios por el hashing:
+
+php artisan config:publish hashing
