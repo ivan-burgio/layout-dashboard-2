@@ -16,19 +16,32 @@
     <div class="items-center hidden gap-8 md:flex">
         @if (session('user_logged_in'))
             <!-- Icono de dashboard y cierre de sesión -->
-            <form action="{{ route('logout') }}" method="POST" class="inline-block">
-                @csrf
-                <button type="submit" style="background: none; border: none; padding: 0;">
-                    <i class="fa-solid fa-right-from-bracket text-xl cursor-pointer"
-                        style="color: black; transition: color 0.2s;" onmouseover="this.style.color='#e5e7eb'"
+            <div class="flex items-center space-x-4">
+                <div class="opcion-con-desplegable hover:cursor-pointer relative">
+                    <i class="fas fa-user-circle text-2xl" onmouseover="this.style.color='#e5e7eb'"
                         onmouseout="this.style.color='black'"></i>
-                </button>
-            </form>
-            <a href="/dashboard" style="text-decoration: none;">
-                <i class="fa-solid fa-screwdriver-wrench text-xl cursor-pointer"
-                    style="color: black; transition: color 0.2s;" onmouseover="this.style.color='#e5e7eb'"
-                    onmouseout="this.style.color='black'"></i>
-            </a>
+                    <ul
+                        class="desplegable absolute -right-3 mt-1 p-2 bg-gray-700 rounded-md hidden z-10 w-36">
+                        <li>
+                            <a href="/dashboard"
+                                class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                                <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST" class="inline-block w-full">
+                                @csrf
+                                <button type="submit"
+                                    class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                                    <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>
+                                    Cerrar Sesion
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         @else
             <!-- Icono de usuario sin sesión activa -->
             <a class="text-sm font-bold transition duration-200" href="/login">
@@ -37,34 +50,59 @@
             </a>
         @endif
     </div>
-    <button onclick="(() => { this.closest('.group').classList.toggle('open')})()" class="flex md:hidden">
-        <i class="fa-solid fa-bars text-2xl text-black cursor-pointer"></i>
-    </button>
-    <div
-        class="absolute flex md:hidden transition-all duration-300 ease-in-out flex-col items-end shadow-main justify-center gap-3 overflow-hidden bg-gray-700 max-h-0 px-8 group-[.open]:py-4 group-[.open]:max-h-64 group-[.open]:max-w-60 top-full right-0">
-        <a class="text-sm font-bold transition duration-200 text-right" href="/" style="color: black;"
-            onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='black'">Inicio</a>
-        <a class="text-sm font-bold transition duration-200 text-right" href="/servicios" style="color: black;"
-            onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='black'">Servicios</a>
-        <a class="text-sm font-bold transition duration-200 text-right" href="/nosotros" style="color: black;"
-            onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='black'">Nosotros</a>
-        <a class="text-sm font-bold transition duration-200 text-right" href="/contacto" style="color: black;"
-            onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='black'">Contacto</a>
+    <div class="flex md:hidden w-full h-8 items-center justify-end gap-2">
         @if (session('user_logged_in'))
-            <!-- Enlaces de dashboard y cierre de sesión en el menú móvil -->
-            <a href="/dashboard" class="text-sm font-bold transition duration-200 text-right" style="color: black;"
-                onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='black'">Dashboard</a>
-            <form action="{{ route('logout') }}" method="POST"
-                class="text-sm font-bold transition duration-200 text-right" style="color: black;"
-                onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='black'">
-                @csrf
-                <button type="submit" style="background: none; border: none; padding: 0;">
-                    Cerrar Sesión
-                </button>
-            </form>
-        @else
-            <a class="text-sm font-bold transition duration-200 text-right" href="/login" style="color: black;"
-                onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='black'">Iniciar Sesión</a>
+            <div class="opcion-con-desplegable hover:cursor-pointer relative">
+                <i class="fas fa-user-circle text-2xl" onmouseover="this.style.color='#e5e7eb'"
+                    onmouseout="this.style.color='black'"></i>
+                <ul class="desplegable absolute -right-3 p-2 bg-gray-700 rounded-md hidden z-10 w-36">
+                    <li>
+                        <a href="/dashboard" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                            <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" class="inline-block w-full">
+                            @csrf
+                            <button type="submit"
+                                class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                                <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>
+                                Cerrar Sesion
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         @endif
+        <div class="opcion-con-desplegable hover:cursor-pointer relative">
+            <i class="fa-solid fa-bars text-2xl cursor-pointer" onmouseover="this.style.color='#e5e7eb'"
+                onmouseout="this.style.color='black'"></i>
+            <ul class="desplegable absolute -right-3 p-2 bg-gray-700 rounded-md hidden z-10 w-36">
+                <li>
+                    <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                        <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Inicio</a>
+                </li>
+                <li>
+                    <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                        <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Servicios</a>
+                </li>
+                <li>
+                    <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                        <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Nosotros</a>
+                </li>
+                <li>
+                    <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                        <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Contacto</a>
+                </li>
+                @if (!session('user_logged_in'))
+                    <li>
+                        <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                            <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Iniciar
+                            Sesión</a>
+                    </li>
+                @endif
+            </ul>
+        </div>
     </div>
 </nav>
