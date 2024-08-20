@@ -1,6 +1,7 @@
 <nav class="bg-gray-800 text-white py-1 px-8 flex items-center justify-between w-full h-12 relative">
+    <i id="toggle-sidebar" class="fa-solid fa-bars text-2xl cursor-pointer"></i>
     <div>
-        <h1 class="text-white text-xl font-semibold">Dashboard Buyar</h1>
+        <h1 class="text-white text-xl font-semibold">Dashboard</h1>
     </div>
     <div class="flex items-center space-x-4">
         <div class="opcion-con-desplegable hover:cursor-pointer relative">
