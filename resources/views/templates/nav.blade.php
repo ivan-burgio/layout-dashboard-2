@@ -20,8 +20,7 @@
                 <div class="opcion-con-desplegable hover:cursor-pointer relative">
                     <i class="fas fa-user-circle text-2xl" onmouseover="this.style.color='#e5e7eb'"
                         onmouseout="this.style.color='black'"></i>
-                    <ul
-                        class="desplegable absolute -right-3 mt-1 p-2 bg-gray-700 rounded-md hidden z-10 w-40">
+                    <ul class="desplegable absolute -right-3 mt-1 p-2 bg-gray-700 rounded-md hidden z-10 w-40">
                         <li>
                             <a href="/dashboard"
                                 class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
@@ -50,12 +49,12 @@
             </a>
         @endif
     </div>
-    <div class="flex md:hidden w-full h-8 items-center justify-end gap-2">
+    <div class="flex md:hidden w-full h-8 items-center justify-end gap-4">
         @if (session('user_logged_in'))
             <div class="opcion-con-desplegable hover:cursor-pointer relative">
                 <i class="fas fa-user-circle text-2xl" onmouseover="this.style.color='#e5e7eb'"
                     onmouseout="this.style.color='black'"></i>
-                <ul class="desplegable absolute -right-3 p-2 bg-gray-700 rounded-md hidden z-10 w-40">
+                <ul class="desplegable absolute w-screen p-2 bg-gray-700 rounded-md hidden z-10" style="right: -77px;">
                     <li>
                         <a href="/dashboard" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
                             <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>
@@ -78,21 +77,21 @@
         <div class="opcion-con-desplegable hover:cursor-pointer relative">
             <i class="fa-solid fa-bars text-2xl cursor-pointer" onmouseover="this.style.color='#e5e7eb'"
                 onmouseout="this.style.color='black'"></i>
-            <ul class="desplegable absolute -right-3 p-2 bg-gray-700 rounded-md hidden z-10 w-40">
+            <ul class="desplegable absolute -right-8 w-screen p-2 bg-gray-700 rounded-md hidden z-10">
                 <li>
-                    <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                    <a href="/" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
                         <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Inicio</a>
                 </li>
                 <li>
-                    <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                    <a href="/servicios" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
                         <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Servicios</a>
                 </li>
                 <li>
-                    <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                    <a href="/nosotros" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
                         <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Nosotros</a>
                 </li>
                 <li>
-                    <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                    <a href="/contacto" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
                         <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Contacto</a>
                 </li>
                 @if (!session('user_logged_in'))
