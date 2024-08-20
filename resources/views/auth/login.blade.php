@@ -1,10 +1,10 @@
 @extends('pages-layout')
 
 @section('content')
-    <section class="bg-gray-900 px-4 md:px-20 lg:px-40 mt-10 p-8 min-h-screen">
+    <section class="bg-gray-900 px-2 md:px-20 lg:px-40 mt-10 p-8 min-h-screen">
         <h2 class="text-4xl font-bold mb-8 text-center text-white">Inicio de Sesión</h2>
 
-        <div class="container mx-auto">
+        <div class="container">
             <div class="flex items-center justify-center">
                 <div class="mt-6 lg:w-1/2">
                     <div

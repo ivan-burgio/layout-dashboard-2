@@ -96,7 +96,7 @@
                 </li>
                 @if (!session('user_logged_in'))
                     <li>
-                        <a class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
+                        <a href="/login" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
                             <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Iniciar
                             Sesión</a>
                     </li>
