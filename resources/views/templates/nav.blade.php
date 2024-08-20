@@ -79,26 +79,32 @@
                 onmouseout="this.style.color='black'"></i>
             <ul class="desplegable absolute -right-8 w-screen p-2 bg-gray-700 rounded-md hidden z-10">
                 <li>
-                    <a href="/" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
-                        <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Inicio</a>
+                    <a href="/" class="w-full text-left p-2 transition duration-200 flex items-center font-bold"
+                        style="color: black;" onmouseover="this.style.color='#e5e7eb'"
+                        onmouseout="this.style.color='black'">Inicio</a>
                 </li>
                 <li>
-                    <a href="/servicios" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
-                        <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Servicios</a>
+                    <a href="/servicios"
+                        class="w-full text-left p-2 transition duration-200 flex items-center font-bold"
+                        style="color: black;" onmouseover="this.style.color='#e5e7eb'"
+                        onmouseout="this.style.color='black'">Servicios</a>
                 </li>
                 <li>
-                    <a href="/nosotros" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
-                        <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Nosotros</a>
+                    <a href="/nosotros" class="w-full text-left p-2 transition duration-200 flex items-center font-bold"
+                        style="color: black;" onmouseover="this.style.color='#e5e7eb'"
+                        onmouseout="this.style.color='black'">Nosotros</a>
                 </li>
                 <li>
-                    <a href="/contacto" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
-                        <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Contacto</a>
+                    <a href="/contacto" class="w-full text-left p-2 transition duration-200 flex items-center font-bold"
+                        style="color: black;" onmouseover="this.style.color='#e5e7eb'"
+                        onmouseout="this.style.color='black'">Contacto</a>
                 </li>
                 @if (!session('user_logged_in'))
                     <li>
-                        <a href="/login" class="w-full text-left p-2 hover:bg-gray-600 flex items-center font-bold">
-                            <i class="fas fa-chevron-right mr-2 text-xs cursor-pointer"></i>Iniciar
-                            Sesión</a>
+                        <a href="/login"
+                            class="w-full text-left p-2 transition duration-200 flex items-center font-bold"
+                            style="color: black;" onmouseover="this.style.color='#e5e7eb'"
+                            onmouseout="this.style.color='black'">Iniciar Sesión</a>
                     </li>
                 @endif
             </ul>
