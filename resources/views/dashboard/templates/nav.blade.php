@@ -5,7 +5,7 @@
     <div class="flex items-center space-x-4">
         <div class="opcion-con-desplegable hover:cursor-pointer relative">
             <i class="fas fa-user-circle text-white text-2xl"></i>
-            <ul class="desplegable absolute -right-3 mt-2 p-2 bg-gray-800 rounded-md shadow-lg hidden z-10 w-36">
+            <ul class="desplegable absolute -right-3 mt-2 p-2 bg-gray-800 rounded-md shadow-lg hidden z-10 w-40">
                 <li>
                     <a href="/perfil" class="w-full text-left p-2 hover:bg-gray-700 flex items-center">
                         <i class="fas fa-chevron-right mr-2 text-xs"></i>
