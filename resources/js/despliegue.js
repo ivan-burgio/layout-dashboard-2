@@ -15,8 +15,8 @@ $(document).ready(function () {
         const $desplegables = $(".desplegable"); // Selecciona todos los <ul> con la clase "desplegable"
 
         // Alternar la clase del sidebar para expandir o contraer
-        const isSidebarCollapsed = $sidebar.hasClass("w-14");
-        $sidebar.toggleClass("w-14 w-64");
+        const isSidebarCollapsed = $sidebar.hasClass("max-w-14");
+        $sidebar.toggleClass("max-w-14 w-64");
 
         // Ocultar/mostrar los textos de los ítems del menú
         $menuText.toggleClass("hidden");
@@ -45,8 +45,8 @@ $(document).ready(function () {
     // Mostrar el sidebar al hacer clic en los ítems del menú si está oculto
     $(".opcion-con-desplegable").on("click", function () {
         const $sidebar = $("#sidebar");
-        if ($sidebar.hasClass("w-14")) {
-            $sidebar.removeClass("w-14").addClass("w-64");
+        if ($sidebar.hasClass("max-w-14")) {
+            $sidebar.removeClass("max-w-14").addClass("w-64");
             $("#menu .flex > span").removeClass("hidden");
             $("#menu .flex > i.fa-chevron-down").css({
                 visibility: "visible",
