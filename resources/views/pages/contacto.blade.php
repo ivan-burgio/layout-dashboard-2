@@ -5,7 +5,7 @@
         <h2 class="text-4xl font-bold mb-8 text-center">Contacto</h2>
         <div class="container">
             <div class="lg:flex lg:items-center lg:-mx-6">
-                <div class="lg:w-1/2 lg:mx-6">
+                <div class="lg:w-1/2 lg:mx-6" data-aos="fade-right" data-aos-duration="500">
                     <h1 class="text-2xl font-semibold text-gray-800 capitalize dark:text-white lg:text-3xl">
                         Contáctanos <br> para más información
                     </h1>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="mt-6 lg:w-1/2 lg:mx-6">
+                <div class="mt-6 lg:w-1/2 lg:mx-6" data-aos="fade-left" data-aos-duration="500">
                     <div
                         class="w-full px-6 py-6 mx-auto overflow-hidden rounded-lg shadow-lg bg-gray-900 lg:max-w-xl shadow-black">
                         <h1 class="text-lg font-medium text-white">Completa los campos con tu consulta</h1>

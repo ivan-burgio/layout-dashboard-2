@@ -17,7 +17,7 @@
     <main class="w-full h-full">
         <section class="grid gap-10 grid-cols-1 md:grid-cols-3 m-8 md:m-16">
             @foreach ($data['services'] as $service)
-                <div
+                <div data-aos="fade-up" data-aos-duration="500"
                     class="bg-slate-400 w-full rounded-lg flex flex-col transition-all overflow-hidden hover:shadow-black hover:shadow-lg">
                     <div class="p-6">
                         <h3 class="mb-4 font-semibold text-2xl">{{ $service['title'] }}</h3>
@@ -43,7 +43,7 @@
 
     <section class="bg-gray-900 md:px-20 lg:px-40">
         <div class="container px-6 py-8 mx-auto">
-            <div class="flex items-center justify-center lg:-mx-6">
+            <div class="flex items-center justify-center lg:-mx-6" data-aos="fade-up" data-aos-duration="500">
                 <div class="mt-6 lg:w-1/2 lg:mx-6">
                     <div
                         class="w-full px-6 py-6 mx-auto overflow-hidden rounded-lg shadow-lg bg-gray-900 lg:max-w-xl shadow-black">
