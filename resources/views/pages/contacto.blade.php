@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="bg-gray-900 px-2 md:px-20 lg:px-40 mt-10 p-8 min-h-screen">
-        <h2 class="text-4xl font-bold mb-8 text-center">Contacto</h2>
+        <h2 class="text-4xl font-bold mb-8 text-center text-white">Contacto</h2>
         <div class="container">
-            <div class="lg:flex lg:items-center lg:-mx-6">
+            <div class="lg:flex lg:items-center lg:mx-6">
                 <div class="lg:w-1/2 lg:mx-6" data-aos="fade-right" data-aos-duration="500">
                     <h1 class="text-2xl font-semibold text-gray-800 capitalize dark:text-white lg:text-3xl">
                         Contáctanos <br> para más información
