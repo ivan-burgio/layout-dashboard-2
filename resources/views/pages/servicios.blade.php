@@ -1,12 +1,12 @@
 @extends('pages-layout')
 
 @section('content')
-    <section class="p-8 mt-10 flex flex-col items-center min-h-screen">
+    <section class="p-4 md:p-8 mt-10 flex flex-col items-center min-h-screen">
         <h2 class="text-4xl font-bold mb-8 text-center text-gray-900">Nuestros Servicios</h2>
 
         @foreach ($data as $title => $service)
-            <div class="bg-slate-400 p-16 rounded-lg shadow-md mb-8 w-3/4" data-aos="fade-up" data-aos-duration="500">
-                <h3 class="text-3xl font-semibold mb-4 pb-8">{{ $title }}</h3>
+            <div class="bg-slate-400 p-8 md:p-16 rounded-lg shadow-md mb-8 w-3/4" data-aos="fade-up" data-aos-duration="500">
+                <h3 class="text-lg md:text-3xl text-center font-semibold mb-4 pb-8">{{ $title }}</h3>
                 <p class="text-base leading-relaxed pb-8">
                     {!! nl2br(e($service['description'])) !!}
                 </p>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="carousel-inner rounded-lg shadow-md">
                         @foreach ($service['carousel_images'] as $index => $image)
-                            <div class="carousel-item {{ $loop->first ? 'active' : '' }} h-96">
+                            <div class="carousel-item {{ $loop->first ? 'active' : '' }} max-h-96">
                                 <img src="{{ $image }}" class="d-block w-100" alt="Imagen del servicio">
                             </div>
                         @endforeach
