@@ -49,23 +49,24 @@
                         class="w-full px-6 py-6 mx-auto overflow-hidden rounded-lg shadow-lg bg-gray-900 lg:max-w-xl shadow-black">
                         <h1 class="text-lg font-medium text-white">Completa los campos con tu consulta</h1>
 
-                        <form class="mt-6">
+                        <form class="mt-6" action="/enviar-mensaje" method="POST">
+                            @csrf
                             <div class="flex-1">
                                 <label class="block mb-2 text-sm text-gray-200">Nombre completo</label>
-                                <input type="text" placeholder="Tu nombre"
-                                    class="block w-full px-3 py-1 mt-1 text-gray-700 border  rounded-md placeholder-gray-600 bg-gray-900 dark:text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <input type="text" name="nombre" placeholder="Tu nombre"
+                                    class="block w-full px-3 py-1 mt-1 text-gray-700 border rounded-md placeholder-gray-600 bg-gray-900 dark:text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
 
                             <div class="flex-1 mt-6">
                                 <label class="block mb-2 text-sm text-gray-200">Email</label>
-                                <input type="email" placeholder="Tu email"
-                                    class="block w-full px-3 py-1 mt-1 text-gray-700 border  rounded-md placeholder-gray-600 bg-gray-900 dark:text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <input type="email" name="email" placeholder="Tu email"
+                                    class="block w-full px-3 py-1 mt-1 text-gray-700 border rounded-md placeholder-gray-600 bg-gray-900 dark:text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
 
                             <div class="w-full mt-6">
                                 <label class="block mb-2 text-sm text-gray-200">Mensaje</label>
-                                <textarea
-                                    class="block w-full h-32 px-3 py-1 mt-1 placeholder-gray-400  border rounded-md md:h-36 dark:placeholder-gray-600 bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                                <textarea name="mensaje"
+                                    class="block w-full h-32 px-3 py-1 mt-1 placeholder-gray-400 border rounded-md md:h-36 dark:placeholder-gray-600 bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                                     placeholder="Mensaje"></textarea>
                             </div>
 

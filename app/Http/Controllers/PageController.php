@@ -99,10 +99,13 @@ class PageController extends Controller
     {
         $data = [
             'phone_numbers' => [
-                '(+598) 90 000 000',
-                '(+598) 90 000 001'
+                '(+598) 92 812 477',
+                '(+598) 99 876 005'
             ],
-            'email' => 'acb@example.com',
+            'emails' => [
+                'ivan.24.burgio@gmail.com',
+                'yangivan19@gmail.com'
+            ],
             'social_links' => [
                 'twitter' => '#',
                 'linkedin' => '#',
