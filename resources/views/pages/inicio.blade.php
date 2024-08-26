@@ -17,7 +17,7 @@
     <main class="w-full h-full">
         <section class="grid gap-10 grid-cols-1 md:grid-cols-3 m-8 md:m-16">
             @foreach ($data['services'] as $service)
-                <div
+                <div data-aos="fade-up" data-aos-duration="500"
                     class="bg-slate-400 w-full rounded-lg flex flex-col transition-all overflow-hidden hover:shadow-black hover:shadow-lg">
                     <div class="p-6">
                         <h3 class="mb-4 font-semibold text-2xl">{{ $service['title'] }}</h3>
@@ -43,29 +43,30 @@
 
     <section class="bg-gray-900 md:px-20 lg:px-40">
         <div class="container px-6 py-8 mx-auto">
-            <div class="flex items-center justify-center lg:-mx-6">
+            <div class="flex items-center justify-center lg:-mx-6" data-aos="fade-up" data-aos-duration="500">
                 <div class="mt-6 lg:w-1/2 lg:mx-6">
                     <div
                         class="w-full px-6 py-6 mx-auto overflow-hidden rounded-lg shadow-lg bg-gray-900 lg:max-w-xl shadow-black">
                         <h1 class="text-lg font-medium text-white">Completa los campos con tu consulta</h1>
 
-                        <form class="mt-6">
+                        <form class="mt-6" action="/enviar-mensaje" method="POST">
+                            @csrf
                             <div class="flex-1">
                                 <label class="block mb-2 text-sm text-gray-200">Nombre completo</label>
-                                <input type="text" placeholder="Tu nombre"
-                                    class="block w-full px-3 py-1 mt-1 text-gray-700 border  rounded-md placeholder-gray-600 bg-gray-900 dark:text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <input type="text" name="nombre" placeholder="Tu nombre"
+                                    class="block w-full px-3 py-1 mt-1 text-gray-700 border rounded-md placeholder-gray-600 bg-gray-900 dark:text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
 
                             <div class="flex-1 mt-6">
                                 <label class="block mb-2 text-sm text-gray-200">Email</label>
-                                <input type="email" placeholder="Tu email"
-                                    class="block w-full px-3 py-1 mt-1 text-gray-700 border  rounded-md placeholder-gray-600 bg-gray-900 dark:text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <input type="email" name="email" placeholder="Tu email"
+                                    class="block w-full px-3 py-1 mt-1 text-gray-700 border rounded-md placeholder-gray-600 bg-gray-900 dark:text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
 
                             <div class="w-full mt-6">
                                 <label class="block mb-2 text-sm text-gray-200">Mensaje</label>
-                                <textarea
-                                    class="block w-full h-32 px-3 py-1 mt-1 placeholder-gray-400  border rounded-md md:h-36 dark:placeholder-gray-600 bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                                <textarea name="mensaje"
+                                    class="block w-full h-32 px-3 py-1 mt-1 placeholder-gray-400 border rounded-md md:h-36 dark:placeholder-gray-600 bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                                     placeholder="Mensaje"></textarea>
                             </div>
 

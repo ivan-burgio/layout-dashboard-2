@@ -1,6 +1,6 @@
-<aside class="bg-gray-800 text-white h-screen p-2">
+<aside id="sidebar" class="bg-gray-800 text-white h-screen p-2">
     <nav>
-        <ul class="space-y-2">
+        <ul id="menu" class="space-y-2">
             <!-- Item Template -->
             <li class="opcion-con-desplegable">
                 <div class="flex items-center justify-between p-2 hover:bg-gray-700 hover:cursor-pointer">

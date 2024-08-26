@@ -48,15 +48,21 @@ class PageController extends Controller
     {
         $data = [
             'Sitios Web Personalizados' => [
-                'description' => 'En Buyar, nos especializamos en la creación de sitios web de presentación completamente personalizados que capturan y reflejan la esencia única de tu negocio. Entendemos que cada empresa tiene su propia identidad, y es por eso que diseñamos páginas web que no solo se adaptan a tus gustos y necesidades específicas, sino que también realzan tu presencia online de una manera poderosa y efectiva. Nuestro equipo de diseñadores y desarrolladores trabaja en estrecha colaboración contigo para entender tu visión y objetivos. Desde la elección del esquema de colores, tipografía y diseño gráfico, hasta la integración de funcionalidades específicas que necesitas, nos aseguramos de que cada detalle esté alineado con la imagen que deseas proyectar. Además, nuestras soluciones están pensadas para ser totalmente responsivas, lo que garantiza que tu sitio web se vea y funcione perfectamente en cualquier dispositivo, ya sea un ordenador, una tablet o un smartphone. Esto es crucial en un mundo donde la mayoría de las visitas web provienen de dispositivos móviles. Si estás lanzando una nueva empresa, nuestro objetivo es ayudarte a hacer una entrada fuerte y memorable en el mercado digital. Y si estás renovando tu imagen, trabajamos para darle a tu negocio una nueva vida y vigor, asegurando que tu sitio web esté siempre a la vanguardia en términos de diseño y funcionalidad. En Buyar, no solo construimos sitios web, sino que creamos experiencias digitales que destacan y conectan con tu audiencia de una manera significativa. Estamos aquí para apoyarte en cada paso del camino, desde la concepción de la idea hasta el lanzamiento final y más allá, proporcionando soporte continuo y actualizaciones para que tu presencia online sea tan dinámica como tu negocio.',
+                'description' => 'En Buyar, nos especializamos en crear sitios web personalizados que capturan la esencia de tu negocio. Cada empresa es única, y nuestras páginas web lo reflejan al adaptarse a tus necesidades y resaltar tu presencia online de forma efectiva. Trabajamos contigo desde el diseño gráfico hasta la integración de funciones específicas, asegurando que cada detalle esté alineado con tu visión.
+
+                Nuestras soluciones son totalmente responsivas, garantizando un rendimiento óptimo en cualquier dispositivo. Ya sea que estés lanzando un nuevo negocio o renovando tu imagen, en Buyar creamos experiencias digitales que conectan y destacan. Te acompañamos en cada paso, desde la idea inicial hasta el lanzamiento y más allá, con soporte continuo para mantener tu sitio siempre a la vanguardia.',
                 'carousel_images' => ['https://picsum.photos/400/400', 'https://picsum.photos/300/300', 'https://picsum.photos/400/300'],
             ],
             'Sitios de Gestión Personalizados' => [
-                'description' => 'Nuestros sitios de gestión personalizados están diseñados para ofrecerte una interfaz intuitiva y adaptada a tus necesidades empresariales específicas. Entendemos que cada negocio tiene requisitos únicos, por lo que creamos soluciones a medida que abarcan todos los aspectos críticos de la administración. Desde la administración integral de clientes y empleados, hasta el manejo detallado del control de stock y la facturación, nuestras plataformas están equipadas con herramientas avanzadas para facilitarte cada tarea. También incluimos bandejas de correos eficientes, que te permiten gestionar la comunicación con clientes y proveedores de manera organizada y efectiva. Trabajamos estrechamente contigo para entender las necesidades particulares de tu negocio y diseñar una solución que se ajuste perfectamente a tus requerimientos. Nuestro objetivo es que puedas manejar todas las facetas de tu negocio con facilidad, optimizando tus procesos y mejorando la eficiencia operativa. Con Buyar, tu subdominio de gestión no solo será una plataforma funcional, sino una herramienta poderosa que potenciará tu éxito, ayudándote a mantener el control total de tus operaciones y a alcanzar tus metas empresariales de manera efectiva.',
+                'description' => 'En Buyar, transformamos la gestión empresarial con soluciones personalizadas diseñadas para simplificar tu día a día. Sabemos que cada negocio tiene sus propios desafíos, por lo que creamos plataformas que se ajustan a tus necesidades específicas. Ya sea que necesites administrar clientes, empleados, stock o facturación, nuestras herramientas avanzadas te permiten hacerlo de manera eficiente y organizada.
+
+                También incluimos bandejas de correos que optimizan la comunicación con clientes y proveedores. Nuestro objetivo es proporcionar una solución que te dé control total sobre tus operaciones, mejorando la productividad y facilitando el crecimiento de tu negocio. Con Buyar, no solo obtienes una plataforma de gestión; adquieres una herramienta estratégica para alcanzar tus objetivos empresariales con mayor efectividad.',
                 'carousel_images' => ['https://picsum.photos/400/400', 'https://picsum.photos/300/300', 'https://picsum.photos/400/300'],
             ],
             'Integración de Chatbox' => [
-                'description' => 'En Buyar, ofrecemos la integración de chatbox con bots inteligentes que están diseñados para brindar a tus clientes respuestas rápidas a preguntas comunes. Esta avanzada herramienta no solo optimiza la experiencia del usuario al proporcionar asistencia instantánea, sino que también te permite liberar tiempo valioso para ti y tu equipo. Nuestros chatbots están equipados con capacidades de aprendizaje automático y procesamiento de lenguaje natural, lo que les permite entender y responder a una amplia variedad de consultas de manera eficiente. Esto asegura que tus clientes obtengan la información que necesitan de manera rápida y precisa, mejorando su satisfacción y reduciendo la necesidad de intervención humana. Al implementar esta solución, podrás ofrecer una atención al cliente personalizada y ágil, manteniendo una comunicación continua con tus usuarios sin esfuerzo adicional. Esto fortalece la relación con tus clientes, asegurando que se sientan atendidos y valorados en todo momento. Con Buyar, transformamos la forma en que interactúas con tus clientes, elevando el nivel de servicio que ofreces y contribuyendo al crecimiento y éxito continuo de tu negocio.',
+                'description' => 'En Buyar, integramos chatbots inteligentes que brindan respuestas rápidas a las preguntas comunes de tus clientes, mejorando la experiencia del usuario y liberando tiempo para tu equipo. Equipados con aprendizaje automático y procesamiento de lenguaje natural, nuestros bots responden eficientemente, garantizando información precisa y rápida.
+
+                Esta solución permite ofrecer atención personalizada y continua, fortaleciendo la relación con tus clientes sin esfuerzo adicional. Con Buyar, elevamos tu servicio al cliente y contribuimos al crecimiento de tu negocio.',
                 'carousel_images' => ['https://picsum.photos/400/400', 'https://picsum.photos/300/300', 'https://picsum.photos/400/300'],
             ],
         ];
@@ -68,14 +74,22 @@ class PageController extends Controller
     {
         $data = [
             '¿Quienes Somos?' => [
-                'description' => 'pimba.',
+                'description' => 'Somos un equipo de programadores con experiencia en el desarrollo de soluciones digitales personalizadas. Nuestro objetivo es ayudar a las empresas a mejorar su presencia online y a optimizar sus procesos internos a través de herramientas tecnológicas efectivas.
+
+                Creemos en la importancia de ofrecer soluciones que no solo respondan a las necesidades actuales de nuestros clientes, sino que también estén preparadas para crecer con ellos. Nuestra visión es ser un socio estratégico a largo plazo, proporcionando un servicio que combine innovación, calidad y compromiso.
+
+                Nos dedicamos a entender profundamente cada proyecto, asegurándonos de que nuestras soluciones no solo cumplan con las expectativas, sino que las superen, contribuyendo al éxito y al crecimiento continuo de nuestros clientes.',
             ],
             '¿Que ofrecemos?' => [
-                'description' => 'pimba.',
+                'description' => 'Ofrecemos soluciones web personalizadas que van más allá del desarrollo tradicional. Creamos sitios web a medida que capturan la esencia de tu negocio y desarrollamos plataformas de gestión eficaces para facilitar la administración interna.
+
+                Nos enfocamos en entender tus necesidades específicas y proporcionarte herramientas que optimicen tu operación diaria. Además, ofrecemos soporte continuo y adaptaciones para asegurar que tu solución web evolucione con tu empresa.
+
+                Con Buyar, obtienes un servicio integral que combina diseño web, gestión eficiente y atención continua.',
             ],
-            'Clientes' => [
-                'description' => 'pimba.',
-            ],
+            /* 'Clientes' => [
+                'description' => '',
+            ], */
         ];
 
         return view('pages.nosotros', ['data' => $data]);
@@ -85,10 +99,13 @@ class PageController extends Controller
     {
         $data = [
             'phone_numbers' => [
-                '(+598) 90 000 000',
-                '(+598) 90 000 001'
+                '(+598) 92 812 477',
+                '(+598) 99 876 005'
             ],
-            'email' => 'acb@example.com',
+            'emails' => [
+                'ivan.24.burgio@gmail.com',
+                'yangivan19@gmail.com'
+            ],
             'social_links' => [
                 'twitter' => '#',
                 'linkedin' => '#',

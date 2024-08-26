@@ -14,6 +14,7 @@
 
 <body class="bg-slate-200 text-black">
     @include('templates.nav')
+    @include('components.alerts')
     @yield('content')
     @include('templates.footer')
 

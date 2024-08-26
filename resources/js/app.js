@@ -6,3 +6,4 @@ import "bootstrap";
 
 // Importar otros módulos
 import "./despliegue";
+import "./alerts";
