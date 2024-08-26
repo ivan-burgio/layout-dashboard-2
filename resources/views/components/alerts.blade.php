@@ -1,11 +1,11 @@
 <!-- Global notification live region, render this permanently at the end of the document -->
-<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6" style="z-index: 100;">
+<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex px-4 py-6 sm:p-6" style="z-index: 100;">
     <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
         <!-- Notification panel, dynamically insert this into the live region when it needs to be displayed -->
         @if (session('success'))
             <div
-                class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-                <div class="p-4">
+                class="alert pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                <div class="p-2">
                     <div class="flex items-start">
                         <div class="flex-shrink-0">
                             <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -19,8 +19,7 @@
                             <p class="mt-1 text-sm">{{ session('success') }}</p>
                         </div>
                         <div class="ml-4 flex flex-shrink-0">
-                            <button type="button"
-                                class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            <button type="button" class="btn-close inline-flex text-gray-600 hover:text-gray-700">
                                 <span class="sr-only">Close</span>
                                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path
@@ -35,8 +34,8 @@
 
         @if (session('error'))
             <div
-                class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-red-100 shadow-lg ring-1 ring-black ring-opacity-5">
-                <div class="p-4">
+                class="alert pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-red-100 shadow-lg ring-1 ring-black ring-opacity-5">
+                <div class="p-2">
                     <div class="flex items-start">
                         <div class="flex-shrink-0">
                             <svg class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -51,7 +50,7 @@
                         </div>
                         <div class="ml-4 flex flex-shrink-0">
                             <button type="button"
-                                class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                class="btn-close inline-flex text-gray-600 hover:text-gray-700">
                                 <span class="sr-only">Close</span>
                                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path
@@ -66,8 +65,8 @@
 
         @if ($errors->any())
             <div
-                class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-yellow-100 shadow-lg ring-1 ring-black ring-opacity-5">
-                <div class="p-4">
+                class="alert pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-yellow-100 shadow-lg ring-1 ring-black ring-opacity-5">
+                <div class="p-2">
                     <div class="flex items-start">
                         <div class="flex-shrink-0">
                             <svg class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -86,7 +85,7 @@
                         </div>
                         <div class="ml-4 flex flex-shrink-0">
                             <button type="button"
-                                class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                class="btn-close inline-flex text-gray-600 hover:text-gray-700">
                                 <span class="sr-only">Close</span>
                                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path
