@@ -11,7 +11,7 @@ $(document).ready(function () {
         const $sidebar = $("#sidebar");
         const $menuText = $("#menu .flex > span");
         const $chevrons = $("#menu .flex > i.fa-chevron-down");
-        const $icons = $("#menu .flex > i");
+        const $icons = $("#menu .flex > i:not(.fa-chevron-down)");
         const $desplegables = $(".desplegable"); // Selecciona todos los <ul> con la clase "desplegable"
 
         // Alternar la clase del sidebar para expandir o contraer
