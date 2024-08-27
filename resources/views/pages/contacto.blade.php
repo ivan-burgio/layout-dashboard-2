@@ -27,7 +27,8 @@
                         @endforeach
                     </div>
 
-                    <div class="mt-6 md:mt-8">
+                    {{-- COMENTADO HASTA TENER REDES --}}
+                    {{-- <div class="mt-6 md:mt-8">
                         <h3 class="text-gray-600 dark:text-gray-300 ">Síguenos</h3>
 
                         <div class="flex mt-4 -mx-1.5">
@@ -38,7 +39,7 @@
                                 </a>
                             @endforeach
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="mt-6 lg:w-1/2 lg:mx-6" data-aos="fade-left" data-aos-duration="500">
