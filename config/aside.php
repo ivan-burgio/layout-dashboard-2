@@ -1,58 +1,60 @@
 <?php
 
+$baseURL = '/dashboard/';
+
 return [
     'menu' => [
         [
             'title' => 'Agenda',
             'icon' => 'fas fa-calendar-alt',
             'submenu' => [
-                ['title' => 'Tickets', 'url' => '#'],
-                ['title' => 'Reuniones', 'url' => '#'],
+                ['title' => 'Tickets', 'url' => $baseURL . 'agenda/tickets'],
+                ['title' => 'Reuniones', 'url' => $baseURL . 'agenda/reuniones'],
             ],
         ],
         [
             'title' => 'Cuentas',
             'icon' => 'fa-solid fa-user-group',
             'submenu' => [
-                ['title' => 'Clientes', 'url' => '#'],
-                ['title' => 'Paginas', 'url' => '#'],
-                ['title' => 'Contratos', 'url' => '#'],
+                ['title' => 'Clientes', 'url' => $baseURL . 'cuentas/clientes'],
+                ['title' => 'Paginas', 'url' => $baseURL . 'cuentas/paginas'],
+                ['title' => 'Contratos', 'url' => $baseURL . 'cuentas/contratos'],
             ],
         ],
         [
             'title' => 'Layouts',
             'icon' => 'fa-solid fa-table-columns',
             'submenu' => [
-                ['title' => 'Webs', 'url' => '#'],
-                ['title' => 'Dashboards', 'url' => '#'],
-                ['title' => 'ChatBoxs', 'url' => '#'],
+                ['title' => 'Webs', 'url' => $baseURL . 'layouts/webs'],
+                ['title' => 'Dashboards', 'url' => $baseURL . 'layouts/dashboards'],
+                ['title' => 'ChatBoxs', 'url' => $baseURL . 'layouts/chatboxs'],
             ],
         ],
         [
             'title' => 'Buzón',
             'icon' => 'fa-solid fa-envelope',
             'submenu' => [
-                ['title' => 'Webs', 'url' => '#'],
-                ['title' => 'Emails', 'url' => '#'],
-                ['title' => 'WhatsApp', 'url' => '#'],
+                ['title' => 'Webs', 'url' => $baseURL . 'buzon/webs'],
+                ['title' => 'Emails', 'url' => $baseURL . 'buzon/emails'],
+                ['title' => 'WhatsApp', 'url' => $baseURL . 'buzon/whatsapp'],
             ],
         ],
         [
             'title' => 'Contabilidad',
             'icon' => 'fas fa-money-bill-wave',
             'submenu' => [
-                ['title' => 'Pagos', 'url' => '#'],
-                ['title' => 'Documentos', 'url' => '#'],
-                ['title' => 'Gastos', 'url' => '#'],
-                ['title' => 'Facturas', 'url' => '#'],
+                ['title' => 'Pagos', 'url' => $baseURL . 'contabilidad/pagos'],
+                ['title' => 'Documentos', 'url' => $baseURL . 'contabilidad/documentos'],
+                ['title' => 'Gastos', 'url' => $baseURL . 'contabilidad/gastos'],
+                ['title' => 'Facturas', 'url' => $baseURL . 'contabilidad/facturas'],
             ],
         ],
         [
             'title' => 'Configuraciones',
             'icon' => 'fa-solid fa-gear',
             'submenu' => [
-                ['title' => 'Operadores', 'url' => '#'],
-                ['title' => 'Permisos', 'url' => '#'],
+                ['title' => 'Operadores', 'url' => $baseURL . 'configuraciones/operadores'],
+                ['title' => 'Permisos', 'url' => $baseURL . 'configuraciones/permisos'],
             ],
         ],
     ],
