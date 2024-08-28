@@ -3,9 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\BuzonController;
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\CuentasController;
+use App\Http\Controllers\LayoutsController;
 use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ContabilidadController;
+use App\Http\Controllers\ConfiguracionesController;
 
 // Rutas públicas
 Route::get('/', [PageController::class, 'inicio'])->name('inicio');
