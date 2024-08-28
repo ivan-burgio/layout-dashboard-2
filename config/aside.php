@@ -5,6 +5,13 @@ $baseURL = '/dashboard/';
 return [
     'menu' => [
         [
+            'title' => 'Dashboard',
+            'icon' => 'fa-solid fa-house',
+            'url' => $baseURL,
+            'submenu' => [
+            ],
+        ],
+        [
             'title' => 'Agenda',
             'icon' => 'fas fa-calendar-alt',
             'submenu' => [

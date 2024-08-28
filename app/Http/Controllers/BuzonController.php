@@ -11,16 +11,22 @@ class BuzonController extends Controller
     {
         $mensajes = Mensaje::all();
 
-        return view('dashboard.pages.buzon.webs', compact('mensajes'));
+        $title = 'Mensajes Web';
+
+        return view('dashboard.pages.buzon.webs', compact('mensajes'), compact('title'));
     }
 
     public function emails()
     {
-        return view('dashboard.pages.buzon.emails');
+        $title = 'Emails';
+
+        return view('dashboard.pages.buzon.emails', compact('title'));
     }
 
     public function whatsapp()
     {
-        return view('dashboard.pages.buzon.whatsapp');
+        $title = 'WhatsApps';
+
+        return view('dashboard.pages.buzon.whatsapp', compact('title'));
     }
 }
