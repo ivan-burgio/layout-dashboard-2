@@ -8,16 +8,16 @@ class LayoutsController extends Controller
 {
     public function webs()
     {
-        return view('dashboard.layouts.webs');
+        return view('dashboard.pages.layouts.webs');
     }
 
     public function dashboards()
     {
-        return view('dashboard.layouts.dashboards');
+        return view('dashboard.pages.layouts.dashboards');
     }
 
     public function chatboxs()
     {
-        return view('dashboard.layouts.chatboxs');
+        return view('dashboard.pages.layouts.chatboxs');
     }
 }

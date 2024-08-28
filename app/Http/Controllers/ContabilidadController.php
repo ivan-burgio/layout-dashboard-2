@@ -8,21 +8,21 @@ class ContabilidadController extends Controller
 {
     public function pagos()
     {
-        return view('dashboard.contabilidad.pagos');
+        return view('dashboard.pages.contabilidad.pagos');
     }
 
     public function documentos()
     {
-        return view('dashboard.contabilidad.documentos');
+        return view('dashboard.pages.contabilidad.documentos');
     }
 
     public function gastos()
     {
-        return view('dashboard.contabilidad.gastos');
+        return view('dashboard.pages.contabilidad.gastos');
     }
 
     public function facturas()
     {
-        return view('dashboard.contabilidad.facturas');
+        return view('dashboard.pages.contabilidad.facturas');
     }
 }

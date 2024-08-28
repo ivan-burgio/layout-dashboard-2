@@ -8,11 +8,11 @@ class AgendaController extends Controller
 {
     public function tickets()
     {
-        return view('dashboard.agenda.tickets');
+        return view('dashboard.pages.agenda.tickets');
     }
 
     public function reuniones()
     {
-        return view('dashboard.agenda.reuniones');
+        return view('dashboard.pages.agenda.reuniones');
     }
 }

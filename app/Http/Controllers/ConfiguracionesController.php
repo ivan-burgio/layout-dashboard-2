@@ -8,11 +8,11 @@ class ConfiguracionesController extends Controller
 {
     public function operadores()
     {
-        return view('dashboard.configuraciones.operadores');
+        return view('dashboard.pages.configuraciones.operadores');
     }
 
     public function permisos()
     {
-        return view('dashboard.configuraciones.permisos');
+        return view('dashboard.pages.configuraciones.permisos');
     }
 }

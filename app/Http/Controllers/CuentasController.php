@@ -8,16 +8,16 @@ class CuentasController extends Controller
 {
     public function clientes()
     {
-        return view('dashboard.cuentas.clientes');
+        return view('dashboard.pages.cuentas.clientes');
     }
 
     public function paginas()
     {
-        return view('dashboard.cuentas.paginas');
+        return view('dashboard.pages.cuentas.paginas');
     }
 
     public function contratos()
     {
-        return view('dashboard.cuentas.contratos');
+        return view('dashboard.pages.cuentas.contratos');
     }
 }
