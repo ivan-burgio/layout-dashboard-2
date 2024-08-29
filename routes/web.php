@@ -48,7 +48,10 @@ Route::middleware('auth')->group(function () {
 
     // Rutas para Buzón
     Route::get('/dashboard/buzon/webs', [BuzonController::class, 'websBuzon']);
-    Route::get('/dashboard/buzon/emails', [BuzonController::class, 'emails']);
+    Route::get('/dashboard/buzon/emails', [BuzonController::class, 'emails'])->name('emails');
+    
+    Route::post('/dashboard/buzon/emails', [BuzonController::class, 'store'])->name('emails.store');
+    Route::put('/dashboard/buzon/emails/{id}', [BuzonController::class, 'store']);
     Route::get('/dashboard/buzon/whatsapp', [BuzonController::class, 'whatsapp']);
 
     // Rutas para Contabilidad

@@ -28,27 +28,29 @@ class BuzonController extends Controller
         return view('dashboard.pages.buzon.emails', compact('title', 'emails'));
     }
 
-    public function storeEmail(Request $request)
+    public function store(Request $request, $id = null)
     {
-        // Validar los datos entrantes
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'mensaje' => 'required|string',
         ]);
 
-        // Crear un nuevo registro de correo electrónico en la base de datos
-        Email::create($validatedData);
+        try {
+            if ($id) {
+                // Actualiza el registro existente
+                $email = Email::findOrFail($id);
+                $email->update($validated);
+            } else {
+                // Crea un nuevo registro
+                Email::create($validated);
+            }
 
-        // Redirigir a la vista de emails con un mensaje de éxito
-        return redirect()->route('emails')->with('success', 'Correo electrónico guardado correctamente.');
-    }
-
-    public function createEmail()
-    {
-        $title = 'Nuevo Email';
-
-        return view('dashboard.pages.buzon.create-email', compact('title'));
+            return redirect()->route('emails')->with('success', 'Email guardado exitosamente!');
+        } catch (\Exception $e) {
+            // Maneja el error y muestra un mensaje
+            return redirect()->route('emails')->with('error', 'Hubo un problema al guardar el email.');
+        }
     }
 
     public function whatsapp()

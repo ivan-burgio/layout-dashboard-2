@@ -7,3 +7,4 @@ import "bootstrap";
 // Importar otros módulos
 import "./despliegue";
 import "./alerts";
+import "./modal_email";
