@@ -7,7 +7,6 @@ use App\Http\Controllers\BuzonController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\LayoutsController;
-use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContabilidadController;
@@ -25,7 +24,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Envío de mensajes desde el formulario de contacto
-Route::post('/enviar-mensaje', [MensajeController::class, 'store'])->name('enviar.mensaje');
+Route::post('/enviar-mensaje', [BuzonController::class, 'websBuzonStore'])->name('enviar.mensaje');
 
 // Rutas protegidas por autenticación
 Route::middleware('auth')->group(function () {
@@ -50,8 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/buzon/webs', [BuzonController::class, 'websBuzon']);
     Route::get('/dashboard/buzon/emails', [BuzonController::class, 'emails'])->name('emails');
     
-    Route::post('/dashboard/buzon/emails', [BuzonController::class, 'store'])->name('emails.store');
-    Route::put('/dashboard/buzon/emails/{id}', [BuzonController::class, 'store']);
+    Route::post('/dashboard/buzon/emails', [BuzonController::class, 'emailsStore'])->name('emails.store');
+    Route::put('/dashboard/buzon/emails/{id}', [BuzonController::class, 'emailsStore']);
     Route::get('/dashboard/buzon/whatsapp', [BuzonController::class, 'whatsapp']);
 
     // Rutas para Contabilidad
