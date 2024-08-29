@@ -13,6 +13,7 @@
 
 <body class="bg-slate-200 text-black flex flex-row">
     @include('dashboard.templates.aside')
+    @include('components.alerts')
     <div class="flex flex-col w-full">
         @include('dashboard.templates.nav')
         @yield('content')
