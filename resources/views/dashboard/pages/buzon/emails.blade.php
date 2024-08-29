@@ -31,7 +31,7 @@
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-button"
                                 data-id="{{ $email->id }}" data-nombre="{{ $email->nombre }}"
                                 data-email="{{ $email->email }}" data-mensaje="{{ $email->mensaje }}">
-                                Editar
+                                <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                             </button>
                         </td>
                     </tr>

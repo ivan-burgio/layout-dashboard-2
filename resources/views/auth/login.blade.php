@@ -18,18 +18,12 @@
                                 <input type="email" name="email" placeholder="Tu email" value="{{ old('email') }}"
                                     autocomplete="email"
                                     class="block w-full px-3 py-1 mt-1 border rounded-md placeholder-gray-600 bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                                @error('email')
-                                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
-                                @enderror
                             </div>
 
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm text-gray-200">Password</label>
                                 <input type="password" name="password" placeholder="Tu contraseña"
                                     class="block w-full px-3 py-1 mt-1 border rounded-md placeholder-gray-600 bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                                @error('password')
-                                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
-                                @enderror
                             </div>
 
                             <button type="submit"

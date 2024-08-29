@@ -17,6 +17,26 @@ class BuzonController extends Controller
         return view('dashboard.pages.buzon.webs', compact('mensajes'), compact('title'));
     }
 
+    public function websBuzonStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email',
+            'mensaje' => 'required|string',
+        ], [
+            'nombre.required' => 'Por favor, ingresa tu nombre.',
+            'email.required' => 'Por favor, ingresa tu correo electrónico.',
+            'email.email' => 'El correo electrónico ingresado no es válido.',
+            'mensaje.required' => 'Por favor, ingresa un mensaje.',
+        ]);
+
+        // Guardar en la base de datos
+        Mensaje::create($validatedData);
+
+        // Redireccionar con mensaje de éxito
+        return redirect()->back()->with('success', 'Mensaje enviado con éxito.');
+    }
+
     public function emails()
     {
         $title = 'Emails';
@@ -28,7 +48,7 @@ class BuzonController extends Controller
         return view('dashboard.pages.buzon.emails', compact('title', 'emails'));
     }
 
-    public function store(Request $request, $id = null)
+    public function emailsStore(Request $request, $id = null)
     {
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
