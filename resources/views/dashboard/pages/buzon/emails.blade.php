@@ -3,11 +3,11 @@
 @section('content')
     @include('dashboard.components.modal_email')
 
-    <div class="relative overflow-x-auto shadow-md m-8">
+    <div class="relative overflow-x-auto m-8">
         <button id="openModalButton" class="bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md">Nuevo
             Email</button>
 
-        <table class="w-full text-sm text-left rtl:text-right">
+        <table class="w-full text-sm text-left rtl:text-right shadow-md">
             <thead class="text-xs text-white uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Id</th>
