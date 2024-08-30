@@ -8,13 +8,25 @@ use Illuminate\Http\Request;
 
 class BuzonController extends Controller
 {
-    public function websBuzon()
+    public function websBuzon(Request $request)
     {
-        $mensajes = Mensaje::all();
-
         $title = 'Mensajes Web';
+        $query = Mensaje::query();
 
-        return view('dashboard.pages.buzon.webs', compact('mensajes'), compact('title'));
+        // Filtrado por nombre o email
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('nombre', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+        }
+
+        // Ordenamiento
+        $orderBy = $request->input('order_by', 'id'); // Campo de ordenación, por defecto 'id'
+        $orderDirection = $request->input('order_direction', 'desc'); // Dirección de orden, por defecto 'desc'
+
+        $mensajes = $query->orderBy($orderBy, $orderDirection)->get();
+
+        return view('dashboard.pages.buzon.webs', compact('mensajes', 'title'));
     }
 
     public function websBuzonStore(Request $request)
@@ -37,12 +49,23 @@ class BuzonController extends Controller
         return redirect()->back()->with('success', 'Mensaje enviado con éxito.');
     }
 
-    public function emails()
+    public function emails(Request $request)
     {
         $title = 'Emails';
+        $query = Email::query();
 
-        // Recuperar todos los correos electrónicos de la base de datos
-        $emails = Email::all();
+        // Filtrado por nombre o email
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('nombre', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+        }
+
+        // Ordenamiento
+        $orderBy = $request->input('order_by', 'id'); // Campo de ordenación, por defecto 'id'
+        $orderDirection = $request->input('order_direction', 'desc'); // Dirección de orden, por defecto 'desc'
+
+        $emails = $query->orderBy($orderBy, $orderDirection)->get();
 
         // Pasar los correos electrónicos a la vista
         return view('dashboard.pages.buzon.emails', compact('title', 'emails'));
