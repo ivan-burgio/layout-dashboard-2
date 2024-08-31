@@ -24,7 +24,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Envío de mensajes desde el formulario de contacto
-Route::post('/enviar-mensaje', [BuzonController::class, 'websBuzonStore'])->name('enviar.mensaje');
+Route::post('/enviar-mensaje', [BuzonController::class, 'websMensajeStore'])->name('enviar.mensaje');
 
 // Rutas protegidas por autenticación
 Route::middleware('auth')->group(function () {
@@ -46,12 +46,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/layouts/chatboxs', [LayoutsController::class, 'chatboxs']);
 
     // Rutas para Buzón
-    Route::get('/dashboard/buzon/webs', [BuzonController::class, 'websBuzon'])->name('webs');
+    Route::get('/dashboard/buzon/webs', [BuzonController::class, 'websMensaje'])->name('webs');
     Route::get('/dashboard/buzon/emails', [BuzonController::class, 'emails'])->name('emails');
 
     Route::post('/dashboard/buzon/emails', [BuzonController::class, 'emailsStore'])->name('emails.store');
     Route::put('/dashboard/buzon/emails/{id}', [BuzonController::class, 'emailsStore']);
     Route::get('/dashboard/buzon/whatsapp', [BuzonController::class, 'whatsapp']);
+
+    Route::put('/dashboard/buzon/emails/estado/{id}', [BuzonController::class, 'updateEmailEstado'])->name('emails.updateEstado');
+    Route::put('/dashboard/buzon/webs/estado/{id}', [BuzonController::class, 'updateWebMensajeEstado'])->name('webs.updateEstado');
 
     // Rutas para Contabilidad
     Route::get('/dashboard/contabilidad/pagos', [ContabilidadController::class, 'pagos']);

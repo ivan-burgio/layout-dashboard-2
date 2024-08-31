@@ -1,6 +1,8 @@
 @extends('dashboard.dashboard-layout')
 
 @section('content')
+    @include('dashboard.components.modal_estado')
+
     <div class="relative overflow-x-auto m-8">
         <div class="flex flex-row w-full justify-between">
             <!-- Formulario de búsqueda -->
@@ -48,6 +50,15 @@
                     <th scope="col" class="px-6 py-3">Mensaje</th>
                     <th scope="col" class="px-6 py-3">
                         <a
+                            href="{{ route('webs', array_merge(request()->query(), ['order_by' => 'estado', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}">
+                            Estado
+                            @if (request('order_by') == 'estado')
+                                <i class="fa-solid fa-arrow-{{ request('order_direction') == 'asc' ? 'up' : 'down' }}"></i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <a
                             href="{{ route('webs', array_merge(request()->query(), ['order_by' => 'created_at', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}">
                             Fecha
                             @if (request('order_by') == 'created_at')
@@ -55,6 +66,7 @@
                             @endif
                         </a>
                     </th>
+                    <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
             </thead>
             <tbody class="text-black">
@@ -65,7 +77,14 @@
                         <td class="px-6 py-4">{{ $mensaje->nombre }}</td>
                         <td class="px-6 py-4">{{ $mensaje->email }}</td>
                         <td class="px-6 py-4">{{ $mensaje->mensaje }}</td>
+                        <td class="px-6 py-4">{{ $mensaje->estado }}</td>
                         <td class="px-6 py-4">{{ $mensaje->created_at->format('d/m/Y H:i') }}</td>
+                        <td class="px-6 py-4">
+                            <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md estado-button"
+                                data-id="{{ $mensaje->id }}" data-estado="web">
+                                <i class="fa-solid fa-sync" style="color: #ffffff;"></i>
+                            </button>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

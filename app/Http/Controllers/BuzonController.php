@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class BuzonController extends Controller
 {
-    public function websBuzon(Request $request)
+    public function websMensaje(Request $request)
     {
         $title = 'Mensajes Web';
         $query = Mensaje::query();
@@ -29,7 +29,7 @@ class BuzonController extends Controller
         return view('dashboard.pages.buzon.webs', compact('mensajes', 'title'));
     }
 
-    public function websBuzonStore(Request $request)
+    public function websMensajeStore(Request $request)
     {
         $validatedData = $request->validate([
             'nombre' => 'required|string|max:255',
@@ -47,6 +47,15 @@ class BuzonController extends Controller
 
         // Redireccionar con mensaje de éxito
         return redirect()->back()->with('success', 'Mensaje enviado con éxito.');
+    }
+
+    public function updateWebMensajeEstado(Request $request, $id)
+    {
+        $mensaje = Mensaje::findOrFail($id);
+        $mensaje->estado = $request->input('estado');
+        $mensaje->save();
+
+        return redirect()->route('webs')->with('success', 'El estado del mensaje web ha sido actualizado.');
     }
 
     public function emails(Request $request)
@@ -94,6 +103,15 @@ class BuzonController extends Controller
             // Maneja el error y muestra un mensaje
             return redirect()->route('emails')->with('error', 'Hubo un problema al guardar el email.');
         }
+    }
+
+    public function updateEmailEstado(Request $request, $id)
+    {
+        $email = Email::findOrFail($id);
+        $email->estado = $request->input('estado');
+        $email->save();
+
+        return redirect()->route('emails')->with('success', 'El estado del email ha sido actualizado.');
     }
 
     public function whatsapp()

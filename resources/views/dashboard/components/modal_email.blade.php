@@ -1,7 +1,6 @@
 <div id="emailModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
     <div class="flex items-center justify-center min-h-screen px-4 py-6">
         <div class="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 id="modalTitle" class="text-2xl font-semibold mb-6 text-white">Crear Nuevo Email</h2>
             <form id="emailForm" action="{{ route('emails.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="">
