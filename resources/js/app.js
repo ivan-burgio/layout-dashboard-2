@@ -8,3 +8,5 @@ import "bootstrap";
 import "./despliegue";
 import "./alerts";
 import "./modal_email";
+import "./modal_whatsapp";
+import "./modal_estado";

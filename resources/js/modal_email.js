@@ -1,7 +1,6 @@
 // Función para abrir el modal y llenar el formulario
 function openModal(id = "", nombre = "", email = "", mensaje = "") {
     const form = document.getElementById("emailForm");
-    const methodInput = form.querySelector('input[name="_method"]');
 
     if (id) {
         // Configura el formulario para actualizar un email
@@ -30,7 +29,7 @@ function closeModal() {
 // Usamos jQuery para manejar eventos
 $(document).ready(function () {
     // Abre el modal para nuevo email
-    $("#openModalButton").click(function () {
+    $("#openModalButtonEmail").click(function () {
         // Configura el formulario para crear un nuevo email
         const form = document.getElementById("emailForm");
         form.action = "/dashboard/buzon/emails";

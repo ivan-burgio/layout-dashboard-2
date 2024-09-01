@@ -10,7 +10,7 @@ class Email extends Model
     protected $table = 'emails';
 
     // Especifica los campos que se pueden asignar de manera masiva
-    protected $fillable = ['id', 'nombre', 'email', 'mensaje'];
+    protected $fillable = ['id', 'nombre', 'email', 'estado', 'mensaje'];
 
     // Deshabilita las marcas de tiempo automáticas si no estás usando los campos 'created_at' y 'updated_at'
     public $timestamps = true;
