@@ -90,7 +90,7 @@
                         <td class="px-6 py-4">{{ $whatsapp->creator->name ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">{{ $whatsapp->stateChanger->name ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
-                            <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-button"
+                            <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonWhatsapp"
                                 data-id="{{ $whatsapp->id }}" data-nombre="{{ $whatsapp->nombre }}"
                                 data-telefono="{{ $whatsapp->telefono }}" data-mensaje="{{ $whatsapp->mensaje }}">
                                 <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
