@@ -38,7 +38,7 @@ $(document).ready(function () {
     });
 
     // Abre el modal para editar un WhatsApp
-    $(document).on("click", ".edit-button", function () {
+    $(document).on("click", ".edit-buttonWhatsapp", function () {
         const id = $(this).data("id");
         const nombre = $(this).data("nombre");
         const telefono = $(this).data("telefono");

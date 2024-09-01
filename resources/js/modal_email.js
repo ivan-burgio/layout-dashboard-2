@@ -38,7 +38,7 @@ $(document).ready(function () {
     });
 
     // Abre el modal para editar un email
-    $(document).on("click", ".edit-button", function () {
+    $(document).on("click", ".edit-buttonEmail", function () {
         const id = $(this).data("id");
         const nombre = $(this).data("nombre");
         const email = $(this).data("email");
