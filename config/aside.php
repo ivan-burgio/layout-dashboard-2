@@ -43,7 +43,7 @@ return [
             'submenu' => [
                 ['title' => 'Webs', 'url' => $baseURL . 'buzon/webs'],
                 ['title' => 'Emails', 'url' => $baseURL . 'buzon/emails'],
-                ['title' => 'WhatsApp', 'url' => $baseURL . 'buzon/whatsapp'],
+                ['title' => 'WhatsApp', 'url' => $baseURL . 'buzon/whatsapps'],
             ],
         ],
         [

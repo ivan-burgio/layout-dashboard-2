@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mensaje;
 use App\Models\Email;
+use App\Models\Whatsapp;
 use Illuminate\Http\Request;
 
 class BuzonController extends Controller
@@ -114,10 +115,59 @@ class BuzonController extends Controller
         return redirect()->route('emails')->with('success', 'El estado del email ha sido actualizado.');
     }
 
-    public function whatsapp()
+    public function whatsapps(Request $request)
     {
         $title = 'WhatsApps';
+        $query = Whatsapp::query();
 
-        return view('dashboard.pages.buzon.whatsapp', compact('title'));
+        // Filtrado por nombre o número
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('nombre', 'like', "%{$search}%")
+                ->orWhere('telefono', 'like', "%{$search}%");
+        }
+
+        // Ordenamiento
+        $orderBy = $request->input('order_by', 'id'); // Campo de ordenación, por defecto 'id'
+        $orderDirection = $request->input('order_direction', 'desc'); // Dirección de orden, por defecto 'desc'
+
+        $whatsapps = $query->orderBy($orderBy, $orderDirection)->get();
+
+        // Pasar los WhatsApps a la vista
+        return view('dashboard.pages.buzon.whatsapp', compact('title', 'whatsapps'));
+    }
+
+    public function whatsappsStore(Request $request, $id = null)
+    {
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'required|numeric|digits_between:1,15',
+            'mensaje' => 'required|string',
+        ]);
+
+        try {
+            if ($id) {
+                // Actualiza el registro existente
+                $whatsapp = Whatsapp::findOrFail($id);
+                $whatsapp->update($validated);
+            } else {
+                // Crea un nuevo registro
+                Whatsapp::create($validated);
+            }
+
+            return redirect()->route('whatsapps')->with('success', 'WhatsApp guardado exitosamente!');
+        } catch (\Exception $e) {
+            // Maneja el error y muestra un mensaje
+            return redirect()->route('whatsapps')->with('error', 'Hubo un problema al guardar el WhatsApp.');
+        }
+    }
+
+    public function updateWhatsappEstado(Request $request, $id)
+    {
+        $whatsapp = Whatsapp::findOrFail($id);
+        $whatsapp->estado = $request->input('estado');
+        $whatsapp->save();
+
+        return redirect()->route('whatsapps')->with('success', 'El estado del WhatsApp ha sido actualizado.');
     }
 }

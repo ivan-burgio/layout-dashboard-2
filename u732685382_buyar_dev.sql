@@ -95,7 +95,7 @@ CREATE TABLE `emails` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +104,7 @@ CREATE TABLE `emails` (
 
 LOCK TABLES `emails` WRITE;
 /*!40000 ALTER TABLE `emails` DISABLE KEYS */;
-INSERT INTO `emails` VALUES (1,'Pablo 2','pablo@pablo.com','Pendiente','djowabnoiuawnbiofn','2024-08-29 16:17:30','2024-08-29 19:17:30','2024-08-29 20:08:05'),(2,'Pablo','pablo@pablo.com','Pendiente','djowabnoiuawnbiofnaoindowanbdpwa','2024-08-29 16:18:37','2024-08-29 19:18:37','2024-08-31 18:57:15'),(3,'pepe','pepe@pepe.com','Pendiente','dwadwadwa','2024-08-29 17:04:50','2024-08-29 20:04:50','2024-08-29 20:04:50'),(4,'papa 22312','prueba@prueba.com','En Proceso','dwadwa','2024-08-29 17:07:30','2024-08-29 20:07:30','2024-08-31 18:57:05'),(5,'Pablo 278','prueba@prueba.com','Pendiente','viyuiyuooíp','2024-08-29 17:11:59','2024-08-29 20:11:59','2024-08-29 20:12:08');
+INSERT INTO `emails` VALUES (1,'Pablo 2','pablo@pablo.com','Pendiente','djowabnoiuawnbiofn','2024-08-29 16:17:30','2024-08-29 19:17:30','2024-08-29 20:08:05'),(2,'Pablo','pablo@pablo.com','Pendiente','djowabnoiuawnbiofnaoindowanbdpwa','2024-08-29 16:18:37','2024-08-29 19:18:37','2024-08-31 18:57:15'),(3,'pepe','pepe@pepe.com','Completado','dwadwadwa','2024-08-29 17:04:50','2024-08-29 20:04:50','2024-09-01 04:13:53'),(4,'papa 22312','prueba@prueba.com','En Proceso','dwadwa','2024-08-29 17:07:30','2024-08-29 20:07:30','2024-08-31 18:57:05'),(5,'Pablo 2787','prueba@prueba.com','En Proceso','viyuiyuooíp','2024-08-29 17:11:59','2024-08-29 20:11:59','2024-09-01 04:13:49'),(6,'sacc','sacc@sacc.com','Pendiente','dwadwa','2024-09-01 02:33:22','2024-09-01 05:33:22','2024-09-01 05:33:22');
 /*!40000 ALTER TABLE `emails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,6 +199,36 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'Ivan Burgio','ivan.24.burgio@gmail.com','$2y$12$R3d19S8vIkO0.4wy3reMWeaWpzTsINnEotQPQ6FdrSrTQo5nbhfAG','53114452',0,0,'2024-08-14 18:58:39','2024-08-19 21:01:05');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `whatsapps`
+--
+
+DROP TABLE IF EXISTS `whatsapps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `whatsapps` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `telefono` varchar(55) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'Pendiente',
+  `mensaje` text NOT NULL,
+  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `whatsapps`
+--
+
+LOCK TABLES `whatsapps` WRITE;
+/*!40000 ALTER TABLE `whatsapps` DISABLE KEYS */;
+INSERT INTO `whatsapps` VALUES (1,'Nahuel','092812477','Completado','dwa','2024-09-01 02:37:40','2024-09-01 05:37:40','2024-09-01 05:38:43');
+/*!40000 ALTER TABLE `whatsapps` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -209,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-31 14:41:33
+-- Dump completed on 2024-08-31 23:39:58

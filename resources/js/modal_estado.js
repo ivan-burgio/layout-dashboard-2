@@ -20,6 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 document
                     .getElementById("webEstadoModal")
                     .classList.remove("hidden");
+            } else if (estado === "whatsapp") {
+                document.getElementById("whatsapp_id").value = id;
+                document.getElementById(
+                    "whatsappEstadoForm"
+                ).action = `/dashboard/buzon/whatsapps/estado/${id}`;
+                document
+                    .getElementById("whatsappEstadoModal")
+                    .classList.remove("hidden");
             }
         });
     });

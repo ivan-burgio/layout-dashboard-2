@@ -6,7 +6,7 @@
 
     <div class="relative overflow-x-auto m-8">
         <div class="flex flex-row w-full justify-between">
-            <button id="openModalButton" class="bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md">Nuevo
+            <button id="openModalButtonEmail" class="bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md">Nuevo
                 Email</button>
 
             <!-- Formulario de búsqueda y filtrado -->
