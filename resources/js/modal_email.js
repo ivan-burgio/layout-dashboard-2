@@ -47,7 +47,7 @@ $(document).ready(function () {
     });
 
     // Cierra el modal
-    $("#cancelModalButton").click(function () {
+    $("#cancelEmailModalButton").click(function () {
         closeModal();
     });
 });

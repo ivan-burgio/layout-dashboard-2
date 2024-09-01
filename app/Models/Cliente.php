@@ -5,26 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Email extends Model
+class Cliente extends Model
 {
     use HasFactory;
 
-    protected $table = 'emails';
+    // Definir la tabla asociada al modelo
+    protected $table = 'clientes';
 
+    // Definir los campos que pueden ser asignados en masa
     protected $fillable = [
         'id',
         'nombre',
         'email',
-        'estado',
-        'mensaje',
+        'telefono',
+        'numero_cuenta_bancaria',
         'user_id',
         'estado',
-        'estado_cambiado_por',
+        'estado_cambiado_por'
     ];
 
-    public $timestamps = true;
-
-    // Relación con el usuario que creó el registro
+    // Relación con la tabla `users`
     public function creator()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -35,4 +35,7 @@ class Email extends Model
     {
         return $this->belongsTo(User::class, 'estado_cambiado_por');
     }
+
+    // Si necesitas fechas para `created_at` y `updated_at`
+    public $timestamps = true;
 }
