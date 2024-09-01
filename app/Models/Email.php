@@ -2,20 +2,36 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
 {
-    // Especifica el nombre de la tabla asociada con el modelo
+    use HasFactory;
+
     protected $table = 'emails';
 
-    // Especifica los campos que se pueden asignar de manera masiva
-    protected $fillable = ['id', 'nombre', 'email', 'estado', 'mensaje'];
+    protected $fillable = [
+        'id',
+        'nombre',
+        'email',
+        'estado',
+        'mensaje',
+        'user_id', // Asegúrate de incluir esto en $fillable
+        'estado_cambiado_por',
+    ];
 
-    // Deshabilita las marcas de tiempo automáticas si no estás usando los campos 'created_at' y 'updated_at'
     public $timestamps = true;
 
-    // Si necesitas personalizar los nombres de las columnas de timestamps
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
+    // Relación con el usuario que creó el registro
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    // Relación con el usuario que cambió el estado
+    public function stateChanger()
+    {
+        return $this->belongsTo(User::class, 'estado_cambiado_por');
+    }
 }

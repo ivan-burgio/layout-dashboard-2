@@ -6,7 +6,8 @@
 
     <div class="relative overflow-x-auto m-8">
         <div class="flex flex-row w-full justify-between">
-            <button id="openModalButtonWhatsapp" class="bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md">Nuevo
+            <button id="openModalButtonWhatsapp"
+                class="bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md">Nuevo
                 WhatsApp</button>
 
             <!-- Formulario de búsqueda y filtrado -->
@@ -71,6 +72,8 @@
                             @endif
                         </a>
                     </th>
+                    <th scope="col" class="px-6 py-3">Creador</th>
+                    <th scope="col" class="px-6 py-3">Cambiado por</th>
                     <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
             </thead>
@@ -84,6 +87,8 @@
                         <td class="px-6 py-4">{{ $whatsapp->mensaje }}</td>
                         <td class="px-6 py-4">{{ $whatsapp->created_at->format('d/m/Y H:i') }}</td>
                         <td class="px-6 py-4">{{ $whatsapp->estado }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp->creator->name ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp->stateChanger->name ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-button"
                                 data-id="{{ $whatsapp->id }}" data-nombre="{{ $whatsapp->nombre }}"

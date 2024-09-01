@@ -6,6 +6,7 @@ use App\Models\Mensaje;
 use App\Models\Email;
 use App\Models\Whatsapp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BuzonController extends Controller
 {
@@ -43,8 +44,14 @@ class BuzonController extends Controller
             'mensaje.required' => 'Por favor, ingresa un mensaje.',
         ]);
 
+        // Obtener el ID del usuario logueado
+        $userId = Auth::id();
+
         // Guardar en la base de datos
-        Mensaje::create($validatedData);
+        Mensaje::create(array_merge($validatedData, [
+            'user_id' => $userId,
+            'estado_cambiado_por' => $userId,
+        ]));
 
         // Redireccionar con mensaje de éxito
         return redirect()->back()->with('success', 'Mensaje enviado con éxito.');
@@ -54,6 +61,7 @@ class BuzonController extends Controller
     {
         $mensaje = Mensaje::findOrFail($id);
         $mensaje->estado = $request->input('estado');
+        $mensaje->estado_cambiado_por = Auth::id(); // Registrar el usuario que cambió el estado
         $mensaje->save();
 
         return redirect()->route('webs')->with('success', 'El estado del mensaje web ha sido actualizado.');
@@ -62,7 +70,7 @@ class BuzonController extends Controller
     public function emails(Request $request)
     {
         $title = 'Emails';
-        $query = Email::query();
+        $query = Email::query()->with('creator'); // Usa 'with' para incluir el creador
 
         // Filtrado por nombre o email
         if ($request->has('search')) {
@@ -90,13 +98,21 @@ class BuzonController extends Controller
         ]);
 
         try {
+            $userId = Auth::id(); // Obtener el ID del usuario logueado
+
             if ($id) {
                 // Actualiza el registro existente
                 $email = Email::findOrFail($id);
-                $email->update($validated);
+                $email->update(array_merge($validated, [
+                    'user_id' => $userId,
+                    'estado_cambiado_por' => $userId,
+                ]));
             } else {
                 // Crea un nuevo registro
-                Email::create($validated);
+                Email::create(array_merge($validated, [
+                    'user_id' => $userId,
+                    'estado_cambiado_por' => $userId,
+                ]));
             }
 
             return redirect()->route('emails')->with('success', 'Email guardado exitosamente!');
@@ -110,6 +126,7 @@ class BuzonController extends Controller
     {
         $email = Email::findOrFail($id);
         $email->estado = $request->input('estado');
+        $email->estado_cambiado_por = Auth::id(); // Registrar el usuario que cambió el estado
         $email->save();
 
         return redirect()->route('emails')->with('success', 'El estado del email ha sido actualizado.');
@@ -118,7 +135,7 @@ class BuzonController extends Controller
     public function whatsapps(Request $request)
     {
         $title = 'WhatsApps';
-        $query = Whatsapp::query();
+        $query = Whatsapp::query()->with('creator');
 
         // Filtrado por nombre o número
         if ($request->has('search')) {
@@ -146,13 +163,21 @@ class BuzonController extends Controller
         ]);
 
         try {
+            $userId = Auth::id(); // Obtener el ID del usuario logueado
+
             if ($id) {
                 // Actualiza el registro existente
                 $whatsapp = Whatsapp::findOrFail($id);
-                $whatsapp->update($validated);
+                $whatsapp->update(array_merge($validated, [
+                    'user_id' => $userId,
+                    'estado_cambiado_por' => $userId,
+                ]));
             } else {
                 // Crea un nuevo registro
-                Whatsapp::create($validated);
+                Whatsapp::create(array_merge($validated, [
+                    'user_id' => $userId,
+                    'estado_cambiado_por' => $userId,
+                ]));
             }
 
             return redirect()->route('whatsapps')->with('success', 'WhatsApp guardado exitosamente!');
@@ -166,6 +191,7 @@ class BuzonController extends Controller
     {
         $whatsapp = Whatsapp::findOrFail($id);
         $whatsapp->estado = $request->input('estado');
+        $whatsapp->estado_cambiado_por = Auth::id(); // Registrar el usuario que cambió el estado
         $whatsapp->save();
 
         return redirect()->route('whatsapps')->with('success', 'El estado del WhatsApp ha sido actualizado.');

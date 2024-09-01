@@ -66,6 +66,7 @@
                             @endif
                         </a>
                     </th>
+                    <th scope="col" class="px-6 py-3">Cambiado por</th>
                     <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
             </thead>
@@ -79,6 +80,7 @@
                         <td class="px-6 py-4">{{ $mensaje->mensaje }}</td>
                         <td class="px-6 py-4">{{ $mensaje->estado }}</td>
                         <td class="px-6 py-4">{{ $mensaje->created_at->format('d/m/Y H:i') }}</td>
+                        <td class="px-6 py-4">{{ $mensaje->stateChanger->name ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md estado-button"
                                 data-id="{{ $mensaje->id }}" data-estado="web">
