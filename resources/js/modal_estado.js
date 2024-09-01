@@ -28,14 +28,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 document
                     .getElementById("whatsappEstadoModal")
                     .classList.remove("hidden");
+            } else if (estado === "cliente") {
+                document.getElementById("cliente_id").value = id;
+                document.getElementById(
+                    "estadoClienteForm"
+                ).action = `/dashboard/cuentas/clientes/estado/${id}`;
+                document
+                    .getElementById("clienteEstadoModal")
+                    .classList.remove("hidden");
             }
         });
     });
 
+    // Seleccionar correctamente los botones de cancelar
     document
-        .querySelectorAll("#cancelEmailModalButton, #cancelWebModalButton")
+        .querySelectorAll(
+            "#cancelEmailModalButton, #cancelWebModalButton, #cancelClienteModalButton"
+        )
         .forEach((button) => {
             button.addEventListener("click", function () {
+                // Asegurarse de que el contenedor más cercano es el que se debe ocultar
                 this.closest(".fixed").classList.add("hidden");
             });
         });

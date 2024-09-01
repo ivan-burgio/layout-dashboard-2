@@ -1,5 +1,101 @@
 @extends('dashboard.dashboard-layout')
 
 @section('content')
+    @include('dashboard.components.modal_cliente')
+    @include('dashboard.components.modal_estado')
 
+    <div class="relative overflow-x-auto m-8">
+        <div class="flex flex-row w-full justify-between">
+            <button id="openModalButtonCliente" class="bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md">Nuevo
+                Cliente</button>
+
+            <!-- Formulario de búsqueda y filtrado -->
+            <form method="GET" action="{{ route('clientes') }}" class="mb-4">
+                <input type="text" name="search" placeholder="Buscar por nombre o email"
+                    class="px-3 py-2 m-1 border rounded-md placeholder-gray-500 focus:border-blue-400 focus:ring-blue-400 focus:ring-opacity-50"
+                    value="{{ request('search') }}">
+                <button type="submit" class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+            </form>
+        </div>
+
+        <table class="w-full text-sm text-left rtl:text-right shadow-md">
+            <thead class="text-xs text-white uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        <a href="{{ route('clientes', array_merge(request()->query(), ['order_by' => 'id', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}"
+                            class="flex items-center space-x-1">
+                            Id
+                            @if (request('order_by') == 'id' || !request('order_by'))
+                                <i
+                                    class="fa-solid fa-arrow-{{ request('order_direction') == 'asc' ? 'up' : 'down' }} mx-1"></i>
+                            @endif
+                        </a>
+                    </th>
+
+                    <th scope="col" class="px-6 py-3">
+                        <a
+                            href="{{ route('clientes', array_merge(request()->query(), ['order_by' => 'nombre', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}">
+                            Nombre
+                            @if (request('order_by') == 'nombre')
+                                <i class="fa-solid fa-arrow-{{ request('order_direction') == 'asc' ? 'up' : 'down' }}"></i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col" class="px-6 py-3">Email</th>
+                    <th scope="col" class="px-6 py-3">Teléfono</th>
+                    <th scope="col" class="px-6 py-3">Cunta Bancaria</th>
+                    <th scope="col" class="px-6 py-3">
+                        <a
+                            href="{{ route('clientes', array_merge(request()->query(), ['order_by' => 'created_at', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}">
+                            Fecha
+                            @if (request('order_by') == 'created_at')
+                                <i class="fa-solid fa-arrow-{{ request('order_direction') == 'asc' ? 'up' : 'down' }}"></i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <a
+                            href="{{ route('clientes', array_merge(request()->query(), ['order_by' => 'estado', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}">
+                            Estado
+                            @if (request('order_by') == 'estado')
+                                <i class="fa-solid fa-arrow-{{ request('order_direction') == 'asc' ? 'up' : 'down' }}"></i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col" class="px-6 py-3">Creador</th>
+                    <th scope="col" class="px-6 py-3">Cambiado</th>
+                    <th scope="col" class="px-6 py-3">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-black">
+                @foreach ($clientes as $cliente)
+                    <tr
+                        class="odd:bg-white odd:dark:bg-gray-200 even:bg-gray-50 even:dark:bg-gray-300 border-b dark:border-gray-700">
+                        <td class="px-6 py-4">{{ $cliente->id }}</td>
+                        <td class="px-6 py-4">{{ $cliente->nombre }}</td>
+                        <td class="px-6 py-4">{{ $cliente->email }}</td>
+                        <td class="px-6 py-4">{{ $cliente->telefono }}</td>
+                        <td class="px-6 py-4">{{ $cliente->numero_cuenta_bancaria }}</td>
+                        <td class="px-6 py-4">{{ $cliente->created_at->format('d/m/Y H:i') }}</td>
+                        <td class="px-6 py-4">{{ $cliente->estado }}</td>
+                        <td class="px-6 py-4">{{ $cliente->creator->name ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $cliente->stateChanger->name ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">
+                            <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonCliente"
+                                data-id="{{ $cliente->id }}" data-nombre="{{ $cliente->nombre }}"
+                                data-email="{{ $cliente->email }}" data-telefono="{{ $cliente->telefono }}"
+                                data-numero_cuenta_bancaria="{{ $cliente->numero_cuenta_bancaria }}">
+                                <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
+                            </button>
+                            <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md estado-button"
+                                data-id="{{ $cliente->id }}" data-estado="cliente">
+                                <i class="fa-solid fa-sync" style="color: #ffffff;"></i>
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection
