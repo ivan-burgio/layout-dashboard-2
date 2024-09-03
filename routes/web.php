@@ -41,8 +41,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/dashboard/cuentas/clientes/{id}', [CuentasController::class, 'clientesStore']);
     Route::put('/dashboard/cuentas/clientes/estado/{id}', [CuentasController::class, 'updateClienteEstado'])->name('clientes.updateEstado');
 
+    // Rutas para Paginas
+    Route::get('/dashboard/cuentas/paginas', [CuentasController::class, 'paginas'])->name('paginas');
+    Route::post('/dashboard/cuentas/paginas', [CuentasController::class, 'paginasStore'])->name('paginas.store');
+    Route::put('/dashboard/cuentas/paginas/{id}', [CuentasController::class, 'paginasStore']);
+
     // Rutas para Cuentas
-    Route::get('/dashboard/cuentas/paginas', [CuentasController::class, 'paginas']);
     Route::get('/dashboard/cuentas/contratos', [CuentasController::class, 'contratos']);
 
     // Rutas para Layouts
