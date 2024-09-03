@@ -7,7 +7,8 @@ import "bootstrap";
 // Importar otros módulos
 import "./despliegue";
 import "./alerts";
+import "./modal_estado";
 import "./modal_email";
 import "./modal_whatsapp";
 import "./modal_cliente";
-import "./modal_estado";
+import "./modal_pagina";

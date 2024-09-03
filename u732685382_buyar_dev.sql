@@ -39,7 +39,7 @@ CREATE TABLE `clientes` (
   UNIQUE KEY `email` (`email`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Lucas Viera 2','lucas@lucas.com','09999999','0000000','2024-09-02 01:32:39','2024-09-02 02:22:56',1,'Inactivo',1);
+INSERT INTO `clientes` VALUES (1,'Lucas Viera 22','lucas@lucas.com','09999999','0000000','2024-09-02 01:32:39','2024-09-03 17:11:23',1,'Activo',1),(2,'Nahuel Sueiro 21231','nahue@nahuel.com','09999991','00000001','2024-09-03 17:11:45','2024-09-03 17:12:17',1,'Activo',1);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,11 +161,13 @@ CREATE TABLE `paginas` (
   `nombre` varchar(255) NOT NULL,
   `link` varchar(255) DEFAULT NULL,
   `tipo` varchar(50) NOT NULL,
-  `version` varchar(50) DEFAULT NULL,
+  `user_id` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `paginas_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,6 +176,7 @@ CREATE TABLE `paginas` (
 
 LOCK TABLES `paginas` WRITE;
 /*!40000 ALTER TABLE `paginas` DISABLE KEYS */;
+INSERT INTO `paginas` VALUES (1,'public/imagenes/PXzvuqrwjOmmGW2ZQ0kO1qj8YbQZy1jNEL4XqNps.jpg','Prueba pagina 2','https://www.youtube.com','Web',1,'2024-09-02 23:16:27','2024-09-03 17:43:56'),(2,'public/imagenes/Uue2PWnXbdcETMwPnXMWa8CLAxFYZfOfdLJoxwC8.png','pruea 223','ad','Dashboard',1,'2024-09-03 17:47:21','2024-09-03 19:42:12');
 /*!40000 ALTER TABLE `paginas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,4 +257,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-01 20:24:22
+-- Dump completed on 2024-09-03 15:55:47
