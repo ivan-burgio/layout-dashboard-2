@@ -31,15 +31,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/perfil', [ProfileController::class, 'index'])->name('perfil');
 
+    // Rutas para Calendario
+    Route::prefix('/dashboard/agenda/calendario')->group(function () {
+        Route::get('/', [AgendaController::class, 'calendario']);
+        Route::get('/events', [AgendaController::class, 'events']);
+        Route::post('/events', [AgendaController::class, 'store']);
+        Route::put('/events/{id}', [AgendaController::class, 'update']);
+        Route::delete('/events/{id}', [AgendaController::class, 'destroy']);
+    });
+
     // Rutas para Agenda
     Route::get('/dashboard/agenda/tickets', [AgendaController::class, 'tickets']);
     Route::get('/dashboard/agenda/reuniones', [AgendaController::class, 'reuniones']);
 
     // Rutas para Clientes
-    Route::get('/dashboard/cuentas/clientes', [CuentasController::class, 'clientes'])->name('clientes');
-    Route::post('/dashboard/cuentas/clientes', [CuentasController::class, 'clientesStore'])->name('clientes.store');
-    Route::put('/dashboard/cuentas/clientes/{id}', [CuentasController::class, 'clientesStore']);
-    Route::put('/dashboard/cuentas/clientes/estado/{id}', [CuentasController::class, 'updateClienteEstado'])->name('clientes.updateEstado');
+    Route::prefix('/dashboard/cuentas/clientes')->group(function () {
+        Route::get('/', [CuentasController::class, 'clientes'])->name('clientes');
+        Route::post('/', [CuentasController::class, 'clientesStore'])->name('clientes.store');
+        Route::put('/{id}', [CuentasController::class, 'clientesStore']);
+        Route::put('/estado/{id}', [CuentasController::class, 'updateClienteEstado'])->name('clientes.updateEstado');
+    });
 
     // Rutas para Paginas
     Route::get('/dashboard/cuentas/paginas', [CuentasController::class, 'paginas'])->name('paginas');

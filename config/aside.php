@@ -15,6 +15,7 @@ return [
             'title' => 'Agenda',
             'icon' => 'fas fa-calendar-alt',
             'submenu' => [
+                ['title' => 'Calendario', 'url' => $baseURL . 'agenda/calendario'],
                 ['title' => 'Tickets', 'url' => $baseURL . 'agenda/tickets'],
                 ['title' => 'Reuniones', 'url' => $baseURL . 'agenda/reuniones'],
             ],
