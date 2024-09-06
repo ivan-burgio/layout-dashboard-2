@@ -48,7 +48,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Lucas Viera 22','lucas@lucas.com','09999999','0000000','2024-09-02 01:32:39','2024-09-03 17:11:23',1,'Activo',1),(2,'Nahuel Sueiro 21231','nahue@nahuel.com','09999991','00000001','2024-09-03 17:11:45','2024-09-03 17:12:17',1,'Activo',1);
+INSERT INTO `clientes` VALUES (1,'Lucas Viera 22','lucas@lucas.com','09999999','0000000','2024-09-02 01:32:39','2024-09-04 23:32:21',1,'Inactivo',1),(2,'Nahuel Sueiro','nahue@nahuel.com','09999991','00000001','2024-09-03 17:11:45','2024-09-04 23:32:15',1,'Activo',1);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,6 +118,35 @@ LOCK TABLES `emails` WRITE;
 /*!40000 ALTER TABLE `emails` DISABLE KEYS */;
 INSERT INTO `emails` VALUES (1,'Pablo 2','pablo@pablo.com','Pendiente','djowabnoiuawnbiofn','2024-08-29 16:17:30','2024-08-29 19:17:30','2024-08-29 20:08:05',1,1),(2,'Pablo','pablo@pablo.com','Pendiente','djowabnoiuawnbiofnaoindowanbdpwa','2024-08-29 16:18:37','2024-08-29 19:18:37','2024-08-31 18:57:15',1,1),(3,'pepe','pepe@pepe.com','Completado','dwadwadwa','2024-08-29 17:04:50','2024-08-29 20:04:50','2024-09-01 04:13:53',1,1),(4,'papa 22312','prueba@prueba.com','En Proceso','dwadwa','2024-08-29 17:07:30','2024-08-29 20:07:30','2024-08-31 18:57:05',1,1),(5,'Pablo 2787','prueba@prueba.com','En Proceso','viyuiyuooíp','2024-08-29 17:11:59','2024-08-29 20:11:59','2024-09-01 04:13:49',1,1),(6,'saccccc','sacc@sacc.com','En Proceso','dwadwa','2024-09-01 02:33:22','2024-09-01 05:33:22','2024-09-02 01:18:36',1,1);
 /*!40000 ALTER TABLE `emails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events`
+--
+
+DROP TABLE IF EXISTS `events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `events` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime DEFAULT NULL,
+  `color` varchar(7) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events`
+--
+
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (5,'tgucc uhiuo','2024-09-04 00:00:00','2024-09-07 00:00:00','#408080',NULL,NULL),(6,'k','2024-09-02 00:00:00','2024-09-20 00:00:00','#378006',NULL,NULL),(7,'dwadwa','2024-09-03 00:00:00','2024-09-07 00:00:00','#ffff00',NULL,NULL),(8,'dwadwaddddddaa','2024-09-01 00:00:00',NULL,'#008000',NULL,NULL),(9,'k','2024-09-01 00:00:00','2024-09-07 00:00:00','#ff0080',NULL,NULL);
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -257,4 +286,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-03 15:55:47
+-- Dump completed on 2024-09-06 14:41:03
