@@ -17,7 +17,7 @@ return [
             'submenu' => [
                 ['title' => 'Calendario', 'url' => $baseURL . 'agenda/calendario'],
                 ['title' => 'Tickets', 'url' => $baseURL . 'agenda/tickets'],
-                ['title' => 'Reuniones', 'url' => $baseURL . 'agenda/reuniones'],
+                // ['title' => 'Reuniones', 'url' => $baseURL . 'agenda/reuniones'],
             ],
         ],
         [
@@ -26,10 +26,10 @@ return [
             'submenu' => [
                 ['title' => 'Clientes', 'url' => $baseURL . 'cuentas/clientes'],
                 ['title' => 'Paginas', 'url' => $baseURL . 'cuentas/paginas'],
-                ['title' => 'Contratos', 'url' => $baseURL . 'cuentas/contratos'],
+                // ['title' => 'Contratos', 'url' => $baseURL . 'cuentas/contratos'],
             ],
         ],
-        [
+        /* [
             'title' => 'Layouts',
             'icon' => 'fa-solid fa-table-columns',
             'submenu' => [
@@ -37,7 +37,7 @@ return [
                 ['title' => 'Dashboards', 'url' => $baseURL . 'layouts/dashboards'],
                 ['title' => 'ChatBoxs', 'url' => $baseURL . 'layouts/chatboxs'],
             ],
-        ],
+        ], */
         [
             'title' => 'Buzón',
             'icon' => 'fa-solid fa-envelope',
@@ -47,7 +47,7 @@ return [
                 ['title' => 'WhatsApp', 'url' => $baseURL . 'buzon/whatsapps'],
             ],
         ],
-        [
+        /* [
             'title' => 'Contabilidad',
             'icon' => 'fas fa-money-bill-wave',
             'submenu' => [
@@ -56,14 +56,14 @@ return [
                 ['title' => 'Gastos', 'url' => $baseURL . 'contabilidad/gastos'],
                 ['title' => 'Facturas', 'url' => $baseURL . 'contabilidad/facturas'],
             ],
-        ],
-        [
+        ], */
+        /* [
             'title' => 'Configuraciones',
             'icon' => 'fa-solid fa-gear',
             'submenu' => [
                 ['title' => 'Operadores', 'url' => $baseURL . 'configuraciones/operadores'],
                 ['title' => 'Permisos', 'url' => $baseURL . 'configuraciones/permisos'],
             ],
-        ],
+        ], */
     ],
 ];

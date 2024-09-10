@@ -36,6 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 document
                     .getElementById("clienteEstadoModal")
                     .classList.remove("hidden");
+            } else if (estado === "ticket") {
+                // Manejar el estado de los tickets
+                document.getElementById("ticket_id").value = id;
+                document.getElementById(
+                    "cambiarEstadoTicketForm"
+                ).action = `/dashboard/agenda/tickets/estado/${id}`;
+                document
+                    .getElementById("cambiarEstadoTicket")
+                    .classList.remove("hidden");
             }
         });
     });
@@ -43,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Seleccionar correctamente los botones de cancelar
     document
         .querySelectorAll(
-            "#cancelEmailModalButton, #cancelWebModalButton, #cancelClienteModalButton"
+            "#cancelEmailModalButton, #cancelWebModalButton, #cancelClienteModalButton, #cancelTicketModalButton"
         )
         .forEach((button) => {
             button.addEventListener("click", function () {

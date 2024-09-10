@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Ticket;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AgendaController extends Controller
 {
@@ -82,10 +85,82 @@ class AgendaController extends Controller
         return response()->json(['success' => 'Evento eliminado con éxito']);
     }
 
-    public function tickets()
+    public function tickets(Request $request)
     {
         $title = 'Tickets';
-        return view('dashboard.pages.agenda.tickets', compact('title'));
+        $query = Ticket::query()->with('assignee', 'creator');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('titulo', 'like', "%{$search}%")
+                ->orWhere('descripcion', 'like', "%{$search}%");
+        }
+
+        $orderBy = $request->input('order_by', 'id');
+        $orderDirection = $request->input('order_direction', 'desc');
+
+        $tickets = $query->orderBy($orderBy, $orderDirection)->get();
+
+        // Obtener todos los usuarios para el campo "asignado a"
+        $usuarios = User::all();
+
+        // Pasar los usuarios y tickets a la vista
+        return view('dashboard.pages.agenda.tickets', compact('title', 'tickets', 'usuarios'));
+    }
+
+    public function ticketsStore(Request $request, $id = null)
+    {
+        $validated = $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:1000',
+            'estado' => 'nullable|string|max:255',
+            'prioridad' => 'nullable|string|in:Baja,Media,Alta',
+            'asignado_a' => 'nullable|exists:users,id',
+        ]);
+
+        try {
+            $userId = Auth::id(); // ID del usuario logueado
+
+            if ($id) {
+                // Actualizar el ticket existente
+                $ticket = Ticket::findOrFail($id);
+                $ticket->update(array_merge($validated, [
+                    'user_id' => $userId, // Usuario que está editando el ticket
+                ]));
+            } else {
+                // Crear un nuevo ticket
+                Ticket::create(array_merge($validated, [
+                    'user_id' => $userId,
+                    'creado_por' => $userId,
+                ]));
+            }
+
+            return redirect()->route('tickets')->with('success', '¡Ticket guardado exitosamente!');
+        } catch (\Exception $e) {
+            return redirect()->route('tickets')->with('error', 'Hubo un problema al guardar el ticket: ' . $e->getMessage());
+        }
+    }
+
+    public function updateTicket(Request $request, $id)
+    {
+        // Validar los datos del formulario
+        $validated = $request->validate([
+            'estado' => 'required|string|in:Pendiente,Abierto,Cerrado,En Proceso',
+            'asignado_a' => 'nullable|exists:users,id',
+        ]);
+
+        // Buscar el ticket por ID
+        $ticket = Ticket::findOrFail($id);
+
+        // Actualizar el ticket con los datos del formulario
+        $ticket->estado = $validated['estado'];
+        $ticket->asignado_a = $validated['asignado_a'];
+
+        // Guardar los cambios en la base de datos
+        $ticket->save();
+
+        // Redirigir o devolver una respuesta adecuada
+        return redirect()->back()->with('success', 'Ticket actualizado correctamente.');
     }
 
     public function reuniones()

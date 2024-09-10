@@ -1,7 +1,7 @@
 @extends('dashboard.dashboard-layout')
 
 @section('content')
-    @include('dashboard.components.modal_pagina')
+    @include('dashboard.components.creacion.modal_pagina')
 
     <div class="relative overflow-x-auto m-8">
         <div class="flex flex-row w-full justify-between">

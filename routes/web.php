@@ -40,8 +40,15 @@ Route::middleware('auth')->group(function () {
         Route::delete('/events/{id}', [AgendaController::class, 'destroy']);
     });
 
+    // Rutas para Tickets
+    Route::prefix('/dashboard/agenda/tickets')->group(function () {
+        Route::get('/', [AgendaController::class, 'tickets'])->name('tickets');
+        Route::post('/', [AgendaController::class, 'ticketsStore'])->name('tickets.store');
+        Route::put('/{id}', [AgendaController::class, 'ticketsStore']);
+        Route::put('/estado/{id}', [AgendaController::class, 'updateTicket'])->name('tickets.updateEstado');
+    });
+
     // Rutas para Agenda
-    Route::get('/dashboard/agenda/tickets', [AgendaController::class, 'tickets']);
     Route::get('/dashboard/agenda/reuniones', [AgendaController::class, 'reuniones']);
 
     // Rutas para Clientes
@@ -52,10 +59,32 @@ Route::middleware('auth')->group(function () {
         Route::put('/estado/{id}', [CuentasController::class, 'updateClienteEstado'])->name('clientes.updateEstado');
     });
 
+    // Rutas para Mensajes web
+    Route::get('/dashboard/buzon/webs', [BuzonController::class, 'websMensaje'])->name('webs');
+    Route::put('/dashboard/buzon/webs/estado/{id}', [BuzonController::class, 'updateWebMensajeEstado'])->name('webs.updateEstado');
+
+    // Rutas para Emails
+    Route::prefix('/dashboard/buzon/emails')->group(function () {
+        Route::get('/', [BuzonController::class, 'emails'])->name('emails');
+        Route::post('/', [BuzonController::class, 'emailsStore'])->name('emails.store');
+        Route::put('/{id}', [BuzonController::class, 'emailsStore']);
+        Route::put('/estado/{id}', [BuzonController::class, 'updateEmailEstado'])->name('emails.updateEstado');
+    });
+
+    // Rutas para Whatsapps
+    Route::prefix('/dashboard/buzon/whatsapps')->group(function () {
+        Route::get('/', [BuzonController::class, 'whatsapps'])->name('whatsapps');
+        Route::post('/', [BuzonController::class, 'whatsappsStore'])->name('whatsapps.store');
+        Route::put('/{id}', [BuzonController::class, 'whatsappsStore']);
+        Route::put('/estado/{id}', [BuzonController::class, 'updateWhatsappEstado'])->name('whatsapps.updateEstado');
+    });
+
     // Rutas para Paginas
-    Route::get('/dashboard/cuentas/paginas', [CuentasController::class, 'paginas'])->name('paginas');
-    Route::post('/dashboard/cuentas/paginas', [CuentasController::class, 'paginasStore'])->name('paginas.store');
-    Route::put('/dashboard/cuentas/paginas/{id}', [CuentasController::class, 'paginasStore']);
+    Route::prefix('/dashboard/cuentas/paginas')->group(function () {
+        Route::get('/', [CuentasController::class, 'paginas'])->name('paginas');
+        Route::post('/', [CuentasController::class, 'paginasStore'])->name('paginas.store');
+        Route::put('/{id}', [CuentasController::class, 'paginasStore']);
+    });
 
     // Rutas para Cuentas
     Route::get('/dashboard/cuentas/contratos', [CuentasController::class, 'contratos']);
@@ -64,22 +93,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/layouts/webs', [LayoutsController::class, 'webs']);
     Route::get('/dashboard/layouts/dashboards', [LayoutsController::class, 'dashboards']);
     Route::get('/dashboard/layouts/chatboxs', [LayoutsController::class, 'chatboxs']);
-
-    // Rutas para Mensajes web
-    Route::get('/dashboard/buzon/webs', [BuzonController::class, 'websMensaje'])->name('webs');
-    Route::put('/dashboard/buzon/webs/estado/{id}', [BuzonController::class, 'updateWebMensajeEstado'])->name('webs.updateEstado');
-
-    // Rutas para Emails
-    Route::get('/dashboard/buzon/emails', [BuzonController::class, 'emails'])->name('emails');
-    Route::post('/dashboard/buzon/emails', [BuzonController::class, 'emailsStore'])->name('emails.store');
-    Route::put('/dashboard/buzon/emails/{id}', [BuzonController::class, 'emailsStore']);
-    Route::put('/dashboard/buzon/emails/estado/{id}', [BuzonController::class, 'updateEmailEstado'])->name('emails.updateEstado');
-
-    // Rutas para Whatsapps
-    Route::get('/dashboard/buzon/whatsapps', [BuzonController::class, 'whatsapps'])->name('whatsapps');;
-    Route::post('/dashboard/buzon/whatsapps', [BuzonController::class, 'whatsappsStore'])->name('whatsapps.store');
-    Route::put('/dashboard/buzon/whatsapps/{id}', [BuzonController::class, 'whatsappsStore']);
-    Route::put('/dashboard/buzon/whatsapps/estado/{id}', [BuzonController::class, 'updateWhatsappEstado'])->name('whatsapps.updateEstado');
 
     // Rutas para Contabilidad
     Route::get('/dashboard/contabilidad/pagos', [ContabilidadController::class, 'pagos']);
