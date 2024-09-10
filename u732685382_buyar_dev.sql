@@ -210,6 +210,42 @@ INSERT INTO `paginas` VALUES (1,'public/imagenes/PXzvuqrwjOmmGW2ZQ0kO1qj8YbQZy1j
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tickets`
+--
+
+DROP TABLE IF EXISTS `tickets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tickets` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) NOT NULL,
+  `descripcion` text NOT NULL,
+  `estado` varchar(50) DEFAULT 'Pendiente',
+  `prioridad` varchar(50) DEFAULT 'Media',
+  `asignado_a` int DEFAULT NULL,
+  `creado_por` int NOT NULL,
+  `fecha_limite` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `asignado_a` (`asignado_a`),
+  KEY `creado_por` (`creado_por`),
+  CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`asignado_a`) REFERENCES `users` (`id`),
+  CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`creado_por`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tickets`
+--
+
+LOCK TABLES `tickets` WRITE;
+/*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
+INSERT INTO `tickets` VALUES (1,'Prueba Tickets a','dwabidwbai bdn oiawnbduoibwaiyhdvbi awbud aw','En Proceso','Baja',NULL,1,NULL,'2024-09-10 17:12:06','2024-09-10 18:30:15'),(2,'Prueba tickets 23','dwadwa','Pendiente','Baja',NULL,1,NULL,'2024-09-10 18:30:23','2024-09-10 18:30:23'),(3,'dwadw 8yg 2','dwadwad k','Cerrado','Alta',NULL,1,NULL,'2024-09-10 19:23:09','2024-09-10 20:30:53');
+/*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -237,7 +273,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Ivan Burgio','ivan.24.burgio@gmail.com','$2y$12$R3d19S8vIkO0.4wy3reMWeaWpzTsINnEotQPQ6FdrSrTQo5nbhfAG','53114452',0,0,'2024-08-14 18:58:39','2024-08-19 21:01:05'),(2,'Ivan yang','prueba@prueba.com','$2y$12$R3d19S8vIkO0.4wy3reMWeaWpzTsINnEotQPQ6FdrSrTQo5nbhfAG','53114453',0,0,'2024-08-14 18:58:39','2024-08-19 21:01:05');
+INSERT INTO `users` VALUES (1,'Ivan Burgio','ivan.24.burgio@gmail.com','$2y$12$R3d19S8vIkO0.4wy3reMWeaWpzTsINnEotQPQ6FdrSrTQo5nbhfAG','53114452',0,0,'2024-08-14 18:58:39','2024-08-19 21:01:05'),(2,'Ivan Yang','prueba@prueba.com','$2y$12$R3d19S8vIkO0.4wy3reMWeaWpzTsINnEotQPQ6FdrSrTQo5nbhfAG','53114453',0,0,'2024-08-14 18:58:39','2024-09-10 15:45:31');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,4 +322,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-06 14:41:03
+-- Dump completed on 2024-09-10 14:31:48
