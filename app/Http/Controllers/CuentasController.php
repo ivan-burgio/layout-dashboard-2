@@ -60,7 +60,6 @@ class CuentasController extends Controller
 
             return redirect()->route('clientes')->with('success', 'Cliente guardado exitosamente!');
         } catch (\Exception $e) {
-            // Maneja el error y muestra un mensaje detallado
             return redirect()->route('clientes')->with('error', 'Hubo un problema al guardar el cliente: ' . $e->getMessage());
         }
     }

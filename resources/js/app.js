@@ -13,3 +13,4 @@ import "./modal_email";
 import "./modal_whatsapp";
 import "./modal_cliente";
 import "./modal_pagina";
+import "./modal_ticket";

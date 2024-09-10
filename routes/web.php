@@ -40,8 +40,15 @@ Route::middleware('auth')->group(function () {
         Route::delete('/events/{id}', [AgendaController::class, 'destroy']);
     });
 
+    // Rutas para Tickets
+    Route::prefix('/dashboard/agenda/tickets')->group(function () {
+        Route::get('/', [AgendaController::class, 'tickets'])->name('tickets');
+        Route::post('/', [AgendaController::class, 'ticketsStore'])->name('tickets.store');
+        Route::put('/{id}', [AgendaController::class, 'ticketsStore']);
+        Route::put('/estado/{id}', [AgendaController::class, 'updateTicket'])->name('tickets.updateEstado');
+    });
+
     // Rutas para Agenda
-    Route::get('/dashboard/agenda/tickets', [AgendaController::class, 'tickets']);
     Route::get('/dashboard/agenda/reuniones', [AgendaController::class, 'reuniones']);
 
     // Rutas para Clientes
@@ -51,6 +58,10 @@ Route::middleware('auth')->group(function () {
         Route::put('/{id}', [CuentasController::class, 'clientesStore']);
         Route::put('/estado/{id}', [CuentasController::class, 'updateClienteEstado'])->name('clientes.updateEstado');
     });
+
+    // Rutas para Mensajes web
+    Route::get('/dashboard/buzon/webs', [BuzonController::class, 'websMensaje'])->name('webs');
+    Route::put('/dashboard/buzon/webs/estado/{id}', [BuzonController::class, 'updateWebMensajeEstado'])->name('webs.updateEstado');
 
     // Rutas para Emails
     Route::prefix('/dashboard/buzon/emails')->group(function () {
