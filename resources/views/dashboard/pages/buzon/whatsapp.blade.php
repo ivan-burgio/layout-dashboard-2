@@ -1,8 +1,8 @@
 @extends('dashboard.dashboard-layout')
 
 @section('content')
-    @include('dashboard.components.modal_whatsapp')
-    @include('dashboard.components.modal_estado')
+    @include('dashboard.components.creacion.modal_whatsapp')
+    @include('dashboard.components.estado.modal_whatsapp')
 
     <div class="relative overflow-x-auto m-8">
         <div class="flex flex-row w-full justify-between">

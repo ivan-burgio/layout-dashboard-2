@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mensaje;
 use App\Models\Email;
 use App\Models\Whatsapp;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

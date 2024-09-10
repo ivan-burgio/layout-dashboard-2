@@ -1,7 +1,7 @@
 @extends('dashboard.dashboard-layout')
 
 @section('content')
-    @include('dashboard.components.modal_calendario')
+    @include('dashboard.components.creacion.modal_calendario')
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="flex justify-center p-8">
