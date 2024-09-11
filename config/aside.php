@@ -35,7 +35,7 @@ return [
             'submenu' => [
                 ['title' => 'Webs', 'url' => $baseURL . 'layouts/webs'],
                 ['title' => 'Dashboards', 'url' => $baseURL . 'layouts/dashboards'],
-                ['title' => 'ChatBoxs', 'url' => $baseURL . 'layouts/chatboxs'],
+                ['title' => 'ChatBots', 'url' => $baseURL . 'layouts/chatbots'],
             ],
         ],
         [

@@ -89,10 +89,26 @@ Route::middleware('auth')->group(function () {
     // Rutas para Cuentas
     Route::get('/dashboard/cuentas/contratos', [CuentasController::class, 'contratos']);
 
-    // Rutas para Layouts
-    Route::get('/dashboard/layouts/webs', [LayoutsController::class, 'webs']);
-    Route::get('/dashboard/layouts/dashboards', [LayoutsController::class, 'dashboards']);
-    Route::get('/dashboard/layouts/chatboxs', [LayoutsController::class, 'chatboxs']);
+    // Rutas para Layouts Web
+    Route::prefix('/dashboard/layouts/webs')->group(function () {
+        Route::get('/', [LayoutsController::class, 'webs'])->name('webs');
+        Route::post('/', [LayoutsController::class, 'websStore'])->name('webs.store');
+        Route::put('/{id}', [LayoutsController::class, 'websStore'])->name('webs.update');
+    });
+
+    // Rutas para Layouts Dashboards
+    Route::prefix('/dashboard/layouts/dashboards')->group(function () {
+        Route::get('/', [LayoutsController::class, 'dashboards'])->name('dashboards');
+        Route::post('/', [LayoutsController::class, 'dashboardsStore'])->name('dashboards.store');
+        Route::put('/{id}', [LayoutsController::class, 'dashboardsStore'])->name('dashboards.update');
+    });
+
+    // Rutas para Layouts Chatbots
+    Route::prefix('/dashboard/layouts/chatbots')->group(function () {
+        Route::get('/', [LayoutsController::class, 'chatbots'])->name('chatbots');
+        Route::post('/', [LayoutsController::class, 'chatbotsStore'])->name('chatbots.store');
+        Route::put('/{id}', [LayoutsController::class, 'chatbotsStore'])->name('chatbots.update');
+    });
 
     // Rutas para Contabilidad
     Route::get('/dashboard/contabilidad/pagos', [ContabilidadController::class, 'pagos']);

@@ -29,8 +29,8 @@ class PageController extends Controller
                     'image' => 'https://picsum.photos/400/300',
                 ],
                 [
-                    'title' => 'Integración de Chatbox',
-                    'description' => 'Ofrecemos chatbox con bots inteligentes para resolver dudas al instante, mejorando la experiencia del usuario y liberando tiempo para ti.',
+                    'title' => 'Integración de Chatbot',
+                    'description' => 'Ofrecemos chatbots con bots inteligentes para resolver dudas al instante, mejorando la experiencia del usuario y liberando tiempo para ti.',
                     'image' => 'https://picsum.photos/400/400',
                 ],
             ],
@@ -59,7 +59,7 @@ class PageController extends Controller
                 También incluimos bandejas de correos que optimizan la comunicación con clientes y proveedores. Nuestro objetivo es proporcionar una solución que te dé control total sobre tus operaciones, mejorando la productividad y facilitando el crecimiento de tu negocio. Con Buyar, no solo obtienes una plataforma de gestión; adquieres una herramienta estratégica para alcanzar tus objetivos empresariales con mayor efectividad.',
                 'carousel_images' => ['https://picsum.photos/400/400', 'https://picsum.photos/300/300', 'https://picsum.photos/400/300'],
             ],
-            'Integración de Chatbox' => [
+            'Integración de Chatbot' => [
                 'description' => 'En Buyar, integramos chatbots inteligentes que brindan respuestas rápidas a las preguntas comunes de tus clientes, mejorando la experiencia del usuario y liberando tiempo para tu equipo. Equipados con aprendizaje automático y procesamiento de lenguaje natural, nuestros bots responden eficientemente, garantizando información precisa y rápida.
 
                 Esta solución permite ofrecer atención personalizada y continua, fortaleciendo la relación con tus clientes sin esfuerzo adicional. Con Buyar, elevamos tu servicio al cliente y contribuimos al crecimiento de tu negocio.',

@@ -16,7 +16,7 @@
                         <option value="" disabled selected>Selecciona un tipo</option>
                         <option value="Web">Web</option>
                         <option value="Dashboard">Dashboard</option>
-                        <option value="ChatBox">ChatBox</option>
+                        <option value="ChatBot">ChatBot</option>
                     </select>
                 </div>
                 <div class="mb-4">
