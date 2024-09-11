@@ -18,16 +18,16 @@ class Whatsapp extends Model
         'estado',
         'mensaje',
         'fecha',
-        'user_id',
+        'creador',
         'estado_cambiado_por'
     ];
 
     public $timestamps = true;  // Para que Laravel maneje automáticamente los campos created_at y updated_at
 
-    // Define la relación con el modelo User para el campo 'user_id'
+    // Define la relación con el modelo User para el campo 'creador'
     public function creator()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'creador');
     }
 
     // Define la relación con el modelo User para el campo 'estado_cambiado_por'

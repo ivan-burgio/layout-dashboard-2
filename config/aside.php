@@ -29,7 +29,7 @@ return [
                 // ['title' => 'Contratos', 'url' => $baseURL . 'cuentas/contratos'],
             ],
         ],
-        /* [
+        [
             'title' => 'Layouts',
             'icon' => 'fa-solid fa-table-columns',
             'submenu' => [
@@ -37,7 +37,7 @@ return [
                 ['title' => 'Dashboards', 'url' => $baseURL . 'layouts/dashboards'],
                 ['title' => 'ChatBoxs', 'url' => $baseURL . 'layouts/chatboxs'],
             ],
-        ], */
+        ],
         [
             'title' => 'Buzón',
             'icon' => 'fa-solid fa-envelope',

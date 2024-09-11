@@ -15,13 +15,13 @@ class Ticket extends Model
         'estado',
         'prioridad',
         'asignado_a',
-        'creado_por',
+        'creador',
     ];
 
     // Relación con el usuario que lo creó
     public function creator()
     {
-        return $this->belongsTo(User::class, 'creado_por');
+        return $this->belongsTo(User::class, 'creador');
     }
 
     // Relación con el usuario asignado

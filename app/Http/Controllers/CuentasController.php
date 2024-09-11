@@ -49,12 +49,12 @@ class CuentasController extends Controller
                 // Actualiza el registro existente
                 $cliente = Cliente::findOrFail($id);
                 $cliente->update(array_merge($validated, [
-                    'user_id' => $userId,
+                    'creador' => $userId,
                 ]));
             } else {
                 // Crea un nuevo registro
                 Cliente::create(array_merge($validated, [
-                    'user_id' => $userId,
+                    'creador' => $userId,
                     'estado_cambiado_por' => $userId,
                 ]));
             }
@@ -117,7 +117,7 @@ class CuentasController extends Controller
                 // Actualiza la página existente
                 $pagina = Pagina::findOrFail($id);
                 $pagina->update(array_merge($validated, [
-                    'user_id' => $userId,
+                    'creador' => $userId,
                 ]));
 
                 // Maneja la imagen si se proporciona una nueva
@@ -148,7 +148,7 @@ class CuentasController extends Controller
                 }
 
                 Pagina::create(array_merge($validated, [
-                    'user_id' => $userId,
+                    'creador' => $userId,
                 ]));
             }
 

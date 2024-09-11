@@ -17,7 +17,7 @@ class Email extends Model
         'email',
         'estado',
         'mensaje',
-        'user_id',
+        'creador',
         'estado',
         'estado_cambiado_por',
     ];
@@ -27,7 +27,7 @@ class Email extends Model
     // Relación con el usuario que creó el registro
     public function creator()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'creador');
     }
 
     // Relación con el usuario que cambió el estado
