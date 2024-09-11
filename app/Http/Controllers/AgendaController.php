@@ -125,13 +125,13 @@ class AgendaController extends Controller
                 // Actualizar el ticket existente
                 $ticket = Ticket::findOrFail($id);
                 $ticket->update(array_merge($validated, [
-                    'user_id' => $userId, // Usuario que está editando el ticket
+                    'creador' => $userId, // Usuario que está editando el ticket
                 ]));
             } else {
                 // Crear un nuevo ticket
                 Ticket::create(array_merge($validated, [
-                    'user_id' => $userId,
-                    'creado_por' => $userId,
+                    'creador' => $userId,
+                    'creador' => $userId,
                 ]));
             }
 

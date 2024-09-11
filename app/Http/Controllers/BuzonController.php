@@ -50,7 +50,7 @@ class BuzonController extends Controller
 
         // Guardar en la base de datos
         Mensaje::create(array_merge($validatedData, [
-            'user_id' => $userId,
+            'creador' => $userId,
             'estado_cambiado_por' => $userId,
         ]));
 
@@ -105,13 +105,13 @@ class BuzonController extends Controller
                 // Actualiza el registro existente
                 $email = Email::findOrFail($id);
                 $email->update(array_merge($validated, [
-                    'user_id' => $userId,
+                    'creador' => $userId,
                     'estado_cambiado_por' => $userId,
                 ]));
             } else {
                 // Crea un nuevo registro
                 Email::create(array_merge($validated, [
-                    'user_id' => $userId,
+                    'creador' => $userId,
                     'estado_cambiado_por' => $userId,
                 ]));
             }
@@ -170,13 +170,13 @@ class BuzonController extends Controller
                 // Actualiza el registro existente
                 $whatsapp = Whatsapp::findOrFail($id);
                 $whatsapp->update(array_merge($validated, [
-                    'user_id' => $userId,
+                    'creador' => $userId,
                     'estado_cambiado_por' => $userId,
                 ]));
             } else {
                 // Crea un nuevo registro
                 Whatsapp::create(array_merge($validated, [
-                    'user_id' => $userId,
+                    'creador' => $userId,
                     'estado_cambiado_por' => $userId,
                 ]));
             }

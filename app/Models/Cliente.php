@@ -19,7 +19,7 @@ class Cliente extends Model
         'email',
         'telefono',
         'numero_cuenta_bancaria',
-        'user_id',
+        'creador',
         'estado',
         'estado_cambiado_por'
     ];
@@ -27,7 +27,7 @@ class Cliente extends Model
     // Relación con la tabla `users`
     public function creator()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'creador');
     }
 
     // Relación con el usuario que cambió el estado

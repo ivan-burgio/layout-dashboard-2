@@ -32,13 +32,13 @@ CREATE TABLE `clientes` (
   `numero_cuenta_bancaria` varchar(34) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `user_id` int NOT NULL,
+  `creador` int NOT NULL,
   `estado` varchar(255) DEFAULT 'Inactivo',
   `estado_cambiado_por` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  KEY `user_id` (`creador`),
+  CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`creador`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,13 +158,17 @@ DROP TABLE IF EXISTS `layouts`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `layouts` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(50) NOT NULL,
-  `imagen` varchar(255) DEFAULT NULL,
-  `link` varchar(255) DEFAULT NULL,
   `nombre` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `descripcion` text NOT NULL,
+  `categoria` enum('web','dashboard','chatbot') NOT NULL,
+  `tipo` varchar(100) NOT NULL,
+  `creador` int NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `imagen` varchar(255) NOT NULL,
+  `fecha_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `creador` (`creador`),
+  CONSTRAINT `layouts_ibfk_1` FOREIGN KEY (`creador`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -190,12 +194,12 @@ CREATE TABLE `paginas` (
   `nombre` varchar(255) NOT NULL,
   `link` varchar(255) DEFAULT NULL,
   `tipo` varchar(50) NOT NULL,
-  `user_id` int NOT NULL,
+  `creador` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `paginas_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  KEY `user_id` (`creador`),
+  CONSTRAINT `paginas_ibfk_1` FOREIGN KEY (`creador`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -223,15 +227,15 @@ CREATE TABLE `tickets` (
   `estado` varchar(50) DEFAULT 'Pendiente',
   `prioridad` varchar(50) DEFAULT 'Media',
   `asignado_a` int DEFAULT NULL,
-  `creado_por` int NOT NULL,
+  `creador` int NOT NULL,
   `fecha_limite` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `asignado_a` (`asignado_a`),
-  KEY `creado_por` (`creado_por`),
+  KEY `creado_por` (`creador`),
   CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`asignado_a`) REFERENCES `users` (`id`),
-  CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`creado_por`) REFERENCES `users` (`id`)
+  CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`creador`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -241,7 +245,7 @@ CREATE TABLE `tickets` (
 
 LOCK TABLES `tickets` WRITE;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` VALUES (1,'Prueba Tickets a','dwabidwbai bdn oiawnbduoibwaiyhdvbi awbud aw','En Proceso','Baja',NULL,1,NULL,'2024-09-10 17:12:06','2024-09-10 18:30:15'),(2,'Prueba tickets 23','dwadwa','Pendiente','Baja',NULL,1,NULL,'2024-09-10 18:30:23','2024-09-10 18:30:23'),(3,'dwadw 8yg 2','dwadwad k','Cerrado','Alta',NULL,1,NULL,'2024-09-10 19:23:09','2024-09-10 20:30:53');
+INSERT INTO `tickets` VALUES (1,'Prueba Tickets a','dwabidwbai bdn oiawnbduoibwaiyhdvbi awbud aw','Pendiente','Baja',1,1,NULL,'2024-09-10 17:12:06','2024-09-10 20:51:13'),(2,'Prueba tickets 23','dwadwa','Pendiente','Media',1,1,NULL,'2024-09-10 18:30:23','2024-09-10 21:02:15'),(3,'dwadw 8yg 2','dwadwad k','Pendiente','Alta',2,1,NULL,'2024-09-10 19:23:09','2024-09-10 20:51:05');
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,12 +297,12 @@ CREATE TABLE `whatsapps` (
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `user_id` int NOT NULL,
+  `creador` int NOT NULL,
   `estado_cambiado_por` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_whatsapps_user_id` (`user_id`),
+  KEY `fk_whatsapps_user_id` (`creador`),
   KEY `estado_cambiado_por` (`estado_cambiado_por`),
-  CONSTRAINT `fk_whatsapps_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `fk_whatsapps_user_id` FOREIGN KEY (`creador`) REFERENCES `users` (`id`),
   CONSTRAINT `whatsapps_ibfk_1` FOREIGN KEY (`estado_cambiado_por`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -322,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-10 14:31:48
+-- Dump completed on 2024-09-11 16:20:54

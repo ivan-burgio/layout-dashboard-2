@@ -2,22 +2,242 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Layout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class LayoutsController extends Controller
 {
-    public function webs()
+    // Método para listar layouts de tipo 'web'
+    public function webs(Request $request)
     {
-        return view('dashboard.pages.layouts.webs');
+        $title = 'Layouts Web';
+        $query = Layout::where('categoria', 'web');
+
+        // Filtrado por nombre o tipo
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('nombre', 'like', "%{$search}%")
+                    ->orWhere('tipo', 'like', "%{$search}%");
+            });
+        }
+
+        // Ordenar resultados
+        $orderBy = $request->input('order_by', 'id');
+        $orderDirection = $request->input('order_direction', 'desc');
+
+        $layouts = $query->orderBy($orderBy, $orderDirection)->get();
+
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts'));
     }
 
-    public function dashboards()
+    // Método para crear o actualizar un layout de tipo 'web'
+    public function websStore(Request $request, $id = null)
     {
-        return view('dashboard.pages.layouts.dashboards');
+        // Validar la solicitud
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'tipo' => 'required|string|max:50',
+            'link' => 'nullable|string|max:255',
+            'imagen' => 'nullable|image|max:2048',
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'descripcion.required' => 'El campo descripción es obligatorio.',
+            'tipo.required' => 'El campo tipo es obligatorio.',
+        ]);
+
+        try {
+            $userId = Auth::id(); // Obtener el ID del usuario logueado
+
+            if ($id) {
+                // Actualizar layout existente
+                $layout = Layout::findOrFail($id);
+                $layout->update(array_merge($validated, [
+                    'creador' => $userId,
+                    'categoria' => 'web',
+                ]));
+
+                // Manejar imagen si se proporciona una nueva
+                if ($request->hasFile('imagen')) {
+                    if ($layout->imagen && Storage::exists($layout->imagen)) {
+                        Storage::delete($layout->imagen);
+                    }
+                    $path = $request->file('imagen')->store('public/imagenes');
+                    $validated['imagen'] = $path;
+                } else {
+                    if ($layout->imagen) {
+                        $validated['imagen'] = $layout->imagen;
+                    }
+                }
+
+                $layout->update($validated);
+            } else {
+                // Crear nuevo layout
+                if ($request->hasFile('imagen')) {
+                    $path = $request->file('imagen')->store('public/imagenes');
+                    $validated['imagen'] = $path;
+                }
+
+                Layout::create(array_merge($validated, [
+                    'creador' => $userId,
+                    'categoria' => 'web',
+                ]));
+            }
+
+            return redirect()->route('layouts')->with('success', 'Layout web guardado exitosamente!');
+        } catch (\Exception $e) {
+            return redirect()->route('layouts')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
+        }
     }
 
-    public function chatboxs()
+    // Método para listar layouts de tipo 'dashboard'
+    public function dashboards(Request $request)
     {
-        return view('dashboard.pages.layouts.chatboxs');
+        $title = 'Layouts Dashboard';
+        $query = Layout::where('categoria', 'dashboard');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('nombre', 'like', "%{$search}%")
+                    ->orWhere('tipo', 'like', "%{$search}%");
+            });
+        }
+
+        $orderBy = $request->input('order_by', 'id');
+        $orderDirection = $request->input('order_direction', 'desc');
+
+        $layouts = $query->orderBy($orderBy, $orderDirection)->get();
+
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts'));
+    }
+
+    // Método para crear o actualizar un layout de tipo 'dashboard'
+    public function dashboardsStore(Request $request, $id = null)
+    {
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'tipo' => 'required|string|max:50',
+            'link' => 'nullable|string|max:255',
+            'imagen' => 'nullable|image|max:2048',
+        ]);
+
+        try {
+            $userId = Auth::id();
+
+            if ($id) {
+                $layout = Layout::findOrFail($id);
+                $layout->update(array_merge($validated, [
+                    'creador' => $userId,
+                    'categoria' => 'dashboard',
+                ]));
+
+                if ($request->hasFile('imagen')) {
+                    if ($layout->imagen && Storage::exists($layout->imagen)) {
+                        Storage::delete($layout->imagen);
+                    }
+                    $path = $request->file('imagen')->store('public/imagenes');
+                    $validated['imagen'] = $path;
+                } else {
+                    if ($layout->imagen) {
+                        $validated['imagen'] = $layout->imagen;
+                    }
+                }
+
+                $layout->update($validated);
+            } else {
+                if ($request->hasFile('imagen')) {
+                    $path = $request->file('imagen')->store('public/imagenes');
+                    $validated['imagen'] = $path;
+                }
+
+                Layout::create(array_merge($validated, [
+                    'creador' => $userId,
+                    'categoria' => 'dashboard',
+                ]));
+            }
+
+            return redirect()->route('layouts')->with('success', 'Layout dashboard guardado exitosamente!');
+        } catch (\Exception $e) {
+            return redirect()->route('layouts')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
+        }
+    }
+
+    // Método para listar layouts de tipo 'chatbot'
+    public function chatbots(Request $request)
+    {
+        $title = 'Layouts Chatbot';
+        $query = Layout::where('categoria', 'chatbot');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('nombre', 'like', "%{$search}%")
+                    ->orWhere('tipo', 'like', "%{$search}%");
+            });
+        }
+
+        $orderBy = $request->input('order_by', 'id');
+        $orderDirection = $request->input('order_direction', 'desc');
+
+        $layouts = $query->orderBy($orderBy, $orderDirection)->get();
+
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts'));
+    }
+
+    // Método para crear o actualizar un layout de tipo 'chatbot'
+    public function chatbotsStore(Request $request, $id = null)
+    {
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'tipo' => 'required|string|max:50',
+            'link' => 'nullable|string|max:255',
+            'imagen' => 'nullable|image|max:2048',
+        ]);
+
+        try {
+            $userId = Auth::id();
+
+            if ($id) {
+                $layout = Layout::findOrFail($id);
+                $layout->update(array_merge($validated, [
+                    'creador' => $userId,
+                    'categoria' => 'chatbot',
+                ]));
+
+                if ($request->hasFile('imagen')) {
+                    if ($layout->imagen && Storage::exists($layout->imagen)) {
+                        Storage::delete($layout->imagen);
+                    }
+                    $path = $request->file('imagen')->store('public/imagenes');
+                    $validated['imagen'] = $path;
+                } else {
+                    if ($layout->imagen) {
+                        $validated['imagen'] = $layout->imagen;
+                    }
+                }
+
+                $layout->update($validated);
+            } else {
+                if ($request->hasFile('imagen')) {
+                    $path = $request->file('imagen')->store('public/imagenes');
+                    $validated['imagen'] = $path;
+                }
+
+                Layout::create(array_merge($validated, [
+                    'creador' => $userId,
+                    'categoria' => 'chatbot',
+                ]));
+            }
+
+            return redirect()->route('layouts')->with('success', 'Layout chatbot guardado exitosamente!');
+        } catch (\Exception $e) {
+            return redirect()->route('layouts')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
+        }
     }
 }

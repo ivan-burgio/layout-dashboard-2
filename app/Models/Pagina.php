@@ -15,13 +15,13 @@ class Pagina extends Model
         'nombre',
         'link',
         'tipo',
-        'user_id',
+        'creador',
     ];
 
     // Relación con la tabla `users`
     public function creator()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'creador');
     }
 
     // Si no deseas que los timestamps se gestionen automáticamente
