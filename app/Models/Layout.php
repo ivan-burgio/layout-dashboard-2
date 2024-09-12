@@ -18,11 +18,10 @@ class Layout extends Model
         'creador',
         'link',
         'imagen',
-        'fecha_creacion'
     ];
 
     // Deshabilitamos timestamps automáticos si no necesitamos created_at y updated_at
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * Relación con el modelo User.
