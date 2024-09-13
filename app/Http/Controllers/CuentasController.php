@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Cliente;
 use App\Models\Pagina;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class CuentasController extends Controller

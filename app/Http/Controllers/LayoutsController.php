@@ -14,6 +14,7 @@ class LayoutsController extends Controller
     {
         $title = 'Layouts Web';
         $query = Layout::where('categoria', 'web');
+        $tipo = 'webs';
 
         // Filtrado por nombre o tipo
         if ($request->has('search')) {
@@ -30,7 +31,7 @@ class LayoutsController extends Controller
 
         $layouts = $query->orderBy($orderBy, $orderDirection)->get();
 
-        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts'));
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
     }
 
     // Método para crear o actualizar un layout de tipo 'web'
@@ -40,17 +41,17 @@ class LayoutsController extends Controller
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
-            'tipo' => 'required|string|max:50',
             'link' => 'nullable|string|max:255',
             'imagen' => 'nullable|image|max:2048',
         ], [
             'nombre.required' => 'El campo nombre es obligatorio.',
             'descripcion.required' => 'El campo descripción es obligatorio.',
-            'tipo.required' => 'El campo tipo es obligatorio.',
         ]);
 
         try {
             $userId = Auth::id(); // Obtener el ID del usuario logueado
+
+            $validated['tipo'] = 'web';
 
             if ($id) {
                 // Actualizar layout existente
@@ -87,9 +88,9 @@ class LayoutsController extends Controller
                 ]));
             }
 
-            return redirect()->route('layouts')->with('success', 'Layout web guardado exitosamente!');
+            return redirect()->route('webs')->with('success', 'Layout web guardado exitosamente!');
         } catch (\Exception $e) {
-            return redirect()->route('layouts')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
+            return redirect()->route('webs')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
         }
     }
 
@@ -98,6 +99,7 @@ class LayoutsController extends Controller
     {
         $title = 'Layouts Dashboard';
         $query = Layout::where('categoria', 'dashboard');
+        $tipo = 'dashboards';
 
         if ($request->has('search')) {
             $search = $request->input('search');
@@ -112,7 +114,7 @@ class LayoutsController extends Controller
 
         $layouts = $query->orderBy($orderBy, $orderDirection)->get();
 
-        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts'));
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
     }
 
     // Método para crear o actualizar un layout de tipo 'dashboard'
@@ -121,13 +123,13 @@ class LayoutsController extends Controller
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
-            'tipo' => 'required|string|max:50',
             'link' => 'nullable|string|max:255',
             'imagen' => 'nullable|image|max:2048',
         ]);
 
         try {
             $userId = Auth::id();
+            $validated['tipo'] = 'dashboard';
 
             if ($id) {
                 $layout = Layout::findOrFail($id);
@@ -161,9 +163,9 @@ class LayoutsController extends Controller
                 ]));
             }
 
-            return redirect()->route('layouts')->with('success', 'Layout dashboard guardado exitosamente!');
+            return redirect()->route('dashboards')->with('success', 'Layout dashboard guardado exitosamente!');
         } catch (\Exception $e) {
-            return redirect()->route('layouts')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
+            return redirect()->route('dashboards')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
         }
     }
 
@@ -172,6 +174,7 @@ class LayoutsController extends Controller
     {
         $title = 'Layouts Chatbot';
         $query = Layout::where('categoria', 'chatbot');
+        $tipo = 'chatbots';
 
         if ($request->has('search')) {
             $search = $request->input('search');
@@ -186,7 +189,7 @@ class LayoutsController extends Controller
 
         $layouts = $query->orderBy($orderBy, $orderDirection)->get();
 
-        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts'));
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
     }
 
     // Método para crear o actualizar un layout de tipo 'chatbot'
@@ -195,13 +198,13 @@ class LayoutsController extends Controller
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
-            'tipo' => 'required|string|max:50',
             'link' => 'nullable|string|max:255',
             'imagen' => 'nullable|image|max:2048',
         ]);
 
         try {
             $userId = Auth::id();
+            $validated['tipo'] = 'chatbot';
 
             if ($id) {
                 $layout = Layout::findOrFail($id);
@@ -235,9 +238,9 @@ class LayoutsController extends Controller
                 ]));
             }
 
-            return redirect()->route('layouts')->with('success', 'Layout chatbot guardado exitosamente!');
+            return redirect()->route('chatbots')->with('success', 'Layout chatbot guardado exitosamente!');
         } catch (\Exception $e) {
-            return redirect()->route('layouts')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
+            return redirect()->route('chatbots')->with('error', 'Hubo un problema al guardar el layout: ' . $e->getMessage());
         }
     }
 }

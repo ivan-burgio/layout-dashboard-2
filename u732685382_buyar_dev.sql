@@ -161,15 +161,13 @@ CREATE TABLE `layouts` (
   `nombre` varchar(255) NOT NULL,
   `descripcion` text NOT NULL,
   `categoria` enum('web','dashboard','chatbot') NOT NULL,
-  `tipo` varchar(100) NOT NULL,
   `creador` int NOT NULL,
   `link` varchar(255) NOT NULL,
-  `imagen` varchar(255) NOT NULL,
-  `fecha_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `creador` (`creador`),
   CONSTRAINT `layouts_ibfk_1` FOREIGN KEY (`creador`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,6 +176,7 @@ CREATE TABLE `layouts` (
 
 LOCK TABLES `layouts` WRITE;
 /*!40000 ALTER TABLE `layouts` DISABLE KEYS */;
+INSERT INTO `layouts` VALUES (1,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/cEkFhT8KDaSI6B5rBFqm6NQdKYA5LR2DvY5gJYH4.jpg'),(2,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/qVHVE9x1U4shnQqHdJ7hD8URJXqSvs2JfAkImz5u.jpg'),(3,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/ELdgWxiHsiGpsAIRzewwuvjjfywOGTH5eyTSVf3k.jpg'),(4,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/bsNVEaTQlP6p1Xjq0OUVInuSPVUcbAZJ3djtocIP.jpg'),(5,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/9A81EgPVjnUOSTuHt8KMCLDakwWo0CyxrsDDr9DR.jpg'),(6,'prueba dashbord','dwadwad','dashboard',1,'wadwadwa',NULL);
 /*!40000 ALTER TABLE `layouts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,4 +325,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-11 16:20:54
+-- Dump completed on 2024-09-13 17:55:15

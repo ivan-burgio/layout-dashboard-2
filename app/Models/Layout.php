@@ -14,11 +14,9 @@ class Layout extends Model
         'nombre',
         'descripcion',
         'categoria',
-        'tipo',
         'creador',
         'link',
         'imagen',
-        'fecha_creacion'
     ];
 
     // Deshabilitamos timestamps automáticos si no necesitamos created_at y updated_at
