@@ -14,14 +14,13 @@ class Layout extends Model
         'nombre',
         'descripcion',
         'categoria',
-        'tipo',
         'creador',
         'link',
         'imagen',
     ];
 
     // Deshabilitamos timestamps automáticos si no necesitamos created_at y updated_at
-    public $timestamps = true;
+    public $timestamps = false;
 
     /**
      * Relación con el modelo User.
