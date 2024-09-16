@@ -24,7 +24,8 @@
                         <p class="text-sm mb-0">{{ $service['description'] }}</p>
                     </div>
                     <div class="mt-auto">
-                        <img src="{{ $service['image'] }}" alt="" class="w-full h-48 object-cover">
+                        <img src="{{ Storage::url($service['image']) }}" alt="{{ $service['title'] }}"
+                            class="w-full h-48 object-cover">
                     </div>
                 </div>
             @endforeach
