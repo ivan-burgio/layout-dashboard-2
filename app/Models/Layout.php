@@ -19,15 +19,12 @@ class Layout extends Model
         'imagen',
     ];
 
-    // Deshabilitamos timestamps automáticos si no necesitamos created_at y updated_at
-    public $timestamps = false;
-
-    /**
-     * Relación con el modelo User.
-     * Un layout pertenece a un creador (usuario).
-     */
-    public function creador()
+    // Relación con la tabla `users`
+    public function creator()
     {
         return $this->belongsTo(User::class, 'creador');
     }
+
+    // Deshabilitamos timestamps automáticos si no necesitamos created_at y updated_at
+    public $timestamps = false;
 }

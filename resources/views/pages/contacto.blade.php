@@ -15,15 +15,16 @@
                         @foreach ($data['phone_numbers'] as $phone)
                             <p class="flex items-start -mx-2">
                                 <i class="fa-solid fa-phone w-6 h-6 mx-2 text-sky-800 text-2xl"></i>
-                                <span class="mx-2 text-gray-700 truncate dark:text-gray-400">{{ $phone }}</span>
+                                <span class="mx-2 text-gray-400 truncate">{{ $phone }}</span>
                             </p>
                         @endforeach
 
                         @foreach ($data['emails'] as $email)
-                            <p class="flex items-start -mx-2">
-                                <i class="fa-solid fa-envelope w-6 h-6 mx-2 text-sky-800 text-2xl"></i>
-                                <span class="mx-2 text-gray-700 truncate dark:text-gray-400">{{ $email }}</span>
-                            </p>
+                            <a class="flex items-start -mx-2" href="mailto:{{ $email }}?subject=Consulta+desde+Buyar&body=Hola,+te+contacto+desde+tu+sitio+web.">
+                                <i class="fa-solid fa-envelope w-6 h-6 mx-2 text-2xl" style="color: #075985;"
+                                onmouseover="this.style.color='#082f49'" onmouseout="this.style.color='#075985'"></i>
+                                <span class="mx-2 text-gray-400 truncate hover:text-gray-300">{{ $email }}</span>
+                            </a>
                         @endforeach
                     </div>
 

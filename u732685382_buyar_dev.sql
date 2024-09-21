@@ -100,13 +100,13 @@ CREATE TABLE `emails` (
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `user_id` int NOT NULL,
+  `creador` int NOT NULL,
   `estado_cambiado_por` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_emails_user_id` (`user_id`),
+  KEY `fk_emails_user_id` (`creador`),
   KEY `estado_cambiado_por` (`estado_cambiado_por`),
   CONSTRAINT `emails_ibfk_1` FOREIGN KEY (`estado_cambiado_por`) REFERENCES `users` (`id`),
-  CONSTRAINT `fk_emails_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `fk_emails_user_id` FOREIGN KEY (`creador`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -167,7 +167,7 @@ CREATE TABLE `layouts` (
   PRIMARY KEY (`id`),
   KEY `creador` (`creador`),
   CONSTRAINT `layouts_ibfk_1` FOREIGN KEY (`creador`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ CREATE TABLE `layouts` (
 
 LOCK TABLES `layouts` WRITE;
 /*!40000 ALTER TABLE `layouts` DISABLE KEYS */;
-INSERT INTO `layouts` VALUES (1,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/cEkFhT8KDaSI6B5rBFqm6NQdKYA5LR2DvY5gJYH4.jpg'),(2,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/qVHVE9x1U4shnQqHdJ7hD8URJXqSvs2JfAkImz5u.jpg'),(3,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/ELdgWxiHsiGpsAIRzewwuvjjfywOGTH5eyTSVf3k.jpg'),(4,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/bsNVEaTQlP6p1Xjq0OUVInuSPVUcbAZJ3djtocIP.jpg'),(5,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/9A81EgPVjnUOSTuHt8KMCLDakwWo0CyxrsDDr9DR.jpg'),(6,'prueba dashbord','dwadwad','dashboard',1,'wadwadwa',NULL);
+INSERT INTO `layouts` VALUES (1,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/cEkFhT8KDaSI6B5rBFqm6NQdKYA5LR2DvY5gJYH4.jpg'),(2,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/qVHVE9x1U4shnQqHdJ7hD8URJXqSvs2JfAkImz5u.jpg'),(3,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/ELdgWxiHsiGpsAIRzewwuvjjfywOGTH5eyTSVf3k.jpg'),(4,'Prueba web 1','dwadwa','web',1,'a','public/imagenes/NRdVrduywH2qG9O25WELNAsEZ72XX2lxph1PVD7q.jpg'),(5,'Prueba web 1 2 22 2 2','dwadwaawdwadwadwadwadwadwa','web',1,'adwadwa','public/imagenes/ODHkWtU84pDECqVlEeViy5f05JfiAJCe9jbAq3zR.jpg'),(6,'prueba dashbord 2','sxryktul dwadwa eddw','dashboard',1,'wadwadwa','public/imagenes/rDEIkugzO4dUPgxUyrzthXkiKeSmGdAKe2WjkTuF.jpg'),(7,'prue','dwadwadwa','dashboard',1,'dwadwa','public/imagenes/2I6V8NOYzYicPctBJxSvjWJBVsaFhxHYkeAUm1Du.png'),(8,'Prueba chatbot','dadwa','chatbot',1,'wadwadwa','public/imagenes/9RXCQexIe3fAsjmS69wDX5RXWWjGHEnd01DKy4e6.png');
 /*!40000 ALTER TABLE `layouts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,4 +325,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-13 17:55:15
+-- Dump completed on 2024-09-21 17:11:31

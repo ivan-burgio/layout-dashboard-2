@@ -2,12 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Layout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
     public function inicio()
     {
+        // Obtén todos los layouts disponibles
+        $layouts = Layout::all();
+
+        // Filtrar los layouts por cada categoría y obtener el último de cada tipo
+        $webLayouts = $layouts->filter(function ($layout) {
+            return $layout->categoria === 'web'; // Layout para Sitios Web Personalizados
+        });
+        $dashboardLayouts = $layouts->filter(function ($layout) {
+            return $layout->categoria === 'dashboard'; // Layout para Sitios de Gestión Personalizados
+        });
+        $chatbotLayouts = $layouts->filter(function ($layout) {
+            return $layout->categoria === 'chatbot'; // Layout para Integración de Chatbot
+        });
+
+        $webLayout = $webLayouts->last(); // Obtiene el último layout de la categoría 'web'
+        $dashboardLayout = $dashboardLayouts->last(); // Obtiene el último layout de la categoría 'dashboard'
+        $chatbotLayout = $chatbotLayouts->last(); // Obtiene el último layout de la categoría 'chatbot'
+
         $data = [
             'header' => [
                 'title' => 'Buyar',
@@ -21,17 +41,17 @@ class PageController extends Controller
                 [
                     'title' => 'Sitios Web Personalizados',
                     'description' => 'En Buyar, diseñamos sitios web personalizados que reflejan tu negocio y necesidades, asegurando una presencia online impactante y ayudándote a destacar.',
-                    'image' => 'https://picsum.photos/400/200',
+                    'image' => $webLayout ? $webLayout->imagen : null,
                 ],
                 [
                     'title' => 'Sitios de Gestión Personalizados',
                     'description' => 'Nuestros sitios de gestión personalizados facilitan la administración de tu negocio, desde clientes hasta facturación. Con Buyar, tendrás una herramienta poderosa para el éxito.',
-                    'image' => 'https://picsum.photos/400/300',
+                    'image' => $dashboardLayout ? $dashboardLayout->imagen : null,
                 ],
                 [
                     'title' => 'Integración de Chatbot',
                     'description' => 'Ofrecemos chatbots con bots inteligentes para resolver dudas al instante, mejorando la experiencia del usuario y liberando tiempo para ti.',
-                    'image' => 'https://picsum.photos/400/400',
+                    'image' => $chatbotLayout ? $chatbotLayout->imagen : null,
                 ],
             ],
             'why_buyar' => [
@@ -46,24 +66,46 @@ class PageController extends Controller
 
     public function servicios()
     {
+        // Obtén todos los layouts disponibles
+        $layouts = Layout::all();
+
+        // Filtrar los layouts por cada categoría y obtener los últimos 3 de cada uno
+        $webLayouts = $layouts->filter(function ($layout) {
+            return $layout->categoria === 'web'; // Layout para Sitios Web Personalizados
+        })->reverse()->take(3); // Obtener los últimos 3 layouts en orden inverso
+
+        $dashboardLayouts = $layouts->filter(function ($layout) {
+            return $layout->categoria === 'dashboard'; // Layout para Sitios de Gestión Personalizados
+        })->reverse()->take(3); // Obtener los últimos 3 layouts en orden inverso
+
+        $chatbotLayouts = $layouts->filter(function ($layout) {
+            return $layout->categoria === 'chatbot'; // Layout para Integración de Chatbot
+        })->reverse()->take(3); // Obtener los últimos 3 layouts en orden inverso
+
         $data = [
             'Sitios Web Personalizados' => [
                 'description' => 'En Buyar, nos especializamos en crear sitios web personalizados que capturan la esencia de tu negocio. Cada empresa es única, y nuestras páginas web lo reflejan al adaptarse a tus necesidades y resaltar tu presencia online de forma efectiva. Trabajamos contigo desde el diseño gráfico hasta la integración de funciones específicas, asegurando que cada detalle esté alineado con tu visión.
 
                 Nuestras soluciones son totalmente responsivas, garantizando un rendimiento óptimo en cualquier dispositivo. Ya sea que estés lanzando un nuevo negocio o renovando tu imagen, en Buyar creamos experiencias digitales que conectan y destacan. Te acompañamos en cada paso, desde la idea inicial hasta el lanzamiento y más allá, con soporte continuo para mantener tu sitio siempre a la vanguardia.',
-                'carousel_images' => ['https://picsum.photos/400/400', 'https://picsum.photos/300/300', 'https://picsum.photos/400/300'],
+                'carousel_images' => $webLayouts->pluck('imagen')->map(function ($imagen) {
+                    return Storage::url($imagen);
+                })->toArray(),
             ],
             'Sitios de Gestión Personalizados' => [
                 'description' => 'En Buyar, transformamos la gestión empresarial con soluciones personalizadas diseñadas para simplificar tu día a día. Sabemos que cada negocio tiene sus propios desafíos, por lo que creamos plataformas que se ajustan a tus necesidades específicas. Ya sea que necesites administrar clientes, empleados, stock o facturación, nuestras herramientas avanzadas te permiten hacerlo de manera eficiente y organizada.
 
                 También incluimos bandejas de correos que optimizan la comunicación con clientes y proveedores. Nuestro objetivo es proporcionar una solución que te dé control total sobre tus operaciones, mejorando la productividad y facilitando el crecimiento de tu negocio. Con Buyar, no solo obtienes una plataforma de gestión; adquieres una herramienta estratégica para alcanzar tus objetivos empresariales con mayor efectividad.',
-                'carousel_images' => ['https://picsum.photos/400/400', 'https://picsum.photos/300/300', 'https://picsum.photos/400/300'],
+                'carousel_images' => $dashboardLayouts->pluck('imagen')->map(function ($imagen) {
+                    return Storage::url($imagen);
+                })->toArray(),
             ],
             'Integración de Chatbot' => [
                 'description' => 'En Buyar, integramos chatbots inteligentes que brindan respuestas rápidas a las preguntas comunes de tus clientes, mejorando la experiencia del usuario y liberando tiempo para tu equipo. Equipados con aprendizaje automático y procesamiento de lenguaje natural, nuestros bots responden eficientemente, garantizando información precisa y rápida.
 
                 Esta solución permite ofrecer atención personalizada y continua, fortaleciendo la relación con tus clientes sin esfuerzo adicional. Con Buyar, elevamos tu servicio al cliente y contribuimos al crecimiento de tu negocio.',
-                'carousel_images' => ['https://picsum.photos/400/400', 'https://picsum.photos/300/300', 'https://picsum.photos/400/300'],
+                'carousel_images' => $chatbotLayouts->pluck('imagen')->map(function ($imagen) {
+                    return Storage::url($imagen);
+                })->toArray(),
             ],
         ];
 
@@ -151,14 +193,5 @@ class PageController extends Controller
 
         // Muestra el formulario de login
         return view('pages.login');
-    }
-
-    public function logout()
-    {
-        // Elimina los datos de la sesión
-        session()->flush();
-
-        // Redirige a la página de inicio de sesión o a otra página
-        return redirect('/login');
     }
 }

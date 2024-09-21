@@ -70,10 +70,10 @@
                             @endif
                         </td>
                         <td class="px-6 py-4">
-                            <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonlayout"
+                            <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonLayout"
                                 data-id="{{ $layout->id }}" data-nombre="{{ $layout->nombre }}"
-                                data-tipo="{{ $tipo }}" data-link="{{ $layout->link }}"
-                                data-imagen="{{ $layout->imagen }}">
+                                data-descripcion="{{ $layout->descripcion }}" data-tipo="{{ $tipo }}"
+                                data-link="{{ $layout->link }}" data-imagen="{{ $layout->imagen }}">
                                 <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                             </button>
                         </td>
