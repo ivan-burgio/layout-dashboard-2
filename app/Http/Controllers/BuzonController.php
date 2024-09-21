@@ -119,7 +119,7 @@ class BuzonController extends Controller
             return redirect()->route('emails')->with('success', 'Email guardado exitosamente!');
         } catch (\Exception $e) {
             // Maneja el error y muestra un mensaje
-            return redirect()->route('emails')->with('error', 'Hubo un problema al guardar el email.');
+            return redirect()->route('emails')->with('error', 'Hubo un problema al guardar el email: ' . $e->getMessage());
         }
     }
 
@@ -184,7 +184,7 @@ class BuzonController extends Controller
             return redirect()->route('whatsapps')->with('success', 'WhatsApp guardado exitosamente!');
         } catch (\Exception $e) {
             // Maneja el error y muestra un mensaje
-            return redirect()->route('whatsapps')->with('error', 'Hubo un problema al guardar el WhatsApp.');
+            return redirect()->route('whatsapps')->with('error', 'Hubo un problema al guardar el WhatsApp: ' . $e->getMessage());
         }
     }
 

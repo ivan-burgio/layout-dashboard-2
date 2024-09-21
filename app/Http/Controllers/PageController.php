@@ -194,13 +194,4 @@ class PageController extends Controller
         // Muestra el formulario de login
         return view('pages.login');
     }
-
-    public function logout()
-    {
-        // Elimina los datos de la sesión
-        session()->flush();
-
-        // Redirige a la página de inicio de sesión o a otra página
-        return redirect('/login');
-    }
 }
