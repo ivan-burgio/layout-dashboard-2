@@ -156,6 +156,9 @@ class PageController extends Controller
             ]
         ];
 
+        // Concatenamos todos los correos electrónicos en una sola cadena
+        $data['allEmails'] = implode(',', $data['emails']);
+
         return view('pages.contacto', ['data' => $data]);
     }
 
