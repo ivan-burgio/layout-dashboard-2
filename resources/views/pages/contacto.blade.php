@@ -12,22 +12,28 @@
                     </h1>
 
                     <div class="mt-6 space-y-8 md:mt-8 flex flex-col">
-                        @foreach ($data['phone_numbers'] as $phone)
-                            <p class="flex items-start -mx-2">
-                                <i class="fa-solid fa-phone w-6 h-6 mx-2 text-sky-800 text-2xl"></i>
-                                <span class="mx-2 text-gray-400 truncate">{{ $phone }}</span>
-                            </p>
+                        @foreach ($data['phone_numbers'] as $index => $phone)
+                            <a href="https://wa.me/{{ $data['wpp'][$index] }}?text=Hola,+te+contacto+desde+Buyar."
+                                class="flex items-start -mx-2 group w-auto" style="display: inline-flex;">
+                                <i class="fa-solid fa-phone w-6 h-6 mx-2 text-2xl text-sky-600 group-hover:text-sky-800""></i>
+                                <span class="mx-2 truncate text-gray-100 group-hover:text-sky-600">{{ $phone }}</span>
+                            </a>
                         @endforeach
 
                         @foreach ($data['emails'] as $email)
-                        <a class="flex items-start -mx-2 group w-auto" href="mailto:{{ $email }}?subject=Consulta+desde+Buyar&body=Hola,+te+contacto+desde+tu+sitio+web." style="display: inline-flex;">
-                            <i class="fa-solid fa-envelope w-6 h-6 mx-2 text-2xl text-sky-800 group-hover:text-sky-600"></i>
-                            <span class="mx-2 truncate text-gray-100 group-hover:text-sky-800">{{ $email }}</span>
-                        </a>
+                            <a class="flex items-start -mx-2 group w-auto"
+                                href="mailto:{{ $email }}?subject=Consulta+desde+Buyar&body=Hola,+te+contacto+desde+Buyar."
+                                style="display: inline-flex;">
+                                <i
+                                    class="fa-solid fa-envelope w-6 h-6 mx-2 text-2xl text-sky-600 group-hover:text-sky-800"></i>
+                                <span
+                                    class="mx-2 truncate text-gray-100 group-hover:text-sky-600">{{ $email }}</span>
+                            </a>
                         @endforeach
 
-                        <p class="mx-2 text-gray-400 truncate">O mandenos un mail directamente haciendo click 
-                            <a class="text-gray-100 hover:text-sky-800" href="mailto:{{ $data['allEmails'] }}?subject=Consulta+desde+Buyar&body=Hola,+te+contacto+desde+tu+sitio+web.">aqui</a>.
+                        <p class="mx-2 text-gray-400 truncate">O mandenos un mail directamente haciendo click
+                            <a class="text-gray-100 hover:text-sky-800"
+                                href="mailto:{{ $data['allEmails'] }}?subject=Consulta+desde+Buyar&body=Hola,+te+contacto+desde+tu+sitio+web.">aqui</a>.
                         </p>
                     </div>
 

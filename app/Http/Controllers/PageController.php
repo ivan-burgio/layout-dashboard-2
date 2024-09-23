@@ -144,6 +144,10 @@ class PageController extends Controller
                 '(+598) 92 812 477',
                 '(+598) 99 876 005'
             ],
+            'wpp' => [
+                '59892812477',
+                '59899876005'
+            ],
             'emails' => [
                 'ivan.24.burgio@gmail.com',
                 'yangivan19@gmail.com'
