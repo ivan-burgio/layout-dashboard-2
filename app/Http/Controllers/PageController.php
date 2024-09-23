@@ -144,6 +144,10 @@ class PageController extends Controller
                 '(+598) 92 812 477',
                 '(+598) 99 876 005'
             ],
+            'wpp' => [
+                '59892812477',
+                '59899876005'
+            ],
             'emails' => [
                 'ivan.24.burgio@gmail.com',
                 'yangivan19@gmail.com'
@@ -155,6 +159,9 @@ class PageController extends Controller
                 'instagram' => '#'
             ]
         ];
+
+        // Concatenamos todos los correos electrónicos en una sola cadena
+        $data['allEmails'] = implode(',', $data['emails']);
 
         return view('pages.contacto', ['data' => $data]);
     }
