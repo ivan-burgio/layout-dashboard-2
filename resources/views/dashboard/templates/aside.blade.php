@@ -1,7 +1,7 @@
 <aside id="sidebar" class="bg-gray-800 text-white min-h-screen p-2">
     <nav>
         <ul id="menu" class="space-y-2">
-            @foreach (config('aside.menu') as $section)
+            @foreach (config('tabs.menu') as $section)
                 @if (isset($section['url']) && empty($section['submenu']))
                     <!-- Elemento de menú que es un enlace directo -->
                     <li>
