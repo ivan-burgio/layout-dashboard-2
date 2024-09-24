@@ -15,4 +15,3 @@ import "./modal_cliente";
 import "./modal_pagina";
 import "./modal_ticket";
 import "./modal_layout";
-import "./charts";
