@@ -29,6 +29,7 @@ Route::post('/enviar-mensaje', [BuzonController::class, 'websMensajeStore'])->na
 // Rutas protegidas por autenticación
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('/perfil', [ProfileController::class, 'index'])->name('perfil');
 
     // Rutas para Calendario
