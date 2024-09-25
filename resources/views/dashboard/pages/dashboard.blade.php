@@ -220,7 +220,7 @@
                 <div class="flex justify-between mb-4 items-start">
                     <div class="font-medium">Buzón</div>
                 </div>
-                <div class="container">
+                <div class="flex justify-center items-center">
                     <canvas id="chartBuzon"></canvas>
                     {{-- Por alguna razon no funciona el codigo JS fuera de este archivo --}}
                     <script>
@@ -229,7 +229,28 @@
                             type: 'line',
                             data: {
                                 labels: {!! json_encode($chartBuzon['chartData']['labels']) !!},
-                                datasets: {!! json_encode($chartBuzon['chartData']['datasets']) !!}
+                                datasets: [{
+                                        label: 'Emails',
+                                        data: {!! json_encode($chartBuzon['chartData']['datasets'][0]['data']) !!},
+                                        borderColor: 'rgba(255, 99, 132, 1)', // Cambia el color de la línea
+                                        backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cambia el color de fondo
+                                        borderWidth: 2 // Grosor de la línea
+                                    },
+                                    {
+                                        label: 'Mensajes Web',
+                                        data: {!! json_encode($chartBuzon['chartData']['datasets'][1]['data']) !!},
+                                        borderColor: 'rgba(54, 162, 235, 1)', // Cambia el color de la línea
+                                        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Cambia el color de fondo
+                                        borderWidth: 2 // Grosor de la línea
+                                    },
+                                    {
+                                        label: 'WhatsApp',
+                                        data: {!! json_encode($chartBuzon['chartData']['datasets'][2]['data']) !!},
+                                        borderColor: 'rgba(75, 192, 192, 1)', // Cambia el color de la línea
+                                        backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cambia el color de fondo
+                                        borderWidth: 2 // Grosor de la línea
+                                    }
+                                ]
                             },
                             options: {
                                 responsive: true,
