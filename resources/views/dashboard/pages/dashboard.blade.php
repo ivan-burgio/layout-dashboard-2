@@ -218,39 +218,89 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
             <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                 <div class="flex justify-between mb-4 items-start">
-                    <div class="font-medium">Buzón</div>
+                    <div class="font-medium">Estadísticas de Mensajes Recibidos</div>
                 </div>
-                <div class="flex justify-center items-center">
+                <div class="flex flex-col justify-center items-center">
+                    <div class="filter-buttons flex space-x-2">
+                        <button class="filter-btn bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md" data-filter="day">Último
+                            día</button>
+                        <button class="filter-btn bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md" data-filter="month">Último
+                            mes</button>
+                        <button class="filter-btn bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md" data-filter="year">Último
+                            año</button>
+                        <button class="filter-btn bg-sky-800 hover:bg-sky-950 text-white px-4 py-2 mb-4 rounded-md" data-filter="all">Todo el
+                            tiempo</button>
+                    </div>
+
                     <canvas id="chartBuzon"></canvas>
                     {{-- Por alguna razon no funciona el codigo JS fuera de este archivo --}}
                     <script>
+                        var chartBuzon; // Mover la variable fuera para que sea accesible globalmente
+
+                        // Función para cargar el gráfico
+                        function loadChart(selectedFilter) {
+                            // Realizar la petición AJAX
+                            $.ajax({
+                                url: '/dashboard', // La URL donde se enviará la petición
+                                method: 'GET',
+                                data: {
+                                    filter: selectedFilter // Enviar el filtro al controlador
+                                },
+                                success: function(response) {
+                                    // Procesar la respuesta y actualizar el gráfico
+                                    var ctx = document.getElementById('chartBuzon').getContext('2d');
+
+                                    // Si ya existe un gráfico, destruirlo antes de crear uno nuevo
+                                    if (chartBuzon) {
+                                        chartBuzon.destroy();
+                                    }
+
+                                    // Crear un nuevo gráfico con los datos actualizados
+                                    chartBuzon = new Chart(ctx, {
+                                        type: 'line',
+                                        data: {
+                                            labels: response.chartData.labels,
+                                            datasets: response.chartData.datasets
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            }
+                                        }
+                                    });
+                                },
+                                error: function(error) {
+                                    console.error('Error al cargar los datos del gráfico:', error);
+                                }
+                            });
+                        }
+
+                        // Evento para los botones de filtro
+                        document.querySelectorAll('.filter-btn').forEach(button => {
+                            button.addEventListener('click', function() {
+                                const filter = this.dataset.filter; // Obtener el filtro del botón
+                                loadChart(filter); // Llamar a la función para cargar el gráfico con el filtro seleccionado
+                            });
+                        });
+
+                        // Al enviar el formulario de filtro
+                        $('#filterForm').on('submit', function(event) {
+                            event.preventDefault(); // Evitar que el formulario recargue la página
+
+                            var selectedFilter = $('#filter').val(); // Obtener el filtro seleccionado
+                            loadChart(selectedFilter); // Llamar a la función para cargar el gráfico
+                        });
+
+                        // Crear el gráfico inicial al cargar la página
                         var ctx = document.getElementById('chartBuzon').getContext('2d');
-                        var chartBuzon = new Chart(ctx, {
+                        chartBuzon = new Chart(ctx, {
                             type: 'line',
                             data: {
                                 labels: {!! json_encode($chartBuzon['chartData']['labels']) !!},
-                                datasets: [{
-                                        label: 'Emails',
-                                        data: {!! json_encode($chartBuzon['chartData']['datasets'][0]['data']) !!},
-                                        borderColor: 'rgba(255, 99, 132, 1)', // Cambia el color de la línea
-                                        backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cambia el color de fondo
-                                        borderWidth: 2 // Grosor de la línea
-                                    },
-                                    {
-                                        label: 'Mensajes Web',
-                                        data: {!! json_encode($chartBuzon['chartData']['datasets'][1]['data']) !!},
-                                        borderColor: 'rgba(54, 162, 235, 1)', // Cambia el color de la línea
-                                        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Cambia el color de fondo
-                                        borderWidth: 2 // Grosor de la línea
-                                    },
-                                    {
-                                        label: 'WhatsApp',
-                                        data: {!! json_encode($chartBuzon['chartData']['datasets'][2]['data']) !!},
-                                        borderColor: 'rgba(75, 192, 192, 1)', // Cambia el color de la línea
-                                        backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cambia el color de fondo
-                                        borderWidth: 2 // Grosor de la línea
-                                    }
-                                ]
+                                datasets: {!! json_encode($chartBuzon['chartData']['datasets']) !!}
                             },
                             options: {
                                 responsive: true,

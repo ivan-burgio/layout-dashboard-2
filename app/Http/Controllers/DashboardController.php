@@ -8,19 +8,27 @@ use App\Models\Mensaje;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
-use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Dashboard';
 
         $cantidadBuzon = $this->cantidadBuzon();
         $ticketsPendientes = $this->ticketsPendientes();
-        $chartBuzon = $this->chartBuzon();
 
-        // Pasar los datos a la vista
+        $filter = $request->input('filter', 'all'); // Obtener filtro o 'all' por defecto
+        $chartBuzon = $this->chartBuzon($filter); // Obtener datos del gráfico filtrados
+
+        // Verificar si la petición es AJAX
+        if ($request->ajax()) {
+            // Retornar solo los datos del gráfico para la respuesta AJAX
+            return response()->json(['chartData' => $chartBuzon['chartData']]);
+        }
+
+        // Pasar los datos a la vista si no es AJAX
         return view('dashboard.pages.dashboard', compact('title', 'cantidadBuzon', 'ticketsPendientes', 'chartBuzon'));
     }
 
@@ -53,30 +61,44 @@ class DashboardController extends Controller
     public function ticketsPendientes()
     {
         // Obtener los tickets que están pendientes
-        $ticketsPendientes = Ticket::where('estado', 'Pendiente')->get();
-
-        return $ticketsPendientes;
+        return Ticket::where('estado', 'Pendiente')->get();
     }
 
-    public function chartBuzon()
+    public function chartBuzon($filter = 'all')
     {
-        // Obtiene los datos agrupados por fecha para cada tipo de mensaje
-        $emailsPorDia = Email::selectRaw('DATE(created_at) as date, COUNT(*) as total')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->pluck('total', 'date');
+        // Filtro de fechas basado en el filtro seleccionado
+        switch ($filter) {
+            case 'day':
+                $startDate = Carbon::today();
+                break;
+            case 'month':
+                $startDate = Carbon::now()->subMonth();
+                break;
+            case 'year':
+                $startDate = Carbon::now()->subYear();
+                break;
+            default:
+                $startDate = null; // Todos los registros si no se selecciona filtro
+        }
 
-        $mensajesWebPorDia = Mensaje::selectRaw('DATE(created_at) as date, COUNT(*) as total')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->pluck('total', 'date');
+        // Filtrar por la fecha de creación según el filtro
+        $emailsQuery = Email::selectRaw('DATE(created_at) as date, COUNT(*) as total')->groupBy('date')->orderBy('date');
+        $mensajesQuery = Mensaje::selectRaw('DATE(created_at) as date, COUNT(*) as total')->groupBy('date')->orderBy('date');
+        $whatsappQuery = Whatsapp::selectRaw('DATE(created_at) as date, COUNT(*) as total')->groupBy('date')->orderBy('date');
 
-        $whatsappPorDia = Whatsapp::selectRaw('DATE(created_at) as date, COUNT(*) as total')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->pluck('total', 'date');
+        // Aplicar filtro de fecha si se seleccionó uno
+        if ($startDate) {
+            $emailsQuery->where('created_at', '>=', $startDate);
+            $mensajesQuery->where('created_at', '>=', $startDate);
+            $whatsappQuery->where('created_at', '>=', $startDate);
+        }
 
-        // Prepara los datos para el gráfico
+        // Obtener los datos
+        $emailsPorDia = $emailsQuery->pluck('total', 'date');
+        $mensajesWebPorDia = $mensajesQuery->pluck('total', 'date');
+        $whatsappPorDia = $whatsappQuery->pluck('total', 'date');
+
+        // Combinar las fechas y preparar los datos del gráfico
         $labels = $emailsPorDia->keys()->merge($mensajesWebPorDia->keys())->merge($whatsappPorDia->keys())->unique()->values();
 
         $chartData = [
@@ -84,35 +106,29 @@ class DashboardController extends Controller
             'datasets' => [
                 [
                     'label' => 'Emails',
-                    'data' => $labels->map(function ($date) use ($emailsPorDia) {
-                        return $emailsPorDia->get($date, 0); // Retorna 0 si no hay datos
-                    }),
+                    'data' => $labels->map(fn($date) => $emailsPorDia->get($date, 0)),
                     'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
-                    'borderColor' => 'rgba(255, 99, 132, 1)',
-                    'borderWidth' => 1,
+                    'borderColor' => 'rgba(255, 0, 39, 1)',
+                    'borderWidth' => 2,
                 ],
                 [
                     'label' => 'Mensajes Web',
-                    'data' => $labels->map(function ($date) use ($mensajesWebPorDia) {
-                        return $mensajesWebPorDia->get($date, 0); // Retorna 0 si no hay datos
-                    }),
+                    'data' => $labels->map(fn($date) => $mensajesWebPorDia->get($date, 0)),
                     'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
-                    'borderColor' => 'rgba(54, 162, 235, 1)',
-                    'borderWidth' => 1,
+                    'borderColor' => 'rgba(0, 188, 255, 1)',
+                    'borderWidth' => 2,
                 ],
                 [
                     'label' => 'WhatsApp',
-                    'data' => $labels->map(function ($date) use ($whatsappPorDia) {
-                        return $whatsappPorDia->get($date, 0); // Retorna 0 si no hay datos
-                    }),
+                    'data' => $labels->map(fn($date) => $whatsappPorDia->get($date, 0)),
                     'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
-                    'borderColor' => 'rgba(75, 192, 192, 1)',
-                    'borderWidth' => 1,
+                    'borderColor' => 'rgba(0, 255, 56, 1)',
+                    'borderWidth' => 2,
                 ],
             ],
         ];
 
-        // Retorna los datos al gráfico
+        // Retornar los datos del gráfico
         return [
             'chartData' => $chartData,
         ];
