@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("web_id").value = id;
                 document.getElementById(
                     "webEstadoForm"
-                ).action = `/dashboard/buzon/webs/estado/${id}`;
+                ).action = `/dashboard/buzon/messages_webs/estado/${id}`;
                 document
                     .getElementById("webEstadoModal")
                     .classList.remove("hidden");

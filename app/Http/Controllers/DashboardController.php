@@ -99,7 +99,12 @@ class DashboardController extends Controller
         $whatsappPorDia = $whatsappQuery->pluck('total', 'date');
 
         // Combinar las fechas y preparar los datos del gráfico
-        $labels = $emailsPorDia->keys()->merge($mensajesWebPorDia->keys())->merge($whatsappPorDia->keys())->unique()->values();
+        $labels = $emailsPorDia->keys()
+            ->merge($mensajesWebPorDia->keys())
+            ->merge($whatsappPorDia->keys())
+            ->unique()
+            ->sort()
+            ->values(); // Asegurar que las fechas están ordenadas cronológicamente
 
         $chartData = [
             'labels' => $labels,

@@ -42,7 +42,7 @@ return [
             'title' => 'Buzón',
             'icon' => 'fa-solid fa-envelope',
             'submenu' => [
-                ['title' => 'Webs', 'url' => $baseURL . 'buzon/webs'],
+                ['title' => 'Webs', 'url' => $baseURL . 'buzon/messages_webs'],
                 ['title' => 'Emails', 'url' => $baseURL . 'buzon/emails'],
                 ['title' => 'WhatsApp', 'url' => $baseURL . 'buzon/whatsapps'],
             ],
