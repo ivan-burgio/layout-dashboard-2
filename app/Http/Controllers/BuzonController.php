@@ -29,7 +29,7 @@ class BuzonController extends Controller
 
         $mensajes = $query->orderBy($orderBy, $orderDirection)->get();
 
-        return view('dashboard.pages.buzon.webs', compact('mensajes', 'title'));
+        return view('dashboard.pages.buzon.messages_webs', compact('mensajes', 'title'));
     }
 
     public function websMensajeStore(Request $request)
@@ -65,7 +65,7 @@ class BuzonController extends Controller
         $mensaje->estado_cambiado_por = Auth::id(); // Registrar el usuario que cambió el estado
         $mensaje->save();
 
-        return redirect()->route('webs')->with('success', 'El estado del mensaje web ha sido actualizado.');
+        return redirect()->route('messages_webs')->with('success', 'El estado del mensaje web ha sido actualizado.');
     }
 
     public function emails(Request $request)

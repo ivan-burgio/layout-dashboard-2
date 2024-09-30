@@ -61,8 +61,8 @@ Route::middleware('auth')->group(function () {
     });
 
     // Rutas para Mensajes web
-    Route::get('/dashboard/buzon/webs', [BuzonController::class, 'websMensaje'])->name('webs');
-    Route::put('/dashboard/buzon/webs/estado/{id}', [BuzonController::class, 'updateWebMensajeEstado'])->name('webs.updateEstado');
+    Route::get('/dashboard/buzon/messages_webs', [BuzonController::class, 'websMensaje'])->name('messages_webs');
+    Route::put('/dashboard/buzon/messages_webs/estado/{id}', [BuzonController::class, 'updateWebMensajeEstado'])->name('messages_webs.updateEstado');
 
     // Rutas para Emails
     Route::prefix('/dashboard/buzon/emails')->group(function () {

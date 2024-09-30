@@ -29,17 +29,17 @@ CREATE TABLE `clientes` (
   `nombre` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telefono` varchar(20) NOT NULL,
-  `numero_cuenta_bancaria` varchar(34) NOT NULL,
+  `numero_cuenta_bancaria` varchar(34) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `creador` int NOT NULL,
   `estado` varchar(255) DEFAULT 'Inactivo',
-  `estado_cambiado_por` int NOT NULL,
+  `estado_cambiado_por` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `user_id` (`creador`),
   CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`creador`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Lucas Viera 22','lucas@lucas.com','09999999','0000000','2024-09-02 01:32:39','2024-09-04 23:32:21',1,'Inactivo',1),(2,'Nahuel Sueiro','nahue@nahuel.com','09999991','00000001','2024-09-03 17:11:45','2024-09-04 23:32:15',1,'Activo',1);
+INSERT INTO `clientes` VALUES (1,'Lucas Viera 22','lucas@lucas.com','09999999','0000000','2024-09-02 01:32:39','2024-09-04 23:32:21',1,'Inactivo',1),(2,'Nahuel Sueirow 2','nahue@nahuel.com','09999991','00000001','2024-09-03 17:11:45','2024-09-22 00:03:05',1,'Inactivo',1),(3,'pepe','pepe@pepe.com','099999976',NULL,'2024-09-30 17:15:40','2024-09-30 17:15:40',1,'Inactivo',1),(4,'ivan','ivan@ivan.com','099999975','00000002','2024-09-30 17:23:54','2024-09-30 17:25:18',1,'Inactivo',1),(5,'a','a@qa.com','092888866','0001','2024-09-30 17:25:38','2024-09-30 17:25:38',1,'Inactivo',1);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,11 +67,11 @@ CREATE TABLE `email_messages` (
   `mensaje` text NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `estado_cambiado_por` int NOT NULL,
+  `estado_cambiado_por` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `estado_cambiado_por` (`estado_cambiado_por`),
   CONSTRAINT `email_messages_ibfk_1` FOREIGN KEY (`estado_cambiado_por`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +80,7 @@ CREATE TABLE `email_messages` (
 
 LOCK TABLES `email_messages` WRITE;
 /*!40000 ALTER TABLE `email_messages` DISABLE KEYS */;
-INSERT INTO `email_messages` VALUES (1,'Ivan','prueba@prueba.com','Pendiente','dwadwa','2024-08-26 17:23:29','2024-09-01 13:19:49',1),(2,'prueba 2','prueba@prueba.com','Pendiente','feawawwa','2024-08-26 17:30:58','2024-09-01 13:19:49',1),(3,'dwadw','prueba@prueba.com','Pendiente','prueba 3','2024-08-26 19:13:40','2024-09-01 13:19:49',1),(4,'Ivan','prueba@prueba.com','Pendiente','este es un mensaje de prueba','2024-08-26 20:28:52','2024-09-01 13:19:49',1),(5,'Ivan','prueba@prueba.com','Pendiente','dwadwa','2024-08-26 20:30:06','2024-09-01 13:19:49',1),(6,'ivan','prueba@prueba.com','Pendiente','prueba iconos','2024-08-26 20:38:28','2024-09-01 13:19:49',1),(7,'prueba','prueba@prueba.comdwa','Pendiente','dwa','2024-08-26 20:38:58','2024-09-01 13:19:49',1),(8,'ivan','prueba@prueba.com','Pendiente','Ultima prueba de iconos','2024-08-26 20:40:54','2024-09-01 13:19:49',1),(9,'dwa','prueba@prueba.comdwa','Pendiente','adwanofanoiafewonbdwoanbodwbn ondoi wanoidwna odnboa ndiowanodnbwaiodnwaon naiwopndowandoiawnoidnwaoi noin oidnwaoi noiwandoiwanoidnwaoidnalowndlo naoi ndolawnoidnoiawndiowan oidnwaiodn oilanoidn oianwiodnwaoindoiwandioawndoinwaoin oiwnadionaonsongfoirenpoinm dpinfoip \r\nwadwa\r\ndwadwa \r\n\r\n\r\ndwadwad wa','2024-08-28 20:15:06','2024-09-01 13:19:49',1),(10,'bvihyvbo','prueba@prueba.comdwa','Pendiente','njo','2024-08-28 20:31:34','2024-09-01 13:19:49',1),(11,'hola','prueba@prueba.comdwa','Pendiente','hola','2024-08-29 20:11:31','2024-09-01 13:19:49',1),(12,'prueba controlador','contro@contro.com','Pendiente','prueba controlador','2024-08-29 20:29:04','2024-09-01 13:19:49',1),(13,'Buyar','buyar@buyuar.com','En Proceso','CULO ROTO','2024-08-31 18:08:23','2024-09-02 02:15:00',1);
+INSERT INTO `email_messages` VALUES (1,'Ivan','prueba@prueba.com','Pendiente','dwadwa','2024-08-26 17:23:29','2024-09-01 13:19:49',1),(2,'prueba 2','prueba@prueba.com','Pendiente','feawawwa','2024-08-26 17:30:58','2024-09-01 13:19:49',1),(3,'dwadw','prueba@prueba.com','Pendiente','prueba 3','2024-08-26 19:13:40','2024-09-01 13:19:49',1),(4,'Ivan','prueba@prueba.com','Pendiente','este es un mensaje de prueba','2024-08-26 20:28:52','2024-09-01 13:19:49',1),(5,'Ivan','prueba@prueba.com','Pendiente','dwadwa','2024-08-26 20:30:06','2024-09-01 13:19:49',1),(6,'ivan','prueba@prueba.com','Pendiente','prueba iconos','2024-08-26 20:38:28','2024-09-01 13:19:49',1),(7,'prueba','prueba@prueba.comdwa','Pendiente','dwa','2024-08-26 20:38:58','2024-09-01 13:19:49',1),(8,'ivan','prueba@prueba.com','Pendiente','Ultima prueba de iconos','2024-08-26 20:40:54','2024-09-01 13:19:49',1),(9,'dwa','prueba@prueba.comdwa','Pendiente','adwanofanoiafewonbdwoanbodwbn ondoi wanoidwna odnboa ndiowanodnbwaiodnwaon naiwopndowandoiawnoidnwaoi noin oidnwaoi noiwandoiwanoidnwaoidnalowndlo naoi ndolawnoidnoiawndiowan oidnwaiodn oilanoidn oianwiodnwaoindoiwandioawndoinwaoin oiwnadionaonsongfoirenpoinm dpinfoip \r\nwadwa\r\ndwadwa \r\n\r\n\r\ndwadwad wa','2024-08-28 20:15:06','2024-09-01 13:19:49',1),(10,'bvihyvbo','prueba@prueba.comdwa','Pendiente','njo','2024-08-28 20:31:34','2024-09-01 13:19:49',1),(11,'hola','prueba@prueba.comdwa','Pendiente','hola','2024-08-29 20:11:31','2024-09-01 13:19:49',1),(12,'prueba controlador','contro@contro.com','Pendiente','prueba controlador','2024-08-29 20:29:04','2024-09-01 13:19:49',1),(13,'Buyar','buyar@buyuar.com','En Proceso','CULO ROTO','2024-08-31 18:08:23','2024-09-02 02:15:00',1),(14,'hola','hola@hola.com','En Proceso','hola','2024-09-22 00:03:43','2024-09-22 00:04:03',1),(15,'Ivan','ivan@ivan.com','Pendiente','dwadwa','2024-09-24 21:49:53','2024-09-24 21:49:53',1),(16,'dwadwa','dwadwa@wda','Pendiente','dwadwa','2024-09-24 21:50:09','2024-09-24 21:50:09',1),(17,'romina','romina@romina.com','Completado','dwadwad','2024-09-26 19:51:59','2024-09-26 19:53:40',1),(18,'prueba','dwadwa@wda.com','Pendiente','dwadwad','2024-09-27 16:55:44','2024-09-27 17:05:09',1);
 /*!40000 ALTER TABLE `email_messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +136,7 @@ CREATE TABLE `events` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +145,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (5,'tgucc uhiuo','2024-09-04 00:00:00','2024-09-07 00:00:00','#408080',NULL,NULL),(6,'k','2024-09-02 00:00:00','2024-09-20 00:00:00','#378006',NULL,NULL),(7,'dwadwa','2024-09-03 00:00:00','2024-09-07 00:00:00','#ffff00',NULL,NULL),(8,'dwadwaddddddaa','2024-09-01 00:00:00',NULL,'#008000',NULL,NULL),(9,'k','2024-09-01 00:00:00','2024-09-07 00:00:00','#ff0080',NULL,NULL);
+INSERT INTO `events` VALUES (5,'tgucc uhiuo','2024-09-04 00:00:00','2024-09-07 00:00:00','#408080',NULL,NULL),(6,'k','2024-09-02 00:00:00','2024-09-20 00:00:00','#378006',NULL,NULL),(7,'dwadwa','2024-09-03 00:00:00','2024-09-07 00:00:00','#ffff00',NULL,NULL),(8,'dwadwaddddddaa','2024-09-01 00:00:00',NULL,'#008000',NULL,NULL),(9,'k','2024-09-01 00:00:00','2024-09-07 00:00:00','#ff0080',NULL,NULL),(10,'Medico','2024-09-21 00:00:00','2024-09-21 00:00:00','#008080',NULL,NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,7 +303,7 @@ CREATE TABLE `whatsapps` (
   KEY `estado_cambiado_por` (`estado_cambiado_por`),
   CONSTRAINT `fk_whatsapps_user_id` FOREIGN KEY (`creador`) REFERENCES `users` (`id`),
   CONSTRAINT `whatsapps_ibfk_1` FOREIGN KEY (`estado_cambiado_por`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +312,7 @@ CREATE TABLE `whatsapps` (
 
 LOCK TABLES `whatsapps` WRITE;
 /*!40000 ALTER TABLE `whatsapps` DISABLE KEYS */;
-INSERT INTO `whatsapps` VALUES (1,'Nahuel','092812477','En Proceso','dwa','2024-09-01 02:37:40','2024-09-01 05:37:40','2024-09-01 16:50:54',1,1);
+INSERT INTO `whatsapps` VALUES (1,'Nahuel','092812477','En Proceso','dwa','2024-09-01 02:37:40','2024-09-01 05:37:40','2024-09-01 16:50:54',1,1),(2,'lucas','092888888','Pendiente','hola','2024-09-25 15:17:10','2024-09-25 18:17:10','2024-09-25 18:17:10',1,1);
 /*!40000 ALTER TABLE `whatsapps` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -325,4 +325,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-21 17:11:31
+-- Dump completed on 2024-09-30 11:28:24
