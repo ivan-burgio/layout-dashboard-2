@@ -8,6 +8,7 @@ use App\Models\Mensaje;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
+use App\Models\Cliente;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -16,6 +17,7 @@ class DashboardController extends Controller
     {
         $title = 'Dashboard';
 
+        $totalClientes = $this->clientes();
         $cantidadBuzon = $this->cantidadBuzon();
         $ticketsPendientes = $this->ticketsPendientes();
 
@@ -29,7 +31,12 @@ class DashboardController extends Controller
         }
 
         // Pasar los datos a la vista si no es AJAX
-        return view('dashboard.pages.dashboard', compact('title', 'cantidadBuzon', 'ticketsPendientes', 'chartBuzon'));
+        return view('dashboard.pages.dashboard', compact('title', 'totalClientes', 'cantidadBuzon', 'ticketsPendientes', 'chartBuzon'));
+    }
+
+    public function clientes()
+    {
+        return Cliente::count();
     }
 
     public function cantidadBuzon()

@@ -39,6 +39,7 @@ class CuentasController extends Controller
             'nombre' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'telefono' => 'required|numeric',
+            'numero_cuenta_bancaria' => 'nullable|string|max:255',
         ]);
 
         try {
