@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Email;
-use App\Models\Whatsapp;
-use App\Models\Mensaje;
+use App\Models\Layout;
+use App\Models\Pagina;
 use App\Models\Ticket;
-use Illuminate\Http\Request;
 use App\Helpers\Helper;
 use App\Models\Cliente;
-use Carbon\Carbon;
+use App\Models\Mensaje;
+use App\Models\Whatsapp;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -18,8 +20,11 @@ class DashboardController extends Controller
         $title = 'Dashboard';
 
         $totalClientes = $this->clientes();
+        $totalPaginas = $this->paginas();
+        $totalLayouts = $this->layouts();
         $cantidadBuzon = $this->cantidadBuzon();
         $ticketsPendientes = $this->ticketsPendientes();
+        $mensajesPendientes = $this->mensajesPendientes();
 
         $filter = $request->input('filter', 'all'); // Obtener filtro o 'all' por defecto
         $chartBuzon = $this->chartBuzon($filter); // Obtener datos del gráfico filtrados
@@ -31,12 +36,22 @@ class DashboardController extends Controller
         }
 
         // Pasar los datos a la vista si no es AJAX
-        return view('dashboard.pages.dashboard', compact('title', 'totalClientes', 'cantidadBuzon', 'ticketsPendientes', 'chartBuzon'));
+        return view('dashboard.pages.dashboard', compact('title', 'totalLayouts', 'totalClientes', 'totalPaginas', 'cantidadBuzon', 'ticketsPendientes', 'mensajesPendientes', 'chartBuzon'));
     }
 
     public function clientes()
     {
         return Cliente::count();
+    }
+
+    public function paginas()
+    {
+        return Pagina::count();
+    }
+
+    public function layouts()
+    {
+        return Layout::count();
     }
 
     public function cantidadBuzon()
@@ -69,6 +84,50 @@ class DashboardController extends Controller
     {
         // Obtener los tickets que están pendientes
         return Ticket::where('estado', 'Pendiente')->get();
+    }
+
+    public function mensajesPendientes()
+    {
+        // Obtener los mensajes pendientes de las diferentes fuentes
+        $emails = Email::where('estado', 'Pendiente')->get();
+        $webs = Mensaje::where('estado', 'Pendiente')->get();
+        $whatsapps = Whatsapp::where('estado', 'Pendiente')->get();
+
+        // Unificar los datos de los mensajes en una sola colección
+        $mensajesPendientes = collect();
+
+        foreach ($emails as $email) {
+            $mensajesPendientes->push((object)[
+                'mensaje' => $email->mensaje,
+                'created_at' => $email->created_at,
+                'tipo' => 'Email'
+            ]);
+        }
+
+        foreach ($webs as $web) {
+            $mensajesPendientes->push((object)[
+                'mensaje' => $web->mensaje,
+                'created_at' => $web->created_at,
+                'tipo' => 'Web'
+            ]);
+        }
+
+        foreach ($whatsapps as $whatsapp) {
+            $mensajesPendientes->push((object)[
+                'mensaje' => $whatsapp->mensaje,
+                'created_at' => $whatsapp->created_at,
+                'tipo' => 'Whatsapp'
+            ]);
+        }
+
+        // Ordenar los mensajes por fecha (descendente)
+        $mensajesPendientes = $mensajesPendientes->sortByDesc('created_at');
+
+        // Limitar a los primeros 10 mensajes
+        $mensajesPendientes = $mensajesPendientes->take(10);
+
+        // Pasar la colección de mensajes a la vista
+        return $mensajesPendientes;
     }
 
     public function chartBuzon($filter = 'all')
