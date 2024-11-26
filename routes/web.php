@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\BuzonController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\CuentasController;
@@ -12,19 +11,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContabilidadController;
 use App\Http\Controllers\ConfiguracionesController;
 
-// Rutas públicas
-Route::get('/', [PageController::class, 'inicio'])->name('inicio');
-Route::get('/servicios', [PageController::class, 'servicios'])->name('servicios');
-Route::get('/nosotros', [PageController::class, 'nosotros'])->name('nosotros');
-Route::get('/contacto', [PageController::class, 'contacto'])->name('contacto');
-
 // Autenticación
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::post('/', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Envío de mensajes desde el formulario de contacto
-Route::post('/enviar-mensaje', [BuzonController::class, 'websMensajeStore'])->name('enviar.mensaje');
 
 // Rutas protegidas por autenticación
 Route::middleware('auth')->group(function () {

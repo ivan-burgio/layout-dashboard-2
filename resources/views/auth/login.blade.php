@@ -1,7 +1,7 @@
 @extends('pages-layout')
 
 @section('content')
-    <section class="bg-gray-900 px-2 md:px-20 lg:px-40 mt-10 p-8 min-h-screen">
+    <section class="bg-gray-900 px-2 md:px-20 lg:px-40 p-8 min-h-screen">
         <h2 class="text-4xl font-bold mb-8 text-center text-white">Inicio de Sesión</h2>
 
         <div class="container">
@@ -9,7 +9,6 @@
                 <div class="mt-6 lg:w-1/2">
                     <div
                         class="w-full px-6 py-6 mx-auto overflow-hidden rounded-lg shadow-lg bg-gray-900 lg:max-w-xl shadow-black">
-                        <h1 class="text-lg font-medium text-gray-200">Administradores</h1>
 
                         <form class="mt-6" method="POST" action="{{ route('login') }}">
                             @csrf
