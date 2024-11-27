@@ -35,7 +35,7 @@ class Layout extends Model
             [
                 'nombre' => 'Layout Corporativo',
                 'descripcion' => 'Un diseño profesional para empresas.',
-                'categoria' => 'Corporativo',
+                'categoria' => 'Dashboard',
                 'creador' => 1, // ID del usuario creador (asumiendo que ya existe un usuario con ID 1)
                 'link' => 'https://www.example.com/corporativo',
                 'imagen' => 'layouts/corporativo.jpg',
@@ -43,7 +43,7 @@ class Layout extends Model
             [
                 'nombre' => 'Layout E-commerce',
                 'descripcion' => 'Diseño optimizado para tiendas en línea.',
-                'categoria' => 'E-commerce',
+                'categoria' => 'Web',
                 'creador' => 1,
                 'link' => 'https://www.example.com/ecommerce',
                 'imagen' => 'layouts/ecommerce.jpg',
@@ -51,7 +51,7 @@ class Layout extends Model
             [
                 'nombre' => 'Layout Portfolio',
                 'descripcion' => 'Plantilla ideal para mostrar proyectos de diseño.',
-                'categoria' => 'Portfolio',
+                'categoria' => 'Web',
                 'creador' => 1,
                 'link' => 'https://www.example.com/portfolio',
                 'imagen' => 'layouts/portfolio.jpg',
@@ -59,7 +59,7 @@ class Layout extends Model
             [
                 'nombre' => 'Layout Blog Personal',
                 'descripcion' => 'Diseño minimalista para blogs personales.',
-                'categoria' => 'Blog',
+                'categoria' => 'Web',
                 'creador' => 1,
                 'link' => 'https://www.example.com/blog',
                 'imagen' => 'layouts/blog.jpg',
@@ -67,7 +67,7 @@ class Layout extends Model
             [
                 'nombre' => 'Layout Landing Page',
                 'descripcion' => 'Ideal para crear páginas de aterrizaje para campañas.',
-                'categoria' => 'Landing Page',
+                'categoria' => 'Web',
                 'creador' => 1,
                 'link' => 'https://www.example.com/landing',
                 'imagen' => 'layouts/landing.jpg',

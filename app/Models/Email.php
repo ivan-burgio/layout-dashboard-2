@@ -47,6 +47,7 @@ class Email extends Model
                 'mensaje' => 'Este es un mensaje de prueba para Juan.',
                 'creador' => 1, // ID de creador ficticio
                 'estado_cambiado_por' => null,
+                'created_at' => '2024-11-01 10:00:00', // Fecha de creación
             ],
             [
                 'id' => 2,
@@ -56,6 +57,7 @@ class Email extends Model
                 'mensaje' => 'Este es un mensaje pendiente para Ana.',
                 'creador' => 2, // Otro ID de creador ficticio
                 'estado_cambiado_por' => 1, // Estado cambiado por el usuario con ID 1
+                'created_at' => '2024-11-02 14:30:00', // Fecha de creación
             ],
             [
                 'id' => 3,
@@ -65,6 +67,7 @@ class Email extends Model
                 'mensaje' => 'Este es un mensaje de prueba para Carlos.',
                 'creador' => 3, // ID de creador ficticio
                 'estado_cambiado_por' => null,
+                'created_at' => '2024-11-03 09:00:00', // Fecha de creación
             ],
             // Agrega más correos según sea necesario
         ];

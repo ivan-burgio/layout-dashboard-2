@@ -241,15 +241,15 @@
                                     <td class="py-2 px-4 border-b border-b-gray-50">
                                         <div class="flex items-center">
                                             <p class="text-black text-sm font-medium ml-2">
-                                                {{ $ticket->titulo }}</p>
+                                                {{ $ticket['titulo'] }}</p>
                                         </div>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
                                         <span
-                                            class="text-[13px] font-medium text-black">{{ $ticket->created_at->format('d-m-Y') }}</span>
+                                            class="text-[13px] font-medium text-black">{{ $ticket['created_at']->format('d-m-Y') }}</span>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-black">{{ $ticket->prioridad }}</span>
+                                        <span class="text-[13px] font-medium text-black">{{ $ticket['prioridad'] }}</span>
                                     </td>
                                 </tr>
                             @endforeach
@@ -275,7 +275,7 @@
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
                                         <span class="text-[13px] font-medium text-black">
-                                            {{ $mensaje->created_at->format('d-m-Y') }}
+                                            {{ $mensaje->created_at }}
                                         </span>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
