@@ -27,4 +27,54 @@ class Layout extends Model
 
     // Deshabilitamos timestamps automáticos si no necesitamos created_at y updated_at
     public $timestamps = false;
+
+    public static function layoutsEjemplo()
+    {
+        // Datos ficticios para los layouts
+        $data = [
+            [
+                'nombre' => 'Layout Corporativo',
+                'descripcion' => 'Un diseño profesional para empresas.',
+                'categoria' => 'Corporativo',
+                'creador' => 1, // ID del usuario creador (asumiendo que ya existe un usuario con ID 1)
+                'link' => 'https://www.example.com/corporativo',
+                'imagen' => 'layouts/corporativo.jpg',
+            ],
+            [
+                'nombre' => 'Layout E-commerce',
+                'descripcion' => 'Diseño optimizado para tiendas en línea.',
+                'categoria' => 'E-commerce',
+                'creador' => 1,
+                'link' => 'https://www.example.com/ecommerce',
+                'imagen' => 'layouts/ecommerce.jpg',
+            ],
+            [
+                'nombre' => 'Layout Portfolio',
+                'descripcion' => 'Plantilla ideal para mostrar proyectos de diseño.',
+                'categoria' => 'Portfolio',
+                'creador' => 1,
+                'link' => 'https://www.example.com/portfolio',
+                'imagen' => 'layouts/portfolio.jpg',
+            ],
+            [
+                'nombre' => 'Layout Blog Personal',
+                'descripcion' => 'Diseño minimalista para blogs personales.',
+                'categoria' => 'Blog',
+                'creador' => 1,
+                'link' => 'https://www.example.com/blog',
+                'imagen' => 'layouts/blog.jpg',
+            ],
+            [
+                'nombre' => 'Layout Landing Page',
+                'descripcion' => 'Ideal para crear páginas de aterrizaje para campañas.',
+                'categoria' => 'Landing Page',
+                'creador' => 1,
+                'link' => 'https://www.example.com/landing',
+                'imagen' => 'layouts/landing.jpg',
+            ],
+            // Agregar más layouts según sea necesario
+        ];
+
+        return $data;
+    }
 }

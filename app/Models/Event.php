@@ -24,5 +24,36 @@ class Event extends Model
     // Si no estás usando los timestamps 'created_at' y 'updated_at', añade esta línea
     public $timestamps = false;
 
-    // Otras configuraciones y métodos pueden ser añadidos aquí según tus necesidades
+    public static function eventsEjemplo()
+    {
+        $data = [
+            [
+                'title' => 'Reunión con clientes',
+                'start' => '2024-12-01 10:00:00',
+                'end' => '2024-12-01 12:00:00',
+                'color' => '#FF5733', // Rojo anaranjado
+            ],
+            [
+                'title' => 'Lanzamiento de producto',
+                'start' => '2024-12-05 14:00:00',
+                'end' => '2024-12-05 16:00:00',
+                'color' => '#33FF57', // Verde brillante
+            ],
+            [
+                'title' => 'Evento de networking',
+                'start' => '2024-12-10 09:00:00',
+                'end' => '2024-12-10 11:00:00',
+                'color' => '#3357FF', // Azul brillante
+            ],
+            [
+                'title' => 'Revisión de proyectos',
+                'start' => '2024-12-15 15:00:00',
+                'end' => '2024-12-15 17:00:00',
+                'color' => '#FFD700', // Amarillo dorado
+            ],
+            // Agrega más eventos según sea necesario
+        ];
+
+        return $data;
+    }
 }

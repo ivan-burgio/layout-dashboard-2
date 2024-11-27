@@ -35,4 +35,41 @@ class Whatsapp extends Model
     {
         return $this->belongsTo(User::class, 'estado_cambiado_por');
     }
+
+    public static function whatsappsEjemplo()
+    {
+        // Datos ficticios para los registros de WhatsApp
+        $data = [
+            [
+                'nombre' => 'Juan Pérez',
+                'telefono' => '123456789',
+                'estado' => 'enviado',
+                'mensaje' => '¿Puedo saber más sobre sus servicios?',
+                'fecha' => now(),
+                'creador' => 1, // ID de usuario creador ficticio
+                'estado_cambiado_por' => 1, // ID de usuario que cambió el estado
+            ],
+            [
+                'nombre' => 'Ana López',
+                'telefono' => '987654321',
+                'estado' => 'pendiente',
+                'mensaje' => 'Tengo dudas sobre los productos.',
+                'fecha' => now(),
+                'creador' => 2, // ID de usuario creador ficticio
+                'estado_cambiado_por' => 2, // ID de usuario que cambió el estado
+            ],
+            [
+                'nombre' => 'Carlos Gómez',
+                'telefono' => '111223344',
+                'estado' => 'resuelto',
+                'mensaje' => 'Gracias, todo solucionado.',
+                'fecha' => now(),
+                'creador' => 1, // ID de usuario creador ficticio
+                'estado_cambiado_por' => 1, // ID de usuario que cambió el estado
+            ],
+            // Puedes agregar más registros según sea necesario
+        ];
+
+        return $data;
+    }
 }

@@ -26,4 +26,42 @@ class Pagina extends Model
 
     // Si no deseas que los timestamps se gestionen automáticamente
     public $timestamps = true;
+
+    public static function paginasEjemplo()
+    {
+        // Datos ficticios para las páginas
+        $data = [
+            [
+                'imagen' => 'imagen1.jpg',
+                'nombre' => 'Página de Inicio',
+                'link' => '/inicio',
+                'tipo' => 'principal',
+                'creador' => 1, // ID de creador ficticio
+            ],
+            [
+                'imagen' => 'imagen2.jpg',
+                'nombre' => 'Servicios',
+                'link' => '/servicios',
+                'tipo' => 'informativa',
+                'creador' => 2, // ID de creador ficticio
+            ],
+            [
+                'imagen' => 'imagen3.jpg',
+                'nombre' => 'Contacto',
+                'link' => '/contacto',
+                'tipo' => 'informativa',
+                'creador' => 1, // ID de creador ficticio
+            ],
+            [
+                'imagen' => 'imagen4.jpg',
+                'nombre' => 'Nosotros',
+                'link' => '/nosotros',
+                'tipo' => 'informativa',
+                'creador' => 2, // ID de creador ficticio
+            ],
+            // Agregar más páginas según sea necesario
+        ];
+
+        return $data;
+    }
 }

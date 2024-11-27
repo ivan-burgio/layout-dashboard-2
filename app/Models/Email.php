@@ -35,4 +35,40 @@ class Email extends Model
     {
         return $this->belongsTo(User::class, 'estado_cambiado_por');
     }
+
+    public static function emailsEjemplo()
+    {
+        $data = [
+            [
+                'id' => 1,
+                'nombre' => 'Juan Pérez',
+                'email' => 'juan.perez@example.com',
+                'estado' => 'enviado',
+                'mensaje' => 'Este es un mensaje de prueba para Juan.',
+                'creador' => 1, // ID de creador ficticio
+                'estado_cambiado_por' => null,
+            ],
+            [
+                'id' => 2,
+                'nombre' => 'Ana López',
+                'email' => 'ana.lopez@example.com',
+                'estado' => 'pendiente',
+                'mensaje' => 'Este es un mensaje pendiente para Ana.',
+                'creador' => 2, // Otro ID de creador ficticio
+                'estado_cambiado_por' => 1, // Estado cambiado por el usuario con ID 1
+            ],
+            [
+                'id' => 3,
+                'nombre' => 'Carlos Gómez',
+                'email' => 'carlos.gomez@example.com',
+                'estado' => 'enviado',
+                'mensaje' => 'Este es un mensaje de prueba para Carlos.',
+                'creador' => 3, // ID de creador ficticio
+                'estado_cambiado_por' => null,
+            ],
+            // Agrega más correos según sea necesario
+        ];
+
+        return $data;
+    }
 }

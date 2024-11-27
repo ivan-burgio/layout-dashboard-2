@@ -43,4 +43,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function usersEjemplo()
+    {
+        // Datos ficticios para los usuarios
+        $data = [
+            [
+                'email' => 'admin@example.com',
+                'password' => 'admin123',
+                'name' => 'Administrador',
+                'role' => 'admin',
+            ],
+            [
+                'email' => 'user@example.com',
+                'password' => 'user123',
+                'name' => 'Usuario Normal',
+                'role' => 'user',
+            ],
+        ];
+
+        return $data;
+    }
 }
