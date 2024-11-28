@@ -75,22 +75,22 @@
                 @foreach ($tickets as $ticket)
                     <tr
                         class="odd:bg-white odd:dark:bg-gray-200 even:bg-gray-50 even:dark:bg-gray-300 border-b dark:border-gray-700">
-                        <td class="px-6 py-4">{{ $ticket->id }}</td>
-                        <td class="px-6 py-4">{{ $ticket->titulo }}</td>
-                        <td class="px-6 py-4">{{ $ticket->descripcion }}</td>
-                        <td class="px-6 py-4">{{ $ticket->estado }}</td>
-                        <td class="px-6 py-4">{{ $ticket->prioridad }}</td>
-                        <td class="px-6 py-4">{{ $ticket->assignee->name ?? 'Desconocido' }}</td>
-                        <td class="px-6 py-4">{{ $ticket->creator->name ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $ticket['id'] }}</td>
+                        <td class="px-6 py-4">{{ $ticket ['titulo'] }}</td>
+                        <td class="px-6 py-4">{{ $ticket ['descripcion'] }}</td>
+                        <td class="px-6 py-4">{{ $ticket ['estado'] }}</td>
+                        <td class="px-6 py-4">{{ $ticket ['prioridad'] }}</td>
+                        <td class="px-6 py-4">{{ $ticket ['asignado_a'] ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $ticket ['creator'] ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonTicket"
-                                data-id="{{ $ticket->id }}" data-titulo="{{ $ticket->titulo }}"
-                                data-descripcion="{{ $ticket->descripcion }}" data-estado="{{ $ticket->estado }}"
-                                data-prioridad="{{ $ticket->prioridad }}" data-asignado_a="{{ $ticket->assignee }}">
+                                data-id="{{ $ticket['id'] }}" data-titulo="{{ $ticket ['titulo'] }}"
+                                data-descripcion="{{ $ticket ['descripcion'] }}" data-estado="{{ $ticket ['estado'] }}"
+                                data-prioridad="{{ $ticket ['prioridad'] }}" data-asignado_a="{{ $ticket ['asignado_a'] }}">
                                 <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                             </button>
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md estado-button"
-                                data-id="{{ $ticket->id }}" data-estado="ticket">
+                                data-id="{{ $ticket['id'] }}" data-estado="ticket">
                                 <i class="fa-solid fa-sync" style="color: #ffffff;"></i>
                             </button>
                         </td>

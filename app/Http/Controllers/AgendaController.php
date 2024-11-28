@@ -13,6 +13,48 @@ class AgendaController extends Controller
     public function calendario()
     {
         $title = 'Calendario';
+        $eventos = Event::eventsEjemplo(); // Utilizando datos ficticios del modelo Event
+        return view('dashboard.pages.agenda.calendario', compact('title', 'eventos'));
+    }
+
+    public function events()
+    {
+        // Retornar eventos ficticios en formato JSON usando el método del modelo
+        $eventos = Event::eventsEjemplo();
+        return response()->json($eventos);
+    }
+
+    public function tickets(Request $request)
+    {
+        $title = 'Tickets';
+        $tickets = Ticket::ticketsEjemplo(); // Utilizando datos ficticios del modelo Ticket
+
+        // Simular búsqueda si se pasa el parámetro "search"
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $tickets = array_filter($tickets, function ($ticket) use ($search) {
+                return stripos($ticket['titulo'], $search) !== false ||
+                    stripos($ticket['descripcion'], $search) !== false;
+            });
+        }
+
+        // Simular ordenamiento
+        $orderBy = $request->input('order_by', 'id');
+        $orderDirection = $request->input('order_direction', 'desc');
+        $tickets = collect($tickets)->sortBy($orderBy, SORT_REGULAR, $orderDirection === 'desc')->values()->all();
+
+        $usuarios = User::all(); // Obtener todos los usuarios
+
+        return view('dashboard.pages.agenda.tickets', compact('title', 'tickets', 'usuarios'));
+    }
+}
+
+/*
+class AgendaController extends Controller
+{
+    public function calendario()
+    {
+        $title = 'Calendario';
         return view('dashboard.pages.agenda.calendario', compact('title'));
     }
 
@@ -162,10 +204,5 @@ class AgendaController extends Controller
         // Redirigir o devolver una respuesta adecuada
         return redirect()->back()->with('success', 'Ticket actualizado correctamente.');
     }
-
-    public function reuniones()
-    {
-        $title = 'Reuniones';
-        return view('dashboard.pages.agenda.reuniones', compact('title'));
-    }
 }
+*/

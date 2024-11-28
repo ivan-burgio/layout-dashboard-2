@@ -32,9 +32,10 @@ class Ticket extends Model
 
     public static function ticketsEjemplo()
     {
-        // Datos ficticios para los tickets
+        // Datos ficticios para los tickets con el campo 'id' agregado
         $data = [
             [
+                'id' => 1, // ID del ticket
                 'titulo' => 'Problema con el login',
                 'descripcion' => 'El usuario no puede iniciar sesión con sus credenciales.',
                 'estado' => 'Abierto',
@@ -44,6 +45,7 @@ class Ticket extends Model
                 'created_at' => now(), // Fecha de creación
             ],
             [
+                'id' => 2, // ID del ticket
                 'titulo' => 'Error en la página de inicio',
                 'descripcion' => 'La página de inicio muestra un error 500 en el servidor.',
                 'estado' => 'Pendiente',
@@ -53,6 +55,7 @@ class Ticket extends Model
                 'created_at' => now(), // Fecha de creación
             ],
             [
+                'id' => 3, // ID del ticket
                 'titulo' => 'Funcionalidad de búsqueda rota',
                 'descripcion' => 'El sistema de búsqueda no devuelve los resultados esperados.',
                 'estado' => 'Cerrado',
@@ -62,6 +65,7 @@ class Ticket extends Model
                 'created_at' => now(), // Fecha de creación
             ],
             [
+                'id' => 4, // ID del ticket
                 'titulo' => 'Problema de visualización en móviles',
                 'descripcion' => 'El sitio web no se visualiza correctamente en dispositivos móviles.',
                 'estado' => 'Abierto',
