@@ -46,7 +46,7 @@
 
                     <th scope="col" class="px-6 py-3">Tipo</th>
                     <th scope="col" class="px-6 py-3">URL</th>
-                    <th scope="col" class="px-6 py-3">
+                    {{-- <th scope="col" class="px-6 py-3">
                         <a
                             href="{{ route('paginas', array_merge(request()->query(), ['order_by' => 'created_at', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}">
                             Fecha de Creación
@@ -54,7 +54,7 @@
                                 <i class="fa-solid fa-arrow-{{ request('order_direction') == 'asc' ? 'up' : 'down' }}"></i>
                             @endif
                         </a>
-                    </th>
+                    </th> --}}
                     <th scope="col" class="px-6 py-3">Creador</th>
                     <th scope="col" class="px-6 py-3">Imagen</th>
                     <th scope="col" class="px-6 py-3">Acciones</th>
@@ -64,28 +64,28 @@
                 @foreach ($paginas as $pagina)
                     <tr
                         class="odd:bg-white odd:dark:bg-gray-200 even:bg-gray-50 even:dark:bg-gray-300 border-b dark:border-gray-700">
-                        <td class="px-6 py-4">{{ $pagina->id }}</td>
-                        <td class="px-6 py-4">{{ $pagina->nombre }}</td>
-                        <td class="px-6 py-4">{{ $pagina->tipo }}</td>
+                        <td class="px-6 py-4">{{ $pagina['id'] }}</td>
+                        <td class="px-6 py-4">{{ $pagina['nombre'] }}</td>
+                        <td class="px-6 py-4">{{ $pagina['tipo'] }}</td>
                         <td class="px-6 py-4">
-                            <a href="{{ $pagina->link }}" target="_blank" class="text-blue-500 hover:underline">
-                                {{ $pagina->link }}
+                            <a href="{{ $pagina['link'] }}" target="_blank" class="text-blue-500 hover:underline">
+                                {{ $pagina['link'] }}
                             </a>
                         </td>
-                        <td class="px-6 py-4">{{ $pagina->created_at->format('d/m/Y H:i') }}</td>
-                        <td class="px-6 py-4">{{ $pagina->creator ? $pagina->creator->name : 'Desconocido' }}</td>
+                        {{-- <td class="px-6 py-4">{{ $pagina->created_at->format('d/m/Y H:i') }}</td> --}}
+                        <td class="px-6 py-4">{{ $pagina['creator']['name'] ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
-                            @if ($pagina->imagen)
-                                <img src="{{ Storage::url($pagina->imagen) }}" alt="Imagen" style="max-width: 100px;">
+                            @if ($pagina['imagen'])
+                                <img src="{{ Storage::url($pagina['imagen']) }}" alt="Imagen" style="max-width: 100px;">
                             @else
                                 No disponible
                             @endif
                         </td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonPagina"
-                                data-id="{{ $pagina->id }}" data-nombre="{{ $pagina->nombre }}"
-                                data-tipo="{{ $pagina->tipo }}" data-link="{{ $pagina->link }}"
-                                data-imagen="{{ $pagina->imagen }}">
+                                data-id="{{ $pagina['id'] }}" data-nombre="{{ $pagina['nombre'] }}"
+                                data-tipo="{{ $pagina['tipo'] }}" data-link="{{ $pagina['link'] }}"
+                                data-imagen="{{ $pagina['imagen'] }}">
                                 <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                             </button>
                         </td>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+/*
 class LayoutsController extends Controller
 {
     // Método para listar layouts de tipo 'web'
@@ -244,3 +245,4 @@ class LayoutsController extends Controller
         }
     }
 }
+*/

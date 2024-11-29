@@ -32,6 +32,7 @@ class Pagina extends Model
         // Datos ficticios para las páginas
         $data = [
             [
+                'id' => 1,
                 'imagen' => 'imagen1.jpg',
                 'nombre' => 'Página de Inicio',
                 'link' => '/inicio',
@@ -39,6 +40,7 @@ class Pagina extends Model
                 'creador' => 1, // ID de creador ficticio
             ],
             [
+                'id' => 2,
                 'imagen' => 'imagen2.jpg',
                 'nombre' => 'Servicios',
                 'link' => '/servicios',
@@ -46,6 +48,7 @@ class Pagina extends Model
                 'creador' => 2, // ID de creador ficticio
             ],
             [
+                'id' => 3,
                 'imagen' => 'imagen3.jpg',
                 'nombre' => 'Contacto',
                 'link' => '/contacto',
@@ -53,6 +56,7 @@ class Pagina extends Model
                 'creador' => 1, // ID de creador ficticio
             ],
             [
+                'id' => 4,
                 'imagen' => 'imagen4.jpg',
                 'nombre' => 'Nosotros',
                 'link' => '/nosotros',

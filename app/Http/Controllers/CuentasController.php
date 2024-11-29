@@ -13,6 +13,45 @@ class CuentasController extends Controller
     public function clientes(Request $request)
     {
         $title = 'Clientes';
+        $clientes = Cliente::clientesEjemplo(); // Obtener datos ficticios
+
+        // Filtrar por búsqueda
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $clientes = array_filter($clientes, function ($cliente) use ($search) {
+                return stripos($cliente['nombre'], $search) !== false ||
+                    stripos($cliente['email'], $search) !== false ||
+                    stripos($cliente['telefono'], $search) !== false;
+            });
+        }
+
+        return view('dashboard.pages.cuentas.clientes', compact('title', 'clientes'));
+    }
+
+    public function paginas(Request $request)
+    {
+        $title = 'Páginas';
+        $paginas = Pagina::paginasEjemplo(); // Obtener datos ficticios
+
+        // Filtrar por búsqueda
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $paginas = array_filter($paginas, function ($pagina) use ($search) {
+                return stripos($pagina['nombre'], $search) !== false ||
+                    stripos($pagina['tipo'], $search) !== false;
+            });
+        }
+
+        return view('dashboard.pages.cuentas.paginas', compact('title', 'paginas'));
+    }
+}
+
+/*
+class CuentasController extends Controller
+{
+    public function clientes(Request $request)
+    {
+        $title = 'Clientes';
         $query = Cliente::query()->with('creator');
 
         // Filtrado por nombre, email o teléfono
@@ -163,3 +202,4 @@ class CuentasController extends Controller
         return view('dashboard.pages.cuentas.contratos');
     }
 }
+*/

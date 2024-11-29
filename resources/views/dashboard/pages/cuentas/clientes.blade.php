@@ -44,8 +44,8 @@
                     </th>
                     <th scope="col" class="px-6 py-3">Email</th>
                     <th scope="col" class="px-6 py-3">Teléfono</th>
-                    <th scope="col" class="px-6 py-3">Cunta Bancaria</th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3">Cuenta Bancaria</th>
+                    {{-- <th scope="col" class="px-6 py-3">
                         <a
                             href="{{ route('clientes', array_merge(request()->query(), ['order_by' => 'created_at', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}">
                             Fecha
@@ -53,7 +53,7 @@
                                 <i class="fa-solid fa-arrow-{{ request('order_direction') == 'asc' ? 'up' : 'down' }}"></i>
                             @endif
                         </a>
-                    </th>
+                    </th> --}}
                     <th scope="col" class="px-6 py-3">
                         <a
                             href="{{ route('clientes', array_merge(request()->query(), ['order_by' => 'estado', 'order_direction' => request('order_direction') == 'asc' ? 'desc' : 'asc'])) }}">
@@ -72,24 +72,24 @@
                 @foreach ($clientes as $cliente)
                     <tr
                         class="odd:bg-white odd:dark:bg-gray-200 even:bg-gray-50 even:dark:bg-gray-300 border-b dark:border-gray-700">
-                        <td class="px-6 py-4">{{ $cliente->id }}</td>
-                        <td class="px-6 py-4">{{ $cliente->nombre }}</td>
-                        <td class="px-6 py-4">{{ $cliente->email }}</td>
-                        <td class="px-6 py-4">{{ $cliente->telefono }}</td>
-                        <td class="px-6 py-4">{{ $cliente->numero_cuenta_bancaria }}</td>
-                        <td class="px-6 py-4">{{ $cliente->created_at->format('d/m/Y H:i') }}</td>
-                        <td class="px-6 py-4">{{ $cliente->estado }}</td>
-                        <td class="px-6 py-4">{{ $cliente->creator->name ?? 'Desconocido' }}</td>
-                        <td class="px-6 py-4">{{ $cliente->stateChanger->name ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $cliente['id'] }}</td>
+                        <td class="px-6 py-4">{{ $cliente['nombre'] }}</td>
+                        <td class="px-6 py-4">{{ $cliente['email'] }}</td>
+                        <td class="px-6 py-4">{{ $cliente['telefono'] }}</td>
+                        <td class="px-6 py-4">{{ $cliente['numero_cuenta_bancaria'] }}</td>
+                        {{-- <td class="px-6 py-4">{{ \Carbon\Carbon::parse($cliente['created_at'])->format('d/m/Y H:i') }}</td> --}}
+                        <td class="px-6 py-4">{{ $cliente['estado'] }}</td>
+                        <td class="px-6 py-4">{{ $cliente['creator']['name'] ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $cliente['stateChanger']['name'] ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonCliente"
-                                data-id="{{ $cliente->id }}" data-nombre="{{ $cliente->nombre }}"
-                                data-email="{{ $cliente->email }}" data-telefono="{{ $cliente->telefono }}"
-                                data-numero_cuenta_bancaria="{{ $cliente->numero_cuenta_bancaria }}">
+                                data-id="{{ $cliente['id'] }}" data-nombre="{{ $cliente['nombre'] }}"
+                                data-email="{{ $cliente['email'] }}" data-telefono="{{ $cliente['telefono'] }}"
+                                data-numero_cuenta_bancaria="{{ $cliente['numero_cuenta_bancaria'] }}">
                                 <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                             </button>
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md estado-button"
-                                data-id="{{ $cliente->id }}" data-estado="cliente">
+                                data-id="{{ $cliente['id'] }}" data-estado="cliente">
                                 <i class="fa-solid fa-sync" style="color: #ffffff;"></i>
                             </button>
                         </td>
