@@ -41,7 +41,7 @@
                 <div class="flex justify-end">
                     <button type="button" id="cancelTicketModalButton"
                         class="px-4 py-2 mr-2 text-sm font-semibold text-gray-300 bg-gray-700 rounded hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">Cancelar</button>
-                    <button type="submit"
+                    <button type="submit" disabled
                         class="px-4 py-2 text-sm font-semibold text-gray-300 bg-blue-600 rounded hover:bg-blue-500 focus:bg-blue-500 focus:outline-none">Guardar
                         Cambios</button>
                 </div>

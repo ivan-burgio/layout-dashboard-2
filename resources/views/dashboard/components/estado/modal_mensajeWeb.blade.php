@@ -19,7 +19,7 @@
                 <div class="flex justify-end">
                     <button type="button" id="cancelWebModalButton"
                         class="bg-gray-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-gray-700">Cancelar</button>
-                    <button type="submit"
+                    <button type="submit" disabled
                         class="bg-sky-800 text-white px-4 py-2 rounded-md hover:bg-sky-900">Guardar</button>
                 </div>
             </form>
