@@ -14,6 +14,61 @@ class BuzonController extends Controller
     public function websMensaje(Request $request)
     {
         $title = 'Mensajes Web';
+        $mensajes = Mensaje::mensajesEjemplo(); // Obtener datos ficticios
+
+        // Filtrar por búsqueda
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $mensajes = array_filter($mensajes, function ($mensaje) use ($search) {
+                return stripos($mensaje['nombre'], $search) !== false ||
+                    stripos($mensaje['email'], $search) !== false;
+            });
+        }
+
+        return view('dashboard.pages.buzon.messages_webs', compact('title', 'mensajes'));
+    }
+
+    public function emails(Request $request)
+    {
+        $title = 'Emails';
+        $emails = Email::emailsEjemplo(); // Obtener datos ficticios
+
+        // Filtrar por búsqueda
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $emails = array_filter($emails, function ($email) use ($search) {
+                return stripos($email['nombre'], $search) !== false ||
+                    stripos($email['email'], $search) !== false;
+            });
+        }
+
+        return view('dashboard.pages.buzon.emails', compact('title', 'emails'));
+    }
+
+    public function whatsapps(Request $request)
+    {
+        $title = 'WhatsApps';
+        $whatsapps = Whatsapp::whatsappsEjemplo(); // Obtener datos ficticios
+
+        // Filtrar por búsqueda
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $whatsapps = array_filter($whatsapps, function ($whatsapp) use ($search) {
+                return stripos($whatsapp['nombre'], $search) !== false ||
+                    stripos($whatsapp['telefono'], $search) !== false;
+            });
+        }
+
+        return view('dashboard.pages.buzon.whatsapp', compact('title', 'whatsapps'));
+    }
+}
+
+/*
+class BuzonController extends Controller
+{
+    public function websMensaje(Request $request)
+    {
+        $title = 'Mensajes Web';
         $query = Mensaje::query();
 
         // Filtrado por nombre o email
@@ -198,3 +253,4 @@ class BuzonController extends Controller
         return redirect()->route('whatsapps')->with('success', 'El estado del WhatsApp ha sido actualizado.');
     }
 }
+*/

@@ -74,16 +74,16 @@
                 @foreach ($mensajes as $mensaje)
                     <tr
                         class="odd:bg-white odd:dark:bg-gray-200 even:bg-gray-50 even:dark:bg-gray-300 border-b dark:border-gray-700">
-                        <td class="px-6 py-4">{{ $mensaje->id }}</td>
-                        <td class="px-6 py-4">{{ $mensaje->nombre }}</td>
-                        <td class="px-6 py-4">{{ $mensaje->email }}</td>
-                        <td class="px-6 py-4">{{ $mensaje->mensaje }}</td>
-                        <td class="px-6 py-4">{{ $mensaje->estado }}</td>
-                        <td class="px-6 py-4">{{ $mensaje->created_at->format('d/m/Y H:i') }}</td>
-                        <td class="px-6 py-4">{{ $mensaje->stateChanger->name ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $mensaje['id'] }}</td>
+                        <td class="px-6 py-4">{{ $mensaje['nombre'] }}</td>
+                        <td class="px-6 py-4">{{ $mensaje['email'] }}</td>
+                        <td class="px-6 py-4">{{ $mensaje['mensaje'] }}</td>
+                        <td class="px-6 py-4">{{ $mensaje['estado'] }}</td>
+                        <td class="px-6 py-4">{{ $mensaje['created_at'] }}</td>
+                        <td class="px-6 py-4">{{ $mensaje['stateChanger'] ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md estado-button"
-                                data-id="{{ $mensaje->id }}" data-estado="web">
+                                data-id="{{ $mensaje['id'] }}" data-estado="web">
                                 <i class="fa-solid fa-sync" style="color: #ffffff;"></i>
                             </button>
                         </td>

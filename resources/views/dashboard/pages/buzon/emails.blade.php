@@ -80,22 +80,22 @@
                 @foreach ($emails as $email)
                     <tr
                         class="odd:bg-white odd:dark:bg-gray-200 even:bg-gray-50 even:dark:bg-gray-300 border-b dark:border-gray-700">
-                        <td class="px-6 py-4">{{ $email->id }}</td>
-                        <td class="px-6 py-4">{{ $email->nombre }}</td>
-                        <td class="px-6 py-4">{{ $email->email }}</td>
-                        <td class="px-6 py-4">{{ $email->mensaje }}</td>
-                        <td class="px-6 py-4">{{ $email->created_at->format('d/m/Y H:i') }}</td>
-                        <td class="px-6 py-4">{{ $email->estado }}</td>
-                        <td class="px-6 py-4">{{ $email->creator->name ?? 'Desconocido' }}</td>
-                        <td class="px-6 py-4">{{ $email->stateChanger->name ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $email['id'] }}</td>
+                        <td class="px-6 py-4">{{ $email['nombre'] }}</td>
+                        <td class="px-6 py-4">{{ $email['email'] }}</td>
+                        <td class="px-6 py-4">{{ $email['mensaje'] }}</td>
+                        <td class="px-6 py-4">{{ $email['created_at'] }}</td>
+                        <td class="px-6 py-4">{{ $email['estado'] }}</td>
+                        <td class="px-6 py-4">{{ $email['creator'] ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $email['stateChanger'] ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonEmail"
-                                data-id="{{ $email->id }}" data-nombre="{{ $email->nombre }}"
-                                data-email="{{ $email->email }}" data-mensaje="{{ $email->mensaje }}">
+                                data-id="{{ $email['id'] }}" data-nombre="{{ $email['nombre'] }}"
+                                data-email="{{ $email['email'] }}" data-mensaje="{{ $email['mensaje'] }}">
                                 <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                             </button>
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md estado-button"
-                                data-id="{{ $email->id }}" data-estado="email">
+                                data-id="{{ $email['id'] }}" data-estado="email">
                                 <i class="fa-solid fa-sync" style="color: #ffffff;"></i>
                             </button>
                         </td>

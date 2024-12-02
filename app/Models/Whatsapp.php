@@ -41,9 +41,10 @@ class Whatsapp extends Model
         // Datos ficticios para los registros de WhatsApp
         $data = [
             [
+                'id' => 1, // ID único para el registro
                 'nombre' => 'Juan Pérez',
                 'telefono' => '123456789',
-                'estado' => 'enviado',
+                'estado' => 'Completado',
                 'mensaje' => '¿Puedo saber más sobre sus servicios?',
                 'fecha' => now(),
                 'creador' => 1, // ID de usuario creador ficticio
@@ -51,9 +52,10 @@ class Whatsapp extends Model
                 'created_at' => '2024-11-01 10:00:00', // Fecha de creación
             ],
             [
+                'id' => 2, // ID único para el registro
                 'nombre' => 'Ana López',
                 'telefono' => '987654321',
-                'estado' => 'pendiente',
+                'estado' => 'Pendiente',
                 'mensaje' => 'Tengo dudas sobre los productos.',
                 'fecha' => now(),
                 'creador' => 2, // ID de usuario creador ficticio
@@ -61,9 +63,10 @@ class Whatsapp extends Model
                 'created_at' => '2024-11-02 14:30:00', // Fecha de creación
             ],
             [
+                'id' => 3, // ID único para el registro
                 'nombre' => 'Carlos Gómez',
                 'telefono' => '111223344',
-                'estado' => 'resuelto',
+                'estado' => 'En Proceso',
                 'mensaje' => 'Gracias, todo solucionado.',
                 'fecha' => now(),
                 'creador' => 1, // ID de usuario creador ficticio

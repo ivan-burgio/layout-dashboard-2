@@ -81,22 +81,22 @@
                 @foreach ($whatsapps as $whatsapp)
                     <tr
                         class="odd:bg-white odd:dark:bg-gray-200 even:bg-gray-50 even:dark:bg-gray-300 border-b dark:border-gray-700">
-                        <td class="px-6 py-4">{{ $whatsapp->id }}</td>
-                        <td class="px-6 py-4">{{ $whatsapp->nombre }}</td>
-                        <td class="px-6 py-4">{{ $whatsapp->telefono }}</td>
-                        <td class="px-6 py-4">{{ $whatsapp->mensaje }}</td>
-                        <td class="px-6 py-4">{{ $whatsapp->created_at->format('d/m/Y H:i') }}</td>
-                        <td class="px-6 py-4">{{ $whatsapp->estado }}</td>
-                        <td class="px-6 py-4">{{ $whatsapp->creator->name ?? 'Desconocido' }}</td>
-                        <td class="px-6 py-4">{{ $whatsapp->stateChanger->name ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp['id'] }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp['nombre'] }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp['telefono'] }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp['mensaje'] }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp['created_at'] }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp['estado'] }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp['creator'] ?? 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $whatsapp['stateChanger'] ?? 'Desconocido' }}</td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonWhatsapp"
-                                data-id="{{ $whatsapp->id }}" data-nombre="{{ $whatsapp->nombre }}"
-                                data-telefono="{{ $whatsapp->telefono }}" data-mensaje="{{ $whatsapp->mensaje }}">
+                                data-id="{{ $whatsapp['id'] }}" data-nombre="{{ $whatsapp['nombre'] }}"
+                                data-telefono="{{ $whatsapp['telefono'] }}" data-mensaje="{{ $whatsapp['mensaje'] }}">
                                 <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                             </button>
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md estado-button"
-                                data-id="{{ $whatsapp->id }}" data-estado="whatsapp">
+                                data-id="{{ $whatsapp['id'] }}" data-estado="whatsapp">
                                 <i class="fa-solid fa-sync" style="color: #ffffff;"></i>
                             </button>
                         </td>
