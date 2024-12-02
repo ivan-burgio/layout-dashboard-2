@@ -54,26 +54,26 @@
                 @foreach ($layouts as $layout)
                     <tr
                         class="odd:bg-white odd:dark:bg-gray-200 even:bg-gray-50 even:dark:bg-gray-300 border-b dark:border-gray-700">
-                        <td class="px-6 py-4">{{ $layout->id }}</td>
-                        <td class="px-6 py-4">{{ $layout->nombre }}</td>
+                        <td class="px-6 py-4">{{ $layout['id'] }}</td>
+                        <td class="px-6 py-4">{{ $layout['nombre'] }}</td>
                         <td class="px-6 py-4">
-                            <a href="{{ $layout->link }}" target="_blank" class="text-blue-500 hover:underline">
-                                {{ $layout->link }}
+                            <a href="{{ $layout['link'] }}" target="_blank" class="text-blue-500 hover:underline">
+                                {{ $layout['link'] }}
                             </a>
                         </td>
-                        <td class="px-6 py-4">{{ $layout->creator ? $layout->creator->name : 'Desconocido' }}</td>
+                        <td class="px-6 py-4">{{ $layout['creador'] ? $layout['creador'] : 'Desconocido' }}</td>
                         <td class="px-6 py-4">
-                            @if ($layout->imagen)
-                                <img src="{{ Storage::url($layout->imagen) }}" alt="Imagen" style="max-width: 100px;">
+                            @if ($layout['imagen'])
+                                <img src="{{ Storage::url($layout['imagen']) }}" alt="Imagen" style="max-width: 100px;">
                             @else
                                 No disponible
                             @endif
                         </td>
                         <td class="px-6 py-4">
                             <button class="bg-sky-800 hover:bg-sky-950 text-white px-2 py-1 rounded-md edit-buttonLayout"
-                                data-id="{{ $layout->id }}" data-nombre="{{ $layout->nombre }}"
-                                data-descripcion="{{ $layout->descripcion }}" data-tipo="{{ $tipo }}"
-                                data-link="{{ $layout->link }}" data-imagen="{{ $layout->imagen }}">
+                                data-id="{{ $layout['id'] }}" data-nombre="{{ $layout['nombre'] }}"
+                                data-descripcion="{{ $layout['descripcion'] }}" data-tipo="{{ $tipo }}"
+                                data-link="{{ $layout['link'] }}" data-imagen="{{ $layout['imagen'] }}">
                                 <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                             </button>
                         </td>

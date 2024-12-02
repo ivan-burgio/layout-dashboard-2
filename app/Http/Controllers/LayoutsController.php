@@ -7,6 +7,81 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+class LayoutsController extends Controller
+{
+    // Método para listar layouts de tipo 'web'
+    public function webs(Request $request)
+    {
+        $title = 'Layouts Web';
+        $tipo = 'webs';
+        $layouts = Layout::layoutsEjemplo(); // Obtener datos ficticios
+
+        // Filtrar por categoría 'Web'
+        $layouts = array_filter($layouts, function ($layout) {
+            return strtolower($layout['categoria']) === 'web';
+        });
+
+        // Filtrar por búsqueda
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $layouts = array_filter($layouts, function ($layout) use ($search) {
+                return stripos($layout['nombre'], $search) !== false ||
+                    stripos($layout['descripcion'], $search) !== false;
+            });
+        }
+
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
+    }
+
+    // Método para listar layouts de tipo 'dashboard'
+    public function dashboards(Request $request)
+    {
+        $title = 'Layouts Dashboard';
+        $tipo = 'dashboards';
+        $layouts = Layout::layoutsEjemplo(); // Obtener datos ficticios
+
+        // Filtrar por categoría 'Dashboard'
+        $layouts = array_filter($layouts, function ($layout) {
+            return strtolower($layout['categoria']) === 'dashboard';
+        });
+
+        // Filtrar por búsqueda
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $layouts = array_filter($layouts, function ($layout) use ($search) {
+                return stripos($layout['nombre'], $search) !== false ||
+                    stripos($layout['descripcion'], $search) !== false;
+            });
+        }
+
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
+    }
+
+    // Método para listar layouts de tipo 'chatbot'
+    public function chatbots(Request $request)
+    {
+        $title = 'Layouts Chatbot';
+        $tipo = 'chatbots';
+        $layouts = Layout::layoutsEjemplo(); // Obtener datos ficticios
+
+        // Filtrar por categoría 'Chatbot'
+        $layouts = array_filter($layouts, function ($layout) {
+            return strtolower($layout['categoria']) === 'chatbot';
+        });
+
+        // Filtrar por búsqueda
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $layouts = array_filter($layouts, function ($layout) use ($search) {
+                return stripos($layout['nombre'], $search) !== false ||
+                    stripos($layout['descripcion'], $search) !== false;
+            });
+        }
+
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
+    }
+}
+
 /*
 class LayoutsController extends Controller
 {

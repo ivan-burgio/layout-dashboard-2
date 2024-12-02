@@ -33,6 +33,7 @@ class Layout extends Model
         // Datos ficticios para los layouts
         $data = [
             [
+                'id' => 1,
                 'nombre' => 'Layout Corporativo',
                 'descripcion' => 'Un diseño profesional para empresas.',
                 'categoria' => 'Dashboard',
@@ -41,6 +42,7 @@ class Layout extends Model
                 'imagen' => 'layouts/corporativo.jpg',
             ],
             [
+                'id' => 2,
                 'nombre' => 'Layout E-commerce',
                 'descripcion' => 'Diseño optimizado para tiendas en línea.',
                 'categoria' => 'Web',
@@ -49,6 +51,7 @@ class Layout extends Model
                 'imagen' => 'layouts/ecommerce.jpg',
             ],
             [
+                'id' => 3,
                 'nombre' => 'Layout Portfolio',
                 'descripcion' => 'Plantilla ideal para mostrar proyectos de diseño.',
                 'categoria' => 'Web',
@@ -57,6 +60,7 @@ class Layout extends Model
                 'imagen' => 'layouts/portfolio.jpg',
             ],
             [
+                'id' => 4,
                 'nombre' => 'Layout Blog Personal',
                 'descripcion' => 'Diseño minimalista para blogs personales.',
                 'categoria' => 'Web',
@@ -65,6 +69,7 @@ class Layout extends Model
                 'imagen' => 'layouts/blog.jpg',
             ],
             [
+                'id' => 5,
                 'nombre' => 'Layout Landing Page',
                 'descripcion' => 'Ideal para crear páginas de aterrizaje para campañas.',
                 'categoria' => 'Web',
