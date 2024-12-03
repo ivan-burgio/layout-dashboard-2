@@ -11,7 +11,15 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login');
+        $data = [
+            'globos' => [
+                ['info' => 'Se tendira que iniciar sesion con las credenciales correctas para poder acceder a la pagina de gestión.'],
+                ['info' => 'Tantos usuarios como hagan falta.'],
+                ['info' => 'Componenes, colores y textos segun las necesidades.'],
+            ],
+        ];
+
+        return view('auth.login', compact('data'));
     }
 
     /**

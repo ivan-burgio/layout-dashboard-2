@@ -12,8 +12,8 @@ use App\Http\Controllers\ContabilidadController;
 use App\Http\Controllers\ConfiguracionesController;
 
 // Autenticación
-Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/', [AuthController::class, 'login'])->name('login.post');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rutas protegidas por autenticación
