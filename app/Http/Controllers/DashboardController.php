@@ -35,8 +35,17 @@ class DashboardController extends Controller
             return response()->json(['chartData' => $chartBuzon['chartData']]);
         }
 
+        $data = [
+            'globos' => [
+                ['info' => 'Los colores, animaciones, efectos y componentes pueden ser ajustados según preferencia del cliente.'],
+                ['info' => 'La cantidad y disposición de los elementos es completamente configurable.'],
+                ['info' => 'Imagenes y textos quedan a criterio del cliente.'],
+                ['info' => 'La cantidad de paginas o links tambien queda al gusto y necesidades.'],
+            ],
+        ];
+
         // Pasar los datos a la vista si no es AJAX
-        return view('dashboard.pages.dashboard', compact('title', 'totalLayouts', 'totalClientes', 'totalPaginas', 'cantidadBuzon', 'ticketsPendientes', 'mensajesPendientes', 'chartBuzon'));
+        return view('dashboard.pages.dashboard', compact('title', 'totalLayouts', 'totalClientes', 'totalPaginas', 'cantidadBuzon', 'ticketsPendientes', 'mensajesPendientes', 'chartBuzon', 'data'));
     }
 
     public function clientes()

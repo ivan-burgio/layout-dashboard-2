@@ -5,6 +5,7 @@ window.$ = window.jQuery = require("jquery");
 import "bootstrap";
 
 // Importar otros módulos
+import "./globo";
 import "./calendar";
 import "./despliegue";
 import "./alerts";
