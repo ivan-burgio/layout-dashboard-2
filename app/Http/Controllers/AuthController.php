@@ -82,7 +82,7 @@ class AuthController extends Controller
                 session(['user_logged_in' => true, 'user_email' => $email]);
 
                 // Redirige a la URL del usuario
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('/');
             }
 
             // Si las credenciales son inválidas, redirige de vuelta con un error

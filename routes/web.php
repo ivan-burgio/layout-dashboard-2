@@ -19,12 +19,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Rutas protegidas por autenticación
 Route::middleware('auth')->group(function () {});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/perfil', [ProfileController::class, 'index'])->name('perfil');
 
 // Rutas para Calendario
-Route::prefix('/dashboard/agenda/calendario')->group(function () {
+Route::prefix('/agenda/calendario')->group(function () {
     Route::get('/', [AgendaController::class, 'calendario']);
     Route::get('/events', [AgendaController::class, 'events']);
     Route::post('/events', [AgendaController::class, 'store']);
@@ -33,7 +33,7 @@ Route::prefix('/dashboard/agenda/calendario')->group(function () {
 });
 
 // Rutas para Tickets
-Route::prefix('/dashboard/agenda/tickets')->group(function () {
+Route::prefix('/agenda/tickets')->group(function () {
     Route::get('/', [AgendaController::class, 'tickets'])->name('tickets');
     Route::post('/', [AgendaController::class, 'ticketsStore'])->name('tickets.store');
     Route::put('/{id}', [AgendaController::class, 'ticketsStore']);
@@ -41,10 +41,10 @@ Route::prefix('/dashboard/agenda/tickets')->group(function () {
 });
 
 // Rutas para Agenda
-Route::get('/dashboard/agenda/reuniones', [AgendaController::class, 'reuniones']);
+Route::get('/agenda/reuniones', [AgendaController::class, 'reuniones']);
 
 // Rutas para Clientes
-Route::prefix('/dashboard/cuentas/clientes')->group(function () {
+Route::prefix('/cuentas/clientes')->group(function () {
     Route::get('/', [CuentasController::class, 'clientes'])->name('clientes');
     Route::post('/', [CuentasController::class, 'clientesStore'])->name('clientes.store');
     Route::put('/{id}', [CuentasController::class, 'clientesStore']);
@@ -52,11 +52,11 @@ Route::prefix('/dashboard/cuentas/clientes')->group(function () {
 });
 
 // Rutas para Mensajes web
-Route::get('/dashboard/buzon/messages_webs', [BuzonController::class, 'websMensaje'])->name('messages_webs');
-Route::put('/dashboard/buzon/messages_webs/estado/{id}', [BuzonController::class, 'updateWebMensajeEstado'])->name('messages_webs.updateEstado');
+Route::get('/buzon/messages_webs', [BuzonController::class, 'websMensaje'])->name('messages_webs');
+Route::put('/buzon/messages_webs/estado/{id}', [BuzonController::class, 'updateWebMensajeEstado'])->name('messages_webs.updateEstado');
 
 // Rutas para Emails
-Route::prefix('/dashboard/buzon/emails')->group(function () {
+Route::prefix('/buzon/emails')->group(function () {
     Route::get('/', [BuzonController::class, 'emails'])->name('emails');
     Route::post('/', [BuzonController::class, 'emailsStore'])->name('emails.store');
     Route::put('/{id}', [BuzonController::class, 'emailsStore']);
@@ -64,7 +64,7 @@ Route::prefix('/dashboard/buzon/emails')->group(function () {
 });
 
 // Rutas para Whatsapps
-Route::prefix('/dashboard/buzon/whatsapps')->group(function () {
+Route::prefix('/buzon/whatsapps')->group(function () {
     Route::get('/', [BuzonController::class, 'whatsapps'])->name('whatsapps');
     Route::post('/', [BuzonController::class, 'whatsappsStore'])->name('whatsapps.store');
     Route::put('/{id}', [BuzonController::class, 'whatsappsStore']);
@@ -72,42 +72,42 @@ Route::prefix('/dashboard/buzon/whatsapps')->group(function () {
 });
 
 // Rutas para Paginas
-Route::prefix('/dashboard/cuentas/paginas')->group(function () {
+Route::prefix('/cuentas/paginas')->group(function () {
     Route::get('/', [CuentasController::class, 'paginas'])->name('paginas');
     Route::post('/', [CuentasController::class, 'paginasStore'])->name('paginas.store');
     Route::put('/{id}', [CuentasController::class, 'paginasStore']);
 });
 
 // Rutas para Cuentas
-Route::get('/dashboard/cuentas/contratos', [CuentasController::class, 'contratos']);
+Route::get('/cuentas/contratos', [CuentasController::class, 'contratos']);
 
 // Rutas para Layouts Web
-Route::prefix('/dashboard/layouts/webs')->group(function () {
+Route::prefix('/layouts/webs')->group(function () {
     Route::get('/', [LayoutsController::class, 'webs'])->name('webs');
     Route::post('/', [LayoutsController::class, 'websStore'])->name('webs.store');
     Route::put('/{id}', [LayoutsController::class, 'websStore'])->name('webs.update');
 });
 
 // Rutas para Layouts Dashboards
-Route::prefix('/dashboard/layouts/dashboards')->group(function () {
+Route::prefix('/layouts/dashboards')->group(function () {
     Route::get('/', [LayoutsController::class, 'dashboards'])->name('dashboards');
     Route::post('/', [LayoutsController::class, 'dashboardsStore'])->name('dashboards.store');
     Route::put('/{id}', [LayoutsController::class, 'dashboardsStore'])->name('dashboards.update');
 });
 
 // Rutas para Layouts Chatbots
-Route::prefix('/dashboard/layouts/chatbots')->group(function () {
+Route::prefix('/layouts/chatbots')->group(function () {
     Route::get('/', [LayoutsController::class, 'chatbots'])->name('chatbots');
     Route::post('/', [LayoutsController::class, 'chatbotsStore'])->name('chatbots.store');
     Route::put('/{id}', [LayoutsController::class, 'chatbotsStore'])->name('chatbots.update');
 });
 
 // Rutas para Contabilidad
-Route::get('/dashboard/contabilidad/pagos', [ContabilidadController::class, 'pagos']);
-Route::get('/dashboard/contabilidad/documentos', [ContabilidadController::class, 'documentos']);
-Route::get('/dashboard/contabilidad/gastos', [ContabilidadController::class, 'gastos']);
-Route::get('/dashboard/contabilidad/facturas', [ContabilidadController::class, 'facturas']);
+Route::get('/contabilidad/pagos', [ContabilidadController::class, 'pagos']);
+Route::get('/contabilidad/documentos', [ContabilidadController::class, 'documentos']);
+Route::get('/contabilidad/gastos', [ContabilidadController::class, 'gastos']);
+Route::get('/contabilidad/facturas', [ContabilidadController::class, 'facturas']);
 
 // Rutas para Configuraciones
-Route::get('/dashboard/configuraciones/operadores', [ConfiguracionesController::class, 'operadores']);
-Route::get('/dashboard/configuraciones/permisos', [ConfiguracionesController::class, 'permisos']);
+Route::get('/configuraciones/operadores', [ConfiguracionesController::class, 'operadores']);
+Route::get('/configuraciones/permisos', [ConfiguracionesController::class, 'permisos']);

@@ -1,6 +1,6 @@
 <?php
 
-$baseURL = '/dashboard/';
+$baseURL = '/';
 
 return [
     'menu' => [

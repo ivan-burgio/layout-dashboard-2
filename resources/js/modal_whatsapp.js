@@ -4,11 +4,11 @@ function openWhatsappModal(id = "", nombre = "", telefono = "", mensaje = "") {
 
     if (id) {
         // Configura el formulario para actualizar un WhatsApp
-        form.action = `/dashboard/buzon/whatsapps/${id}`;
+        form.action = `/buzon/whatsapps/${id}`;
         form.querySelector('input[name="_method"]').value = "PUT"; // Añadimos el método PUT
     } else {
         // Configura el formulario para crear un nuevo WhatsApp
-        form.action = "/dashboard/buzon/whatsapps";
+        form.action = "/buzon/whatsapps";
         form.querySelector('input[name="_method"]').value = ""; // Eliminamos el método PUT
     }
 
@@ -32,7 +32,7 @@ $(document).ready(function () {
     $("#openModalButtonWhatsapp").click(function () {
         // Configura el formulario para crear un nuevo WhatsApp
         const form = document.getElementById("whatsappForm");
-        form.action = "/dashboard/buzon/whatsapps";
+        form.action = "/buzon/whatsapps";
         form.querySelector('input[name="_method"]').value = ""; // Asegúrate de no usar PUT aquí
         openWhatsappModal(); // Abre el modal con los campos vacíos
     });

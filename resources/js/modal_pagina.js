@@ -10,11 +10,11 @@ function openPaginaModal(
 
     if (id) {
         // Configura el formulario para actualizar una página
-        form.action = `/dashboard/cuentas/paginas/${id}`;
+        form.action = `/cuentas/paginas/${id}`;
         form.querySelector('input[name="_method"]').value = "PUT"; // Añadimos el método PUT
     } else {
         // Configura el formulario para crear una nueva página
-        form.action = "/dashboard/cuentas/paginas";
+        form.action = "/cuentas/paginas";
         form.querySelector('input[name="_method"]').value = ""; // Eliminamos el método PUT
     }
 
@@ -47,7 +47,7 @@ $(document).ready(function () {
     $("#openModalButtonPagina").click(function () {
         // Configura el formulario para crear una nueva pagina
         const form = document.getElementById("paginaForm");
-        form.action = "/dashboard/cuentas/paginas";
+        form.action = "/cuentas/paginas";
         form.querySelector('input[name="_method"]').value = ""; // Asegúrate de no usar PUT aquí
         openPaginaModal(); // Abre el modal con los campos vacíos
     });

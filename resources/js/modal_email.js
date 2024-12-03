@@ -4,11 +4,11 @@ function openModal(id = "", nombre = "", email = "", mensaje = "") {
 
     if (id) {
         // Configura el formulario para actualizar un email
-        form.action = `/dashboard/buzon/emails/${id}`;
+        form.action = `/buzon/emails/${id}`;
         form.querySelector('input[name="_method"]').value = "PUT"; // Añadimos el método PUT
     } else {
         // Configura el formulario para crear un nuevo email
-        form.action = "/dashboard/buzon/emails";
+        form.action = "/buzon/emails";
         form.querySelector('input[name="_method"]').value = ""; // Eliminamos el método PUT
     }
 
@@ -32,7 +32,7 @@ $(document).ready(function () {
     $("#openModalButtonEmail").click(function () {
         // Configura el formulario para crear un nuevo email
         const form = document.getElementById("emailForm");
-        form.action = "/dashboard/buzon/emails";
+        form.action = "/buzon/emails";
         form.querySelector('input[name="_method"]').value = ""; // Asegúrate de no usar PUT aquí
         openModal(); // Abre el modal con los campos vacíos
     });

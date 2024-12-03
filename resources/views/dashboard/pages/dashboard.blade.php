@@ -13,7 +13,7 @@
                         <div class="text-sm font-medium text-black">Cantidad de Clientes</div>
                     </div>
                 </div>
-                <a href="/dashboard/cuentas/clientes" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+                <a href="/cuentas/clientes" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
             </div>
             <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
                 <div class="flex justify-between mb-6">
@@ -22,7 +22,7 @@
                         <div class="text-sm font-medium text-black">Cantidad de Paginas</div>
                     </div>
                 </div>
-                <a href="/dashboard/cuentas/paginas" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+                <a href="/cuentas/paginas" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
             </div>
             <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
                 <div class="flex justify-between mb-6">
@@ -63,7 +63,7 @@
                         function loadChart(selectedFilter) {
                             // Realizar la petición AJAX
                             $.ajax({
-                                url: '/dashboard', // La URL donde se enviará la petición
+                                url: '/', // La URL donde se enviará la petición
                                 method: 'GET',
                                 data: {
                                     filter: selectedFilter // Enviar el filtro al controlador
@@ -230,7 +230,7 @@
             <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
                 <div class="flex justify-between mb-4 items-start">
                     <div class="font-medium">Tickets Pendientes</div>
-                    <a href="/dashboard/agenda/tickets"
+                    <a href="/agenda/tickets"
                         class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
                 </div>
                 <div class="overflow-hidden">

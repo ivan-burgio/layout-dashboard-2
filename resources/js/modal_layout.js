@@ -8,7 +8,7 @@ function openLayoutModal(
     tipo = "webs" // Valor por defecto para tipo
 ) {
     const form = document.getElementById("layoutForm");
-    const baseActionUrl = `/dashboard/layouts/${tipo}`;
+    const baseActionUrl = `/layouts/${tipo}`;
 
     if (id) {
         // Configura el formulario para actualizar un layout
@@ -51,7 +51,7 @@ $(document).ready(function () {
         const tipo = $(this).data("tipo");
         // Configura el formulario para crear un nuevo layout
         const form = document.getElementById("layoutForm");
-        form.action = `/dashboard/layouts/${tipo}`;
+        form.action = `/layouts/${tipo}`;
         form.querySelector('input[name="_method"]').value = ""; // Asegúrate de no usar PUT aquí
         openLayoutModal("", "", "", "", "", tipo); // Abre el modal con los campos vacíos
     });

@@ -10,11 +10,11 @@ function openClienteModal(
 
     if (id) {
         // Configura el formulario para actualizar un cliente
-        form.action = `/dashboard/cuentas/clientes/${id}`;
+        form.action = `/cuentas/clientes/${id}`;
         form.querySelector('input[name="_method"]').value = "PUT"; // Añadimos el método PUT
     } else {
         // Configura el formulario para crear un nuevo cliente
-        form.action = "/dashboard/cuentas/clientes";
+        form.action = "/cuentas/clientes";
         form.querySelector('input[name="_method"]').value = ""; // Eliminamos el método PUT
     }
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
     $("#openModalButtonCliente").click(function () {
         // Configura el formulario para crear un nuevo cliente
         const form = document.getElementById("clienteForm");
-        form.action = "/dashboard/cuentas/clientes";
+        form.action = "/cuentas/clientes";
         form.querySelector('input[name="_method"]').value = ""; // Asegúrate de no usar PUT aquí
         openClienteModal(); // Abre el modal con los campos vacíos
     });

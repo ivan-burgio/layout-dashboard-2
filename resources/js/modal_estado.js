@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("email_id").value = id;
                 document.getElementById(
                     "emailEstadoForm"
-                ).action = `/dashboard/buzon/emails/estado/${id}`;
+                ).action = `/buzon/emails/estado/${id}`;
                 document
                     .getElementById("emailEstadoModal")
                     .classList.remove("hidden");
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("web_id").value = id;
                 document.getElementById(
                     "webEstadoForm"
-                ).action = `/dashboard/buzon/messages_webs/estado/${id}`;
+                ).action = `/buzon/messages_webs/estado/${id}`;
                 document
                     .getElementById("webEstadoModal")
                     .classList.remove("hidden");
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("whatsapp_id").value = id;
                 document.getElementById(
                     "whatsappEstadoForm"
-                ).action = `/dashboard/buzon/whatsapps/estado/${id}`;
+                ).action = `/buzon/whatsapps/estado/${id}`;
                 document
                     .getElementById("whatsappEstadoModal")
                     .classList.remove("hidden");
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("cliente_id").value = id;
                 document.getElementById(
                     "estadoClienteForm"
-                ).action = `/dashboard/cuentas/clientes/estado/${id}`;
+                ).action = `/cuentas/clientes/estado/${id}`;
                 document
                     .getElementById("clienteEstadoModal")
                     .classList.remove("hidden");
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("ticket_id").value = id;
                 document.getElementById(
                     "cambiarEstadoTicketForm"
-                ).action = `/dashboard/agenda/tickets/estado/${id}`;
+                ).action = `/agenda/tickets/estado/${id}`;
                 document
                     .getElementById("cambiarEstadoTicket")
                     .classList.remove("hidden");

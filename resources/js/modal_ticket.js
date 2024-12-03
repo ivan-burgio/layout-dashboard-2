@@ -9,11 +9,11 @@ function openTicketModal(
 
     if (id) {
         // Configura el formulario para actualizar un ticket
-        form.action = `/dashboard/agenda/tickets/${id}`;
+        form.action = `/agenda/tickets/${id}`;
         form.querySelector('input[name="_method"]').value = "PUT"; // Añadimos el método PUT
     } else {
         // Configura el formulario para crear un nuevo ticket
-        form.action = "/dashboard/agenda/tickets";
+        form.action = "/agenda/tickets";
         form.querySelector('input[name="_method"]').value = ""; // Eliminamos el método PUT
     }
 
@@ -37,7 +37,7 @@ $(document).ready(function () {
     $("#openModalButtonTicket").click(function () {
         // Configura el formulario para crear un nuevo ticket
         const form = document.getElementById("ticketForm");
-        form.action = "/dashboard/agenda/tickets";
+        form.action = "/agenda/tickets";
         form.querySelector('input[name="_method"]').value = ""; // Asegúrate de no usar PUT aquí
         openTicketModal(); // Abre el modal con los campos vacíos
     });

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         initialView: "dayGridMonth",
         editable: true,
         selectable: true,
-        events: "/dashboard/agenda/calendario/events",
+        events: "/agenda/calendario/events",
         locale: 'es',
 
         dateClick: function (info) {
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     deleteEventBtn.addEventListener("click", function () {
         var eventId = document.getElementById("eventId").value;
 
-        fetch(`/dashboard/agenda/calendario/events/${eventId}`, {
+        fetch(`/agenda/calendario/events/${eventId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -87,8 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var method = eventId ? "PUT" : "POST";
         var url = eventId
-            ? `/dashboard/agenda/calendario/events/${eventId}`
-            : "/dashboard/agenda/calendario/events";
+            ? `/agenda/calendario/events/${eventId}`
+            : "/agenda/calendario/events";
 
         var body = {
             title: title,
