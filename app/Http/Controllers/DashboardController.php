@@ -39,7 +39,7 @@ class DashboardController extends Controller
             'globos' => [
                 ['info' => 'Los colores, animaciones, efectos y componentes pueden ser ajustados según preferencia del cliente.'],
                 ['info' => 'La cantidad y disposición de los elementos es completamente configurable.'],
-                ['info' => 'Imagenes y textos quedan a criterio del cliente.'],
+                ['info' => 'Informacion totalmente ficticia, basada en nuestra propia pagina de gestión.'],
                 ['info' => 'La cantidad de paginas o links tambien queda al gusto y necesidades.'],
             ],
         ];

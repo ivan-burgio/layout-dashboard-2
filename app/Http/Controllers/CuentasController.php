@@ -12,6 +12,16 @@ class CuentasController extends Controller
 {
     public function clientes(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'Clientes';
         $clientes = Cliente::clientesEjemplo(); // Obtener datos ficticios
 
@@ -25,11 +35,21 @@ class CuentasController extends Controller
             });
         }
 
-        return view('dashboard.pages.cuentas.clientes', compact('title', 'clientes'));
+        return view('dashboard.pages.cuentas.clientes', compact('title', 'clientes', 'data'));
     }
 
     public function paginas(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'Páginas';
         $paginas = Pagina::paginasEjemplo(); // Obtener datos ficticios
 
@@ -42,7 +62,7 @@ class CuentasController extends Controller
             });
         }
 
-        return view('dashboard.pages.cuentas.paginas', compact('title', 'paginas'));
+        return view('dashboard.pages.cuentas.paginas', compact('title', 'paginas', 'data'));
     }
 }
 

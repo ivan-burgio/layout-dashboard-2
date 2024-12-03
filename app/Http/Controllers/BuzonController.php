@@ -13,6 +13,16 @@ class BuzonController extends Controller
 {
     public function websMensaje(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'Mensajes Web';
         $mensajes = Mensaje::mensajesEjemplo(); // Obtener datos ficticios
 
@@ -25,11 +35,21 @@ class BuzonController extends Controller
             });
         }
 
-        return view('dashboard.pages.buzon.messages_webs', compact('title', 'mensajes'));
+        return view('dashboard.pages.buzon.messages_webs', compact('title', 'mensajes', 'data'));
     }
 
     public function emails(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'Emails';
         $emails = Email::emailsEjemplo(); // Obtener datos ficticios
 
@@ -42,11 +62,21 @@ class BuzonController extends Controller
             });
         }
 
-        return view('dashboard.pages.buzon.emails', compact('title', 'emails'));
+        return view('dashboard.pages.buzon.emails', compact('title', 'emails', 'data'));
     }
 
     public function whatsapps(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'WhatsApps';
         $whatsapps = Whatsapp::whatsappsEjemplo(); // Obtener datos ficticios
 
@@ -59,7 +89,7 @@ class BuzonController extends Controller
             });
         }
 
-        return view('dashboard.pages.buzon.whatsapp', compact('title', 'whatsapps'));
+        return view('dashboard.pages.buzon.whatsapp', compact('title', 'whatsapps', 'data'));
     }
 }
 

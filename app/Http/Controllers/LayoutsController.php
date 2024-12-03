@@ -12,6 +12,16 @@ class LayoutsController extends Controller
     // Método para listar layouts de tipo 'web'
     public function webs(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'Layouts Web';
         $tipo = 'webs';
         $layouts = Layout::layoutsEjemplo(); // Obtener datos ficticios
@@ -30,12 +40,22 @@ class LayoutsController extends Controller
             });
         }
 
-        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo', 'data'));
     }
 
     // Método para listar layouts de tipo 'dashboard'
     public function dashboards(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'Layouts Dashboard';
         $tipo = 'dashboards';
         $layouts = Layout::layoutsEjemplo(); // Obtener datos ficticios
@@ -54,12 +74,22 @@ class LayoutsController extends Controller
             });
         }
 
-        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo', 'data'));
     }
 
     // Método para listar layouts de tipo 'chatbot'
     public function chatbots(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'Layouts Chatbot';
         $tipo = 'chatbots';
         $layouts = Layout::layoutsEjemplo(); // Obtener datos ficticios
@@ -78,7 +108,7 @@ class LayoutsController extends Controller
             });
         }
 
-        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo'));
+        return view('dashboard.pages.layouts.layouts', compact('title', 'layouts', 'tipo', 'data'));
     }
 }
 

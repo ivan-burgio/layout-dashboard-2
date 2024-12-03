@@ -12,9 +12,16 @@ class AgendaController extends Controller
 {
     public function calendario()
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Calendario para agendar y guardar eventos, reuniones o lo que se necesite.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+            ],
+        ];
+
         $title = 'Calendario';
         $eventos = Event::eventsEjemplo(); // Utilizando datos ficticios del modelo Event
-        return view('dashboard.pages.agenda.calendario', compact('title', 'eventos'));
+        return view('dashboard.pages.agenda.calendario', compact('title', 'eventos', 'data'));
     }
 
     public function events()
@@ -26,6 +33,16 @@ class AgendaController extends Controller
 
     public function tickets(Request $request)
     {
+        $data = [
+            'globos' => [
+                ['info' => 'Formularios personalizados a las necesidades.'],
+                ['info' => 'Botones de guardado o eliminado desactivados para la muestra.'],
+                ['info' => 'Cantidad de columnas a necesidad.'],
+                ['info' => 'Colores y diseños de los elementos al gusto.'],
+                ['info' => 'Barra de busqueda y filtros funcionales para facilitar la busqueda de registros.'],
+            ],
+        ];
+
         $title = 'Tickets';
         $tickets = Ticket::ticketsEjemplo(); // Utilizando datos ficticios del modelo Ticket
 
@@ -45,7 +62,7 @@ class AgendaController extends Controller
 
         $usuarios = User::all(); // Obtener todos los usuarios
 
-        return view('dashboard.pages.agenda.tickets', compact('title', 'tickets', 'usuarios'));
+        return view('dashboard.pages.agenda.tickets', compact('title', 'tickets', 'usuarios', 'data'));
     }
 }
 
